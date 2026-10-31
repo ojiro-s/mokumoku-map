@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登録補助ツール | スモーク定点ノート</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .picker { display: grid; gap: 16px; padding: 16px; max-width: 1200px; margin: 0 auto; }
+    @media (min-width: 900px) { .picker { grid-template-columns: 1fr 1fr; align-items: start; } }
+    .picker .minimap { cursor: crosshair; }
+    .ghost { opacity: 0.35; pointer-events: none !important; }
+    .form { display: grid; gap: 10px; }
+    .form label { display: grid; gap: 4px; font-size: 0.85rem; color: var(--muted); }
+    .form input, .form select, .form textarea {
+      font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+      border-radius: 8px; padding: 8px 10px; min-height: 40px;
+    }
+    .form textarea { min-height: 90px; resize: vertical; }
+    .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+    .mode { display: flex; gap: 8px; flex-wrap: wrap; }
+    .coord { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--text); }
+    .output { width: 100%; min-height: 260px; font-family: ui-monospace, monospace; font-size: 0.8rem; }
+    .primary { min-height: var(--tap); border: 0; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; }
+    .primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .hint { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>登録補助ツール</h1>
+    <a href="../index.html" class="act-label">閲覧ページへ</a>
+  </header>
+
+  <main class="picker">
+    <section>
+      <div class="form">
+        <label>マップ
+          <select id="map"></select>
+        </label>
+        <div class="mode" role="radiogroup" aria-label="クリックで設定する位置">
+          <button type="button" class="chip is-active" data-mode="target">スモークの配置位置</button>
+          <button type="button" class="chip" data-mode="stand">立ち位置（任意）</button>
+        </div>
+        <p class="hint">ミニマップをクリックすると、選んでいる方の位置が入ります。薄いピンは登録済みの定点です。</p>
+      </div>
+      <div id="minimap" class="minimap" style="margin-top:10px">
+        <img id="minimap-img" alt="">
+        <svg id="minimap-lines" class="minimap-lines" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div id="minimap-callouts" class="minimap-layer"></div>
+        <div id="minimap-pins" class="minimap-layer"></div>
+      </div>
+      <label class="toggle"><input type="checkbox" id="show-callouts" checked><span>場所の名前を表示</span></label>
+      <p class="coord">配置位置: <span id="target-text">未設定</span> / 立ち位置: <span id="stand-text">未設定</span></p>
+    </section>
+
+    <section class="form">
+      <div class="row">
+        <label>エージェント
+          <select id="agent"><option value="Omen">オーメン</option><option value="Clove">クローブ</option></select>
+        </label>
+        <label>攻め・守り
+          <select id="side"><option value="attack">攻め</option><option value="defense">守り</option></select>
+        </label>
+        <label>サイト
+          <select id="site"></select>
+        </label>
+        <label>目的
+          <select id="purpose"></select>
+        </label>
+      </div>
+      <label>タイトル（例：Aショートを焚く）
+        <input id="title" type="text">
+      </label>
+      <label>コツ・コメント
+        <textarea id="comment" placeholder="例：右の柱の角に照準を合わせて、しゃがんで投げる"></textarea>
+      </label>
+      <label>YouTube の URL（任意。共有ボタンで「開始位置」を付けたURLだと開始秒も入ります）
+        <input id="youtube" type="url" placeholder="https://youtu.be/xxxx?t=83">
+      </label>
+      <div class="row">
+        <label>開始秒（URLから自動入力）
+          <input id="start" type="number" min="0" value="0">
+        </label>
+        <label>パッチ
+          <input id="patch" type="text">
+        </label>
+      </div>
+      <label>画像のパス（任意。カンマ区切り。例：images/bind/a-short.jpg）
+        <input id="images" type="text">
+      </label>
+      <label>情報元（任意。例：〇〇さんに教わった）
+        <input id="source" type="text">
+      </label>
+
+      <label>data/smokes.json に追加する1件分
+        <textarea id="output" class="output" readonly></textarea>
+      </label>
+      <button type="button" id="copy" class="primary">コピーする</button>
+      <p class="hint">smokes.json の最後の「}」の後ろに「,」を付けて貼り付けてください（全体は [ ] で囲まれた配列です）。</p>
+    </section>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script src="picker.js"></script>
+</body>
+</html>

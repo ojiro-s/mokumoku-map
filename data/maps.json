@@ -1,0 +1,1977 @@
+{
+  "generatedAt": "2026-10-31T18:51:56+00:00",
+  "source": "valorant-api.com",
+  "maps": [
+    {
+      "uuid": "224b0a95-48b9-f703-1bd8-67aca101a61f",
+      "slug": "abyss",
+      "name": "Abyss",
+      "nameJa": "アビス",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/abyss.png",
+      "callouts": [
+        {
+          "nameEn": "A Bridge",
+          "name": "A ブリッジ",
+          "x": 0.4696,
+          "y": 0.0383
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.3015,
+          "y": 0.2732
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.7754,
+          "y": 0.2367
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.6337,
+          "y": 0.1922
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.4838,
+          "y": 0.1517
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.901,
+          "y": 0.423
+        },
+        {
+          "nameEn": "A Tower",
+          "name": "A タワー",
+          "x": 0.4899,
+          "y": 0.255
+        },
+        {
+          "nameEn": "Mid Bend",
+          "name": "中央 ベンド",
+          "x": 0.5871,
+          "y": 0.6377
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.3096,
+          "y": 0.662
+        },
+        {
+          "nameEn": "B Lobby",
+          "name": "B ロビー",
+          "x": 0.826,
+          "y": 0.7956
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.6235,
+          "y": 0.8604
+        },
+        {
+          "nameEn": "B Nest",
+          "name": "B ネスト",
+          "x": 0.6742,
+          "y": 0.903
+        },
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.5466,
+          "y": 0.5324
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.4048,
+          "y": 0.8584
+        },
+        {
+          "nameEn": "Mid Catwalk",
+          "name": "中央 キャットウォーク",
+          "x": 0.5425,
+          "y": 0.4514
+        },
+        {
+          "nameEn": "B Danger",
+          "name": "B デンジャー",
+          "x": 0.5567,
+          "y": 0.9739
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.0727,
+          "y": 0.423
+        },
+        {
+          "nameEn": "Mid Library",
+          "name": "中央 ライブラリー",
+          "x": 0.4514,
+          "y": 0.5263
+        },
+        {
+          "nameEn": "A Secret",
+          "name": "A シークレット",
+          "x": 0.1881,
+          "y": 0.1942
+        },
+        {
+          "nameEn": "A Security",
+          "name": "A セキュリティー",
+          "x": 0.259,
+          "y": 0.1031
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.3076,
+          "y": 0.4372
+        },
+        {
+          "nameEn": "B Tower",
+          "name": "B タワー",
+          "x": 0.2975,
+          "y": 0.8179
+        },
+        {
+          "nameEn": "A Vent",
+          "name": "A 換気通路",
+          "x": 0.4737,
+          "y": 0.3623
+        }
+      ]
+    },
+    {
+      "uuid": "7eaecc1b-4337-bbf6-6ab9-04b8f06b3319",
+      "slug": "ascent",
+      "name": "Ascent",
+      "nameJa": "アセント",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/ascent.png",
+      "callouts": [
+        {
+          "nameEn": "A Tree",
+          "name": "A ツリー",
+          "x": 0.3982,
+          "y": 0.2946
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.6029,
+          "y": 0.259
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.4842,
+          "y": 0.2007
+        },
+        {
+          "nameEn": "A Window",
+          "name": "A ウィンドウ",
+          "x": 0.2412,
+          "y": 0.2916
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.3501,
+          "y": 0.1425
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.8174,
+          "y": 0.569
+        },
+        {
+          "nameEn": "B Lobby",
+          "name": "B ロビー",
+          "x": 0.7166,
+          "y": 0.6776
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.405,
+          "y": 0.7121
+        },
+        {
+          "nameEn": "B Boat House",
+          "name": "B ボートハウス",
+          "x": 0.2705,
+          "y": 0.8872
+        },
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.3973,
+          "y": 0.4947
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.2855,
+          "y": 0.7373
+        },
+        {
+          "nameEn": "Mid Catwalk",
+          "name": "中央 キャットウォーク",
+          "x": 0.525,
+          "y": 0.4111
+        },
+        {
+          "nameEn": "Mid Cubby",
+          "name": "中央 小部屋",
+          "x": 0.4548,
+          "y": 0.3361
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.1318,
+          "y": 0.4336
+        },
+        {
+          "nameEn": "A Garden",
+          "name": "A ガーデン",
+          "x": 0.2853,
+          "y": 0.3091
+        },
+        {
+          "nameEn": "Mid Market",
+          "name": "中央 マーケット",
+          "x": 0.2985,
+          "y": 0.497
+        },
+        {
+          "nameEn": "Mid Courtyard",
+          "name": "中央 コートヤード",
+          "x": 0.4928,
+          "y": 0.4877
+        },
+        {
+          "nameEn": "Mid Link",
+          "name": "中央 リンク",
+          "x": 0.5143,
+          "y": 0.6175
+        },
+        {
+          "nameEn": "Mid Pizza",
+          "name": "中央 ピザ",
+          "x": 0.3055,
+          "y": 0.4471
+        },
+        {
+          "nameEn": "A Rafters",
+          "name": "A ラフター",
+          "x": 0.2392,
+          "y": 0.1441
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.6648,
+          "y": 0.3805
+        },
+        {
+          "nameEn": "A Wine",
+          "name": "A ワイン",
+          "x": 0.4856,
+          "y": 0.0581
+        }
+      ]
+    },
+    {
+      "uuid": "2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba",
+      "slug": "bind",
+      "name": "Bind",
+      "nameJa": "バインド",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/bind.png",
+      "callouts": [
+        {
+          "nameEn": "A Exit",
+          "name": "A 出口",
+          "x": 0.9235,
+          "y": 0.5221
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.5175,
+          "y": 0.592
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.7633,
+          "y": 0.6069
+        },
+        {
+          "nameEn": "A Short",
+          "name": "A ショート",
+          "x": 0.6244,
+          "y": 0.4965
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.7341,
+          "y": 0.3334
+        },
+        {
+          "nameEn": "A Teleporter",
+          "name": "A テレポーター",
+          "x": 0.6058,
+          "y": 0.4111
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.5815,
+          "y": 0.958
+        },
+        {
+          "nameEn": "B Exit",
+          "name": "B 出口",
+          "x": 0.4729,
+          "y": 0.4412
+        },
+        {
+          "nameEn": "B Hall",
+          "name": "B ホール",
+          "x": 0.2854,
+          "y": 0.2016
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.4223,
+          "y": 0.5922
+        },
+        {
+          "nameEn": "B Fountain",
+          "name": "B ファウンテン",
+          "x": 0.2589,
+          "y": 0.6291
+        },
+        {
+          "nameEn": "B Long",
+          "name": "B ロング",
+          "x": 0.1927,
+          "y": 0.5152
+        },
+        {
+          "nameEn": "B Short",
+          "name": "B ショート",
+          "x": 0.3966,
+          "y": 0.5295
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.2919,
+          "y": 0.3122
+        },
+        {
+          "nameEn": "B Teleporter",
+          "name": "B テレポーター",
+          "x": 0.1507,
+          "y": 0.4349
+        },
+        {
+          "nameEn": "B Window",
+          "name": "B ウィンドウ",
+          "x": 0.3227,
+          "y": 0.4468
+        },
+        {
+          "nameEn": "A Bath",
+          "name": "A 浴場",
+          "x": 0.8395,
+          "y": 0.4303
+        },
+        {
+          "nameEn": "Attacker Side Cave",
+          "name": "アタック側 ケイヴ",
+          "x": 0.5921,
+          "y": 0.7363
+        },
+        {
+          "nameEn": "A Cubby",
+          "name": "A 小部屋",
+          "x": 0.5873,
+          "y": 0.4599
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.5169,
+          "y": 0.1037
+        },
+        {
+          "nameEn": "B Elbow",
+          "name": "B エルボー",
+          "x": 0.1583,
+          "y": 0.306
+        },
+        {
+          "nameEn": "B Garden",
+          "name": "B ガーデン",
+          "x": 0.2467,
+          "y": 0.4281
+        },
+        {
+          "nameEn": "A Lamps",
+          "name": "A ランプ",
+          "x": 0.5817,
+          "y": 0.3392
+        },
+        {
+          "nameEn": "A Tower",
+          "name": "A タワー",
+          "x": 0.7278,
+          "y": 0.2081
+        }
+      ]
+    },
+    {
+      "uuid": "2fb9a4fd-47b8-4e7d-a969-74b4046ebd53",
+      "slug": "breeze",
+      "name": "Breeze",
+      "nameJa": "ブリーズ",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/breeze.png",
+      "callouts": [
+        {
+          "nameEn": "Mid Hall",
+          "name": "中央 ホール",
+          "x": 0.6395,
+          "y": 0.5351
+        },
+        {
+          "nameEn": "A Bridge",
+          "name": "A ブリッジ",
+          "x": 0.7119,
+          "y": 0.2451
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.7119,
+          "y": 0.2101
+        },
+        {
+          "nameEn": "Defender Side Arches",
+          "name": "ディフェンス側 アーチ",
+          "x": 0.3741,
+          "y": 0.1751
+        },
+        {
+          "nameEn": "Mid Wood Doors",
+          "name": "中央 ウッドドア",
+          "x": 0.6436,
+          "y": 0.4953
+        },
+        {
+          "nameEn": "Mid Pillar",
+          "name": "中央 ピラー",
+          "x": 0.4984,
+          "y": 0.5408
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.5019,
+          "y": 0.4008
+        },
+        {
+          "nameEn": "Mid Nest",
+          "name": "中央 ネスト",
+          "x": 0.4844,
+          "y": 0.2276
+        },
+        {
+          "nameEn": "B Window",
+          "name": "B ウィンドウ",
+          "x": 0.1729,
+          "y": 0.6773
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.1536,
+          "y": 0.5846
+        },
+        {
+          "nameEn": "B Elbow",
+          "name": "B エルボー",
+          "x": 0.2621,
+          "y": 0.5058
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.0696,
+          "y": 0.3816
+        },
+        {
+          "nameEn": "B Tunnel",
+          "name": "B トンネル",
+          "x": 0.3636,
+          "y": 0.3816
+        },
+        {
+          "nameEn": "A Ramp",
+          "name": "A スロープ",
+          "x": 0.6559,
+          "y": 0.3221
+        },
+        {
+          "nameEn": "B Back",
+          "name": "B バック",
+          "x": 0.0679,
+          "y": 0.3046
+        },
+        {
+          "nameEn": "B Wall",
+          "name": "B ウォール",
+          "x": 0.2551,
+          "y": 0.2346
+        },
+        {
+          "nameEn": "Mid Cannon",
+          "name": "中央 キャノン",
+          "x": 0.3356,
+          "y": 0.6301
+        },
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.4984,
+          "y": 0.7228
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.7031,
+          "y": 0.9206
+        },
+        {
+          "nameEn": "A Shop",
+          "name": "A ショップ",
+          "x": 0.7626,
+          "y": 0.6826
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.9079,
+          "y": 0.4953
+        },
+        {
+          "nameEn": "A Pyramids",
+          "name": "A ピラミッド",
+          "x": 0.8466,
+          "y": 0.4691
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.4336,
+          "y": 0.8733
+        }
+      ]
+    },
+    {
+      "uuid": "1c18ab1f-420d-0d8b-71d0-77ad3c439115",
+      "slug": "corrode",
+      "name": "Corrode",
+      "nameJa": "カロード",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/corrode.png",
+      "callouts": [
+        {
+          "nameEn": "A Crane",
+          "name": "A クレーン",
+          "x": 0.243,
+          "y": 0.2035
+        },
+        {
+          "nameEn": "A Elbow",
+          "name": "A エルボー",
+          "x": 0.3809,
+          "y": 0.1092
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.4527,
+          "y": 0.3752
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.7082,
+          "y": 0.1967
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.6119,
+          "y": 0.0847
+        },
+        {
+          "nameEn": "A Pocket",
+          "name": "A ポケット",
+          "x": 0.4702,
+          "y": 0.1092
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.3984,
+          "y": 0.2579
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.9234,
+          "y": 0.5018
+        },
+        {
+          "nameEn": "A Yard",
+          "name": "A ヤード",
+          "x": 0.4702,
+          "y": 0.1967
+        },
+        {
+          "nameEn": "B Arch",
+          "name": "B アーチ",
+          "x": 0.2182,
+          "y": 0.7169
+        },
+        {
+          "nameEn": "B Elbow",
+          "name": "B エルボー",
+          "x": 0.3214,
+          "y": 0.8914
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.3984,
+          "y": 0.5904
+        },
+        {
+          "nameEn": "B Lobby",
+          "name": "B ロビー",
+          "x": 0.7204,
+          "y": 0.6167
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.5787,
+          "y": 0.6902
+        },
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.5384,
+          "y": 0.4907
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.4439,
+          "y": 0.6902
+        },
+        {
+          "nameEn": "B Tower",
+          "name": "B タワー",
+          "x": 0.3214,
+          "y": 0.7462
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.1237,
+          "y": 0.4994
+        },
+        {
+          "nameEn": "Mid Stairs",
+          "name": "中央 階段",
+          "x": 0.4229,
+          "y": 0.4907
+        },
+        {
+          "nameEn": "Mid Window",
+          "name": "中央 ウィンドウ",
+          "x": 0.3092,
+          "y": 0.4907
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.3984,
+          "y": 0.4907
+        }
+      ]
+    },
+    {
+      "uuid": "b529448b-4d60-346e-e89e-00a4c527a405",
+      "slug": "fracture",
+      "name": "Fracture",
+      "nameJa": "フラクチャー",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/fracture.png",
+      "callouts": [
+        {
+          "nameEn": "Attacker Side Bridge",
+          "name": "アタック側 ブリッジ",
+          "x": 0.498,
+          "y": 0.126
+        },
+        {
+          "nameEn": "B Bench",
+          "name": "B ベンチ",
+          "x": 0.331,
+          "y": 0.261
+        },
+        {
+          "nameEn": "B Arcade",
+          "name": "B アーケード",
+          "x": 0.231,
+          "y": 0.3618
+        },
+        {
+          "nameEn": "B Tower",
+          "name": "B タワー",
+          "x": 0.1201,
+          "y": 0.4418
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.0935,
+          "y": 0.518
+        },
+        {
+          "nameEn": "B Generator",
+          "name": "B ジェネレーター",
+          "x": 0.2933,
+          "y": 0.5036
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.3432,
+          "y": 0.4384
+        },
+        {
+          "nameEn": "B Canteen",
+          "name": "B カンティーン",
+          "x": 0.3122,
+          "y": 0.6012
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.6585,
+          "y": 0.4868
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.5041,
+          "y": 0.4417
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.1402,
+          "y": 0.6905
+        },
+        {
+          "nameEn": "B Tree",
+          "name": "B ツリー",
+          "x": 0.2364,
+          "y": 0.7686
+        },
+        {
+          "nameEn": "B Tunnel",
+          "name": "B トンネル",
+          "x": 0.2404,
+          "y": 0.5785
+        },
+        {
+          "nameEn": "A Hall",
+          "name": "A ホール",
+          "x": 0.7174,
+          "y": 0.7609
+        },
+        {
+          "nameEn": "A Door",
+          "name": "A ドア",
+          "x": 0.7083,
+          "y": 0.7029
+        },
+        {
+          "nameEn": "A Rope",
+          "name": "A ロープ",
+          "x": 0.6391,
+          "y": 0.6381
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.8261,
+          "y": 0.6973
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.8201,
+          "y": 0.5221
+        },
+        {
+          "nameEn": "A Drop",
+          "name": "A ドロップ",
+          "x": 0.7774,
+          "y": 0.43
+        },
+        {
+          "nameEn": "A Dish",
+          "name": "A パラボラ",
+          "x": 0.6655,
+          "y": 0.2747
+        },
+        {
+          "nameEn": "A Gate",
+          "name": "A ゲート",
+          "x": 0.679,
+          "y": 0.1448
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.483,
+          "y": 0.8169
+        }
+      ]
+    },
+    {
+      "uuid": "2bee0dc9-4ffe-519b-1cbd-7fbe763a6047",
+      "slug": "haven",
+      "name": "Haven",
+      "nameJa": "ヘイヴン",
+      "sites": [
+        "A",
+        "B",
+        "C"
+      ],
+      "minimap": "assets/minimaps/haven.png",
+      "callouts": [
+        {
+          "nameEn": "A Garden",
+          "name": "A ガーデン",
+          "x": 0.7422,
+          "y": 0.4102
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.2898,
+          "y": 0.3244
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.6239,
+          "y": 0.3848
+        },
+        {
+          "nameEn": "A Long",
+          "name": "A ロング",
+          "x": 0.5759,
+          "y": 0.177
+        },
+        {
+          "nameEn": "A Sewer",
+          "name": "A 下水道",
+          "x": 0.4998,
+          "y": 0.3838
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.4015,
+          "y": 0.1695
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.8952,
+          "y": 0.5121
+        },
+        {
+          "nameEn": "B Back",
+          "name": "B バック",
+          "x": 0.2936,
+          "y": 0.4953
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.4011,
+          "y": 0.5014
+        },
+        {
+          "nameEn": "C Link",
+          "name": "C リンク",
+          "x": 0.3431,
+          "y": 0.6493
+        },
+        {
+          "nameEn": "C Lobby",
+          "name": "C ロビー",
+          "x": 0.6644,
+          "y": 0.7659
+        },
+        {
+          "nameEn": "C Long",
+          "name": "C ロング",
+          "x": 0.6441,
+          "y": 0.8945
+        },
+        {
+          "nameEn": "C Garage",
+          "name": "C ガレージ",
+          "x": 0.4935,
+          "y": 0.6292
+        },
+        {
+          "nameEn": "C Window",
+          "name": "C ウィンドウ",
+          "x": 0.419,
+          "y": 0.6435
+        },
+        {
+          "nameEn": "C Site",
+          "name": "C サイト",
+          "x": 0.4177,
+          "y": 0.8211
+        },
+        {
+          "nameEn": "C Cubby",
+          "name": "C 小部屋",
+          "x": 0.6013,
+          "y": 0.8017
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.1398,
+          "y": 0.4218
+        },
+        {
+          "nameEn": "Mid Doors",
+          "name": "中央 ドア",
+          "x": 0.6237,
+          "y": 0.6314
+        },
+        {
+          "nameEn": "Mid Courtyard",
+          "name": "中央 コートヤード",
+          "x": 0.59,
+          "y": 0.5061
+        },
+        {
+          "nameEn": "Mid Window",
+          "name": "中央 ウィンドウ",
+          "x": 0.6759,
+          "y": 0.4965
+        },
+        {
+          "nameEn": "A Tower",
+          "name": "A タワー",
+          "x": 0.308,
+          "y": 0.1386
+        }
+      ]
+    },
+    {
+      "uuid": "e2ad5c54-4114-a870-9641-8ea21279579a",
+      "slug": "icebox",
+      "name": "Icebox",
+      "nameJa": "アイスボックス",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/icebox.png",
+      "callouts": [
+        {
+          "nameEn": "B Garage",
+          "name": "B ガレージ",
+          "x": 0.3576,
+          "y": 0.3947
+        },
+        {
+          "nameEn": "A Belt",
+          "name": "A ベルト",
+          "x": 0.399,
+          "y": 0.8231
+        },
+        {
+          "nameEn": "A Nest",
+          "name": "A ネスト",
+          "x": 0.525,
+          "y": 0.7835
+        },
+        {
+          "nameEn": "A Pipes",
+          "name": "A パイプ",
+          "x": 0.4926,
+          "y": 0.7475
+        },
+        {
+          "nameEn": "A Rafters",
+          "name": "A ラフター",
+          "x": 0.7662,
+          "y": 0.7691
+        },
+        {
+          "nameEn": "A Screen",
+          "name": "A スクリーン",
+          "x": 0.6996,
+          "y": 0.6719
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.6906,
+          "y": 0.7655
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.1398,
+          "y": 0.5873
+        },
+        {
+          "nameEn": "B Yellow",
+          "name": "B イエロー",
+          "x": 0.4584,
+          "y": 0.1571
+        },
+        {
+          "nameEn": "B Back",
+          "name": "B バック",
+          "x": 0.7676,
+          "y": 0.2866
+        },
+        {
+          "nameEn": "B Cubby",
+          "name": "B 小部屋",
+          "x": 0.39,
+          "y": 0.2291
+        },
+        {
+          "nameEn": "B Green",
+          "name": "B グリーン",
+          "x": 0.4098,
+          "y": 0.3371
+        },
+        {
+          "nameEn": "B Hall",
+          "name": "B ホール",
+          "x": 0.6798,
+          "y": 0.2831
+        },
+        {
+          "nameEn": "B Hut",
+          "name": "B 小屋",
+          "x": 0.777,
+          "y": 0.4073
+        },
+        {
+          "nameEn": "B Kitchen",
+          "name": "B キッチン",
+          "x": 0.7053,
+          "y": 0.4646
+        },
+        {
+          "nameEn": "B Orange",
+          "name": "B オレンジ",
+          "x": 0.5826,
+          "y": 0.3502
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.6456,
+          "y": 0.1805
+        },
+        {
+          "nameEn": "B Snowman",
+          "name": "B 雪だるま",
+          "x": 0.7454,
+          "y": 0.1427
+        },
+        {
+          "nameEn": "B Snow Pile",
+          "name": "B 堆雪場",
+          "x": 0.6402,
+          "y": 0.4325
+        },
+        {
+          "nameEn": "B Tube",
+          "name": "B チューブ",
+          "x": 0.552,
+          "y": 0.4703
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.9696,
+          "y": 0.5747
+        },
+        {
+          "nameEn": "Mid Blue",
+          "name": "中央 ブルー",
+          "x": 0.5304,
+          "y": 0.5081
+        },
+        {
+          "nameEn": "Mid Boiler",
+          "name": "中央 ボイラー",
+          "x": 0.6708,
+          "y": 0.5477
+        },
+        {
+          "nameEn": "Mid Pallet",
+          "name": "中央 パレット",
+          "x": 0.588,
+          "y": 0.6251
+        },
+        {
+          "nameEn": "B Fence",
+          "name": "B フェンス",
+          "x": 0.7191,
+          "y": 0.2786
+        }
+      ]
+    },
+    {
+      "uuid": "2fe4ed3a-450a-948b-6d6b-e89a78e680a9",
+      "slug": "lotus",
+      "name": "Lotus",
+      "nameJa": "ロータス",
+      "sites": [
+        "A",
+        "B",
+        "C"
+      ],
+      "minimap": "assets/minimaps/lotus.png",
+      "callouts": [
+        {
+          "nameEn": "A Top",
+          "name": "A トップ",
+          "x": 0.8181,
+          "y": 0.251
+        },
+        {
+          "nameEn": "A Drop",
+          "name": "A ドロップ",
+          "x": 0.8935,
+          "y": 0.2326
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.8549,
+          "y": 0.3608
+        },
+        {
+          "nameEn": "A Hut",
+          "name": "A 小屋",
+          "x": 0.8549,
+          "y": 0.3477
+        },
+        {
+          "nameEn": "A Tree",
+          "name": "A ツリー",
+          "x": 0.8549,
+          "y": 0.475
+        },
+        {
+          "nameEn": "A Door",
+          "name": "A 扉",
+          "x": 0.8295,
+          "y": 0.5139
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.7543,
+          "y": 0.537
+        },
+        {
+          "nameEn": "A Rubble",
+          "name": "A がれき",
+          "x": 0.8089,
+          "y": 0.6009
+        },
+        {
+          "nameEn": "A Root",
+          "name": "A ルート",
+          "x": 0.692,
+          "y": 0.6009
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.6655,
+          "y": 0.7244
+        },
+        {
+          "nameEn": "C Lobby",
+          "name": "C ロビー",
+          "x": 0.3413,
+          "y": 0.8167
+        },
+        {
+          "nameEn": "B Pillars",
+          "name": "B ピラー",
+          "x": 0.5029,
+          "y": 0.661
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.4513,
+          "y": 0.5666
+        },
+        {
+          "nameEn": "C Door",
+          "name": "C 扉",
+          "x": 0.3286,
+          "y": 0.5708
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.5029,
+          "y": 0.4593
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.6051,
+          "y": 0.485
+        },
+        {
+          "nameEn": "B Upper",
+          "name": "B アッパー",
+          "x": 0.564,
+          "y": 0.3646
+        },
+        {
+          "nameEn": "C Waterfall",
+          "name": "C 滝",
+          "x": 0.3112,
+          "y": 0.4339
+        },
+        {
+          "nameEn": "C Link",
+          "name": "C リンク",
+          "x": 0.3556,
+          "y": 0.3775
+        },
+        {
+          "nameEn": "A Stairs",
+          "name": "A 階段",
+          "x": 0.7328,
+          "y": 0.3232
+        },
+        {
+          "nameEn": "C Mound",
+          "name": "C マウンド",
+          "x": 0.3413,
+          "y": 0.6396
+        },
+        {
+          "nameEn": "C Main",
+          "name": "C メイン",
+          "x": 0.2281,
+          "y": 0.5353
+        },
+        {
+          "nameEn": "C Bend",
+          "name": "C ベンド",
+          "x": 0.0745,
+          "y": 0.5104
+        },
+        {
+          "nameEn": "C Site",
+          "name": "C サイト",
+          "x": 0.1476,
+          "y": 0.437
+        },
+        {
+          "nameEn": "C Hall",
+          "name": "C ホール",
+          "x": 0.1476,
+          "y": 0.3488
+        },
+        {
+          "nameEn": "C Gravel",
+          "name": "C 砂利道",
+          "x": 0.3286,
+          "y": 0.2743
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.577,
+          "y": 0.2203
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.5108,
+          "y": 0.8169
+        }
+      ]
+    },
+    {
+      "uuid": "fd267378-4d1d-484f-ff52-77821ed10dc2",
+      "slug": "pearl",
+      "name": "Pearl",
+      "nameJa": "パール",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/pearl.png",
+      "callouts": [
+        {
+          "nameEn": "B Hall",
+          "name": "B ホール",
+          "x": 0.094,
+          "y": 0.3314
+        },
+        {
+          "nameEn": "Mid Doors",
+          "name": "中央 ドア",
+          "x": 0.5271,
+          "y": 0.5493
+        },
+        {
+          "nameEn": "Mid Connector",
+          "name": "中央 コネクター",
+          "x": 0.6209,
+          "y": 0.4443
+        },
+        {
+          "nameEn": "Defender Side Water",
+          "name": "ディフェンス側 ウォーター",
+          "x": 0.6209,
+          "y": 0.307
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.51,
+          "y": 0.0508
+        },
+        {
+          "nameEn": "A Flowers",
+          "name": "A フラワー",
+          "x": 0.676,
+          "y": 0.1934
+        },
+        {
+          "nameEn": "A Secret",
+          "name": "A シークレット",
+          "x": 0.7793,
+          "y": 0.1003
+        },
+        {
+          "nameEn": "A Dugout",
+          "name": "A ダグアウト",
+          "x": 0.9371,
+          "y": 0.3185
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.9149,
+          "y": 0.4001
+        },
+        {
+          "nameEn": "Defender Side Records",
+          "name": "ディフェンス側 レコード",
+          "x": 0.3658,
+          "y": 0.2161
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.537,
+          "y": 0.7542
+        },
+        {
+          "nameEn": "B Tunnel",
+          "name": "B トンネル",
+          "x": 0.3124,
+          "y": 0.2161
+        },
+        {
+          "nameEn": "B Tower",
+          "name": "B タワー",
+          "x": 0.2581,
+          "y": 0.2504
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.7788,
+          "y": 0.4193
+        },
+        {
+          "nameEn": "A Restaurant",
+          "name": "A レストラン",
+          "x": 0.6999,
+          "y": 0.5704
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.4343,
+          "y": 0.5648
+        },
+        {
+          "nameEn": "A Art",
+          "name": "A アート",
+          "x": 0.7462,
+          "y": 0.5602
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.7755,
+          "y": 0.4437
+        },
+        {
+          "nameEn": "Mid Plaza",
+          "name": "中央 プラザ",
+          "x": 0.4551,
+          "y": 0.7015
+        },
+        {
+          "nameEn": "Mid Shops",
+          "name": "中央 ショップ",
+          "x": 0.3674,
+          "y": 0.8536
+        },
+        {
+          "nameEn": "B Club",
+          "name": "B クラブ",
+          "x": 0.3674,
+          "y": 0.8536
+        },
+        {
+          "nameEn": "B Ramp",
+          "name": "B スロープ",
+          "x": 0.1841,
+          "y": 0.7795
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.1392,
+          "y": 0.6001
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.2582,
+          "y": 0.4636
+        },
+        {
+          "nameEn": "B Screen",
+          "name": "B スクリーン",
+          "x": 0.0904,
+          "y": 0.4277
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.4337,
+          "y": 0.9589
+        }
+      ]
+    },
+    {
+      "uuid": "d960549e-485c-e861-8d71-aa9d1aed12a2",
+      "slug": "split",
+      "name": "Split",
+      "nameJa": "スプリット",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/split.png",
+      "callouts": [
+        {
+          "nameEn": "A Back",
+          "name": "A バック",
+          "x": 0.2293,
+          "y": 0.1247
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.6505,
+          "y": 0.1661
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.4917,
+          "y": 0.2077
+        },
+        {
+          "nameEn": "A Rafters",
+          "name": "A ラフター",
+          "x": 0.354,
+          "y": 0.2737
+        },
+        {
+          "nameEn": "A Ramps",
+          "name": "A スロープ",
+          "x": 0.4717,
+          "y": 0.3598
+        },
+        {
+          "nameEn": "A Screens",
+          "name": "A スクリーン",
+          "x": 0.1504,
+          "y": 0.257
+        },
+        {
+          "nameEn": "A Sewer",
+          "name": "A 下水道",
+          "x": 0.6575,
+          "y": 0.3183
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.3148,
+          "y": 0.1837
+        },
+        {
+          "nameEn": "A Tower",
+          "name": "A タワー",
+          "x": 0.3158,
+          "y": 0.3359
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.8468,
+          "y": 0.5492
+        },
+        {
+          "nameEn": "B Alley",
+          "name": "B 路地",
+          "x": 0.213,
+          "y": 0.7879
+        },
+        {
+          "nameEn": "B Back",
+          "name": "B バック",
+          "x": 0.2636,
+          "y": 0.9399
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.6573,
+          "y": 0.6997
+        },
+        {
+          "nameEn": "B Garage",
+          "name": "B ガレージ",
+          "x": 0.542,
+          "y": 0.8685
+        },
+        {
+          "nameEn": "B Rafters",
+          "name": "B ラフター",
+          "x": 0.3687,
+          "y": 0.7473
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.3535,
+          "y": 0.8666
+        },
+        {
+          "nameEn": "B Stairs",
+          "name": "B 階段",
+          "x": 0.3148,
+          "y": 0.6148
+        },
+        {
+          "nameEn": "B Tower",
+          "name": "B タワー",
+          "x": 0.4296,
+          "y": 0.6844
+        },
+        {
+          "nameEn": "B Lobby",
+          "name": "B ロビー",
+          "x": 0.6875,
+          "y": 0.7968
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.1429,
+          "y": 0.5305
+        },
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.616,
+          "y": 0.5476
+        },
+        {
+          "nameEn": "Mid Mail",
+          "name": "中央 メールボックス",
+          "x": 0.4671,
+          "y": 0.6075
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.4836,
+          "y": 0.5399
+        },
+        {
+          "nameEn": "Mid Vent",
+          "name": "中央 ベント",
+          "x": 0.4258,
+          "y": 0.4515
+        }
+      ]
+    },
+    {
+      "uuid": "756da597-416b-c0f2-f47b-afbdf28670bc",
+      "slug": "summit",
+      "name": "Summit",
+      "nameJa": "サミット",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/summit.png",
+      "callouts": [
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.4843,
+          "y": 0.4164
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.5368,
+          "y": 0.677
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.6943,
+          "y": 0.7408
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.6943,
+          "y": 0.5664
+        },
+        {
+          "nameEn": "A Garden",
+          "name": "A ガーデン",
+          "x": 0.7918,
+          "y": 0.4033
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.9174,
+          "y": 0.4033
+        },
+        {
+          "nameEn": "A Art",
+          "name": "A アート",
+          "x": 0.7918,
+          "y": 0.2645
+        },
+        {
+          "nameEn": "A Cave",
+          "name": "A ケイヴ",
+          "x": 0.9568,
+          "y": 0.2645
+        },
+        {
+          "nameEn": "A Hall",
+          "name": "A ホール",
+          "x": 0.6924,
+          "y": 0.2645
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.6512,
+          "y": 0.3601
+        },
+        {
+          "nameEn": "B Lobby",
+          "name": "B ロビー",
+          "x": 0.2893,
+          "y": 0.5945
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.5105,
+          "y": 0.0733
+        },
+        {
+          "nameEn": "Mid Window",
+          "name": "中央 ウィンドウ",
+          "x": 0.4843,
+          "y": 0.3264
+        },
+        {
+          "nameEn": "B Gym",
+          "name": "B ジム",
+          "x": 0.2799,
+          "y": 0.1895
+        },
+        {
+          "nameEn": "B Trophy",
+          "name": "B トロフィー",
+          "x": 0.323,
+          "y": 0.2983
+        },
+        {
+          "nameEn": "B Tower",
+          "name": "B タワー",
+          "x": 0.1562,
+          "y": 0.2158
+        },
+        {
+          "nameEn": "B Drop",
+          "name": "B ドロップ",
+          "x": 0.053,
+          "y": 0.2401
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.1505,
+          "y": 0.3376
+        },
+        {
+          "nameEn": "B Link",
+          "name": "B リンク",
+          "x": 0.3305,
+          "y": 0.4164
+        },
+        {
+          "nameEn": "Mid Fountain",
+          "name": "中央 ファウンテン",
+          "x": 0.5105,
+          "y": 0.5533
+        },
+        {
+          "nameEn": "Mid Bend",
+          "name": "中央 ベンド",
+          "x": 0.6362,
+          "y": 0.4933
+        },
+        {
+          "nameEn": "Mid Tiles",
+          "name": "中央 タイル",
+          "x": 0.3649,
+          "y": 0.6068
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.1862,
+          "y": 0.4914
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.0399,
+          "y": 0.8964
+        }
+      ]
+    },
+    {
+      "uuid": "92584fbe-486a-b1b2-9faa-39b0f486b498",
+      "slug": "sunset",
+      "name": "Sunset",
+      "nameJa": "サンセット",
+      "sites": [
+        "A",
+        "B"
+      ],
+      "minimap": "assets/minimaps/sunset.png",
+      "callouts": [
+        {
+          "nameEn": "B Boba",
+          "name": "B タピオカ",
+          "x": 0.1256,
+          "y": 0.344
+        },
+        {
+          "nameEn": "Mid Tiles",
+          "name": "中央 タイル",
+          "x": 0.5312,
+          "y": 0.656
+        },
+        {
+          "nameEn": "B Market",
+          "name": "B マーケット",
+          "x": 0.2348,
+          "y": 0.5312
+        },
+        {
+          "nameEn": "B Site",
+          "name": "B サイト",
+          "x": 0.0437,
+          "y": 0.5624
+        },
+        {
+          "nameEn": "B Main",
+          "name": "B メイン",
+          "x": 0.0593,
+          "y": 0.6716
+        },
+        {
+          "nameEn": "B Lobby",
+          "name": "B ロビー",
+          "x": 0.2972,
+          "y": 0.7808
+        },
+        {
+          "nameEn": "Mid Bottom",
+          "name": "中央 ボトム",
+          "x": 0.342,
+          "y": 0.656
+        },
+        {
+          "nameEn": "Mid Courtyard",
+          "name": "中央 コートヤード",
+          "x": 0.4064,
+          "y": 0.5624
+        },
+        {
+          "nameEn": "A Lobby",
+          "name": "A ロビー",
+          "x": 0.656,
+          "y": 0.656
+        },
+        {
+          "nameEn": "A Main",
+          "name": "A メイン",
+          "x": 0.6716,
+          "y": 0.5468
+        },
+        {
+          "nameEn": "A Link",
+          "name": "A リンク",
+          "x": 0.734,
+          "y": 0.344
+        },
+        {
+          "nameEn": "A Site",
+          "name": "A サイト",
+          "x": 0.7496,
+          "y": 0.4376
+        },
+        {
+          "nameEn": "A Elbow",
+          "name": "A エルボー",
+          "x": 0.8276,
+          "y": 0.5
+        },
+        {
+          "nameEn": "A Alley",
+          "name": "A 路地",
+          "x": 0.7808,
+          "y": 0.2504
+        },
+        {
+          "nameEn": "Defender Side Spawn",
+          "name": "ディフェンス側 スポーン",
+          "x": 0.3449,
+          "y": 0.2188
+        },
+        {
+          "nameEn": "Mid Top",
+          "name": "中央 トップ",
+          "x": 0.344,
+          "y": 0.3596
+        },
+        {
+          "nameEn": "Attacker Side Spawn",
+          "name": "アタック側 スポーン",
+          "x": 0.4688,
+          "y": 0.9856
+        }
+      ]
+    }
+  ]
+}

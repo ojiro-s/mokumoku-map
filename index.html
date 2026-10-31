@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f1419">
+  <title>スモーク定点ノート</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>スモーク定点ノート</h1>
+    <span id="act-label" class="act-label"></span>
+  </header>
+
+  <main id="app" class="layout">
+    <section class="controls" aria-label="絞り込み">
+      <div class="map-picker">
+        <div id="pool-maps" class="chips scroll-x" role="radiogroup" aria-label="マップ（今のプール）"></div>
+        <details class="other-maps">
+          <summary>プール外のマップ</summary>
+          <div id="other-maps" class="chips wrap" role="radiogroup" aria-label="マップ（プール外）"></div>
+        </details>
+      </div>
+
+      <div id="side-toggle" class="segmented" role="radiogroup" aria-label="攻め・守り"></div>
+      <div id="site-chips" class="chips wrap" role="radiogroup" aria-label="サイト"></div>
+      <div id="agent-chips" class="chips wrap" role="radiogroup" aria-label="エージェント"></div>
+    </section>
+
+    <section class="map-panel" aria-label="ミニマップ">
+      <div id="minimap" class="minimap">
+        <img id="minimap-img" alt="">
+        <svg id="minimap-lines" class="minimap-lines" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div id="minimap-callouts" class="minimap-layer"></div>
+        <div id="minimap-pins" class="minimap-layer"></div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="show-callouts">
+        <span>場所の名前を表示</span>
+      </label>
+    </section>
+
+    <section class="list-panel" aria-label="定点一覧">
+      <p id="result-count" class="result-count"></p>
+      <ol id="cards" class="cards"></ol>
+    </section>
+  </main>
+
+  <div id="setup-message" class="setup-message" hidden></div>
+
+  <footer class="footer">
+    <p>スモーク定点ノート was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.</p>
+    <p>非公式のファンプロジェクトです。Riot Games による承認・後援は受けていません。</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

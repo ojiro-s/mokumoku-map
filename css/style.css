@@ -1,0 +1,287 @@
+/* スマホを基準に作り、広い画面では2列に広げる */
+:root {
+  --bg: #0f1419;
+  --panel: #182028;
+  --panel-2: #212b35;
+  --line: #2e3a46;
+  --text: #e8edf2;
+  --muted: #93a1af;
+  --accent: #ff4655;      /* ピン・選択中 */
+  --accent-soft: #ff465522;
+  --stand: #3ddc97;       /* 立ち位置 */
+  --warn: #f5b942;
+  --radius: 12px;
+  --tap: 44px;            /* タップしやすい最小サイズ */
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(15, 20, 25, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar h1 { margin: 0; font-size: 1.05rem; }
+.act-label { color: var(--muted); font-size: 0.75rem; text-align: right; }
+
+.layout {
+  display: grid;
+  gap: 16px;
+  padding: 12px 16px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- 絞り込み ---------- */
+.controls { display: grid; gap: 10px; }
+
+.chips { display: flex; gap: 8px; }
+.chips.wrap { flex-wrap: wrap; }
+.chips.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+  margin: 0 -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.chips.scroll-x::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex: 0 0 auto;
+  min-height: var(--tap);
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.chip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.chip-count {
+  font-size: 0.75rem;
+  min-width: 1.4em;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #0003;
+  text-align: center;
+}
+
+.other-maps summary {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.other-maps[open] summary { margin-bottom: 6px; }
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  gap: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.segmented button {
+  min-height: var(--tap);
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font-weight: 700;
+}
+.segmented button.is-active { background: var(--panel-2); color: var(--accent); }
+
+/* ---------- ミニマップ ---------- */
+.minimap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.minimap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.minimap-layer, .minimap-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+.minimap-layer { pointer-events: none; }
+.minimap-layer > * { pointer-events: auto; }
+.minimap-lines { pointer-events: none; }
+.minimap-lines line {
+  stroke: var(--stand);
+  stroke-width: 2px;
+  stroke-dasharray: 6 4;
+  vector-effect: non-scaling-stroke; /* 画面サイズに関係なく線の太さを一定に */
+}
+
+.pin {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px #0008;
+  /* 見た目は34pxでもタップ判定は広めにとる */
+  outline-offset: 2px;
+}
+.pin::after { content: ""; position: absolute; inset: -6px; }
+.pin.is-selected { transform: scale(1.2); box-shadow: 0 0 0 6px var(--accent-soft), 0 2px 6px #0008; z-index: 2; }
+
+.stand {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: var(--stand);
+  border: 2px solid #fff;
+}
+
+.callout {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0 4px;
+  font-size: 0.62rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: #fff;
+  background: #000a;
+  border-radius: 4px;
+  pointer-events: none !important;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.toggle input { width: 20px; height: 20px; accent-color: var(--accent); }
+
+/* ---------- カード ---------- */
+.result-count { margin: 0 0 8px; color: var(--muted); font-size: 0.9rem; }
+
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+.card.is-selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+.card-number {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.card-title { font-weight: 700; padding-top: 2px; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  color: var(--muted);
+}
+.badge-agent { color: var(--text); }
+.badge-warn { color: var(--bg); background: var(--warn); }
+
+.card-comment { margin: 0; white-space: pre-wrap; }
+.card-image { width: 100%; border-radius: 8px; display: block; }
+.card-source { margin: 0; color: var(--muted); font-size: 0.8rem; }
+
+.video-button {
+  width: 100%;
+  min-height: var(--tap);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+.video iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+
+.empty {
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- 初期設定の案内・フッター ---------- */
+.setup-message { max-width: 640px; margin: 24px auto; padding: 16px; }
+.setup-message code { background: var(--panel-2); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
+
+.footer { padding: 16px; color: var(--muted); font-size: 0.75rem; text-align: center; border-top: 1px solid var(--line); }
+.footer p { margin: 0; }
+
+/* ---------- 広い画面（PC・タブレット横） ---------- */
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(360px, 1fr) minmax(320px, 1fr);
+    grid-template-areas:
+      "controls controls"
+      "map      list";
+    align-items: start;
+  }
+  .controls { grid-area: controls; }
+  .map-panel { grid-area: map; position: sticky; top: 64px; }
+  .list-panel { grid-area: list; }
+  .chips.scroll-x { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; }
+  .segmented { max-width: 320px; }
+  .callout { font-size: 0.72rem; }
+}

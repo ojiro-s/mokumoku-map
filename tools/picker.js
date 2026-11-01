@@ -4,14 +4,24 @@
   const $ = (id) => document.getElementById(id);
   const BASE = "../"; // tools/ から見たプロジェクトのルート
 
-  const state = { maps: [], smokes: [], pool: {}, mode: "target", target: null, stand: null };
+  const state = {
+    maps: [],
+    smokes: [],
+    notes: {},
+    pool: {},
+    mode: "target",
+    target: null,
+    stand: null,
+    canSave: false, // scripts/serve.py で開いていて直接保存できるか
+    changedNotes: new Set(), // コツを書き換えて未保存のマップ
+  };
 
   init();
 
   async function init() {
     try {
       const data = await loadAll(BASE);
-      Object.assign(state, { maps: data.maps, smokes: data.smokes, pool: data.pool });
+      Object.assign(state, { maps: data.maps, smokes: data.smokes, notes: data.notes, pool: data.pool });
     } catch (e) {
       document.querySelector(".picker").replaceChildren(
         el("p", { text: `データを読み込めませんでした：${e.message}` }),
@@ -53,7 +63,13 @@
     $("map").addEventListener("change", () => {
       state.target = state.stand = null;
       renderMap();
+      showMapNote();
       update();
+    });
+    $("map-note").addEventListener("input", () => {
+      state.notes[$("map").value] = $("map-note").value;
+      state.changedNotes.add($("map").value);
+      updateNotesOutput();
     });
     $("show-callouts").addEventListener("change", renderMap);
     $("agent").addEventListener("change", renderMap); // エージェントでスモークの大きさが変わる
@@ -65,10 +81,97 @@
     document.querySelectorAll(".form input, .form select, .form textarea").forEach((x) => {
       if (x.id !== "output") x.addEventListener("input", update);
     });
-    $("copy").addEventListener("click", copyOutput);
+    $("copy").addEventListener("click", () => copyText($("output"), $("copy")));
+    $("copy-notes").addEventListener("click", () => copyText($("notes-output"), $("copy-notes")));
+    $("save-notes").addEventListener("click", saveNotes);
+    $("save-smoke").addEventListener("click", saveSmoke);
 
+    await setupSaving();
+    renderMap();
+    showMapNote();
+    update();
+  }
+
+  // scripts/serve.py で開いているときだけ、コピーの代わりに保存ボタンを出す
+  async function setupSaving() {
+    // ?test は確認用データを読んでいるので、本物のファイルへ保存させない
+    if (new URLSearchParams(location.search).has("test")) return;
+    try {
+      const res = await fetch(`${BASE}api/status`);
+      state.canSave = res.ok;
+    } catch {
+      state.canSave = false;
+    }
+    if (!state.canSave) return;
+    document.querySelectorAll(".copy-only").forEach((x) => (x.hidden = true));
+    document.querySelectorAll(".save-only").forEach((x) => (x.hidden = false));
+  }
+
+  async function postJson(path, body) {
+    const res = await fetch(BASE + path, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `保存に失敗しました (${res.status})`);
+    return data;
+  }
+
+  // 結果を2秒だけボタンに出して元に戻す
+  function flash(button, text) {
+    const label = button.dataset.label || (button.dataset.label = button.textContent);
+    button.textContent = text;
+    setTimeout(() => (button.textContent = label), 2000);
+  }
+
+  async function saveNotes() {
+    const changes = Object.fromEntries([...state.changedNotes].map((slug) => [slug, state.notes[slug] || ""]));
+    try {
+      await postJson("api/notes", { notes: changes });
+      state.changedNotes.clear();
+      updateNotesOutput();
+      flash($("save-notes"), "保存しました");
+    } catch (e) {
+      flash($("save-notes"), e.message);
+    }
+  }
+
+  async function saveSmoke() {
+    const entry = JSON.parse($("output").value);
+    try {
+      await postJson("api/smokes", entry);
+      state.smokes.push(entry);
+      clearSmokeForm();
+      flash($("save-smoke"), "保存しました");
+    } catch (e) {
+      flash($("save-smoke"), e.message);
+    }
+  }
+
+  // 続けて登録しやすいよう、マップなどの選択は残して入力だけ空にする
+  function clearSmokeForm() {
+    state.target = state.stand = null;
+    ["title", "comment", "youtube", "images", "source"].forEach((id) => ($(id).value = ""));
+    $("start").value = 0;
+    document.querySelector('[data-mode="target"]').click();
     renderMap();
     update();
+  }
+
+  function showMapNote() {
+    $("map-note").value = state.notes[$("map").value] || "";
+    updateNotesOutput();
+  }
+
+  // 空の欄を除き、マップ名の順に並べて全文を作る
+  function updateNotesOutput() {
+    const entries = Object.entries(state.notes)
+      .map(([slug, note]) => [slug, note.trim()])
+      .filter(([, note]) => note)
+      .sort(([a], [b]) => a.localeCompare(b));
+    $("notes-output").value = JSON.stringify(Object.fromEntries(entries), null, 2);
+    $("save-notes").disabled = state.changedNotes.size === 0;
   }
 
   function currentMap() {
@@ -134,7 +237,7 @@
   }
 
   function makeId(entry) {
-    const stamp = new Date().toISOString().replace(/\D/g, "").slice(2, 12); // 年月日時分
+    const stamp = new Date().toISOString().replace(/\D/g, "").slice(2, 14); // 年月日時分秒
     return `${entry.map}-${entry.side}-${entry.site}-${stamp}`.toLowerCase();
   }
 
@@ -169,16 +272,18 @@
       ? `まだ入力が足りません：${missing.join("、")}`
       : JSON.stringify(entry, null, 2);
     $("copy").disabled = missing.length > 0;
+    $("save-smoke").disabled = missing.length > 0;
   }
 
-  async function copyOutput() {
+  async function copyText(source, button) {
+    const label = button.textContent;
     try {
-      await navigator.clipboard.writeText($("output").value);
-      $("copy").textContent = "コピーしました";
+      await navigator.clipboard.writeText(source.value);
+      button.textContent = "コピーしました";
     } catch {
-      $("output").select();
-      $("copy").textContent = "選択しました（Ctrl+Cでコピー）";
+      source.select();
+      button.textContent = "選択しました（Ctrl+Cでコピー）";
     }
-    setTimeout(() => ($("copy").textContent = "コピーする"), 2000);
+    setTimeout(() => (button.textContent = label), 2000);
   }
 })();

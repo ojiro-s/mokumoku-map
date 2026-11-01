@@ -67,12 +67,13 @@ window.VSN = (function () {
   async function loadAll(base = "") {
     // URL に ?test を付けると、表示確認用のデータに差し替える
     const isTest = new URLSearchParams(location.search).has("test");
-    const [maps, pool, smokes] = await Promise.all([
+    const [maps, pool, smokes, notes] = await Promise.all([
       loadJson(base + "data/maps.json"),
       loadJson(base + "data/pool.json"),
       loadJson(base + (isTest ? "data/smokes.test.json" : "data/smokes.json")),
+      loadJson(base + (isTest ? "data/notes.test.json" : "data/notes.json")),
     ]);
-    return { maps: maps.maps, pool, smokes };
+    return { maps: maps.maps, pool, smokes, notes };
   }
 
   // YouTube の URL から動画IDと開始秒を取り出す

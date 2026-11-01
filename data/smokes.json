@@ -7,9 +7,37 @@
     "site": "A",
     "purpose": "entry",
     "title": "【サンプル】表示確認用です。本物のデータを入れたら削除してください",
-    "target": { "x": 0.5, "y": 0.5 },
-    "stand": { "x": 0.5, "y": 0.75 },
+    "target": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "stand": {
+      "x": 0.5,
+      "y": 0.75
+    },
     "comment": "ここにコツを書きます。\n改行もそのまま表示されます。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-attack-a-261101103013",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aタワーを隠す",
+    "target": {
+      "x": 0.503,
+      "y": 0.237
+    },
+    "stand": {
+      "x": 0.714,
+      "y": 0.227
+    },
+    "comment": "射線はみ出ないように慎重に",
     "images": [],
     "video": null,
     "source": "",

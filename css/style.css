@@ -263,6 +263,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .toggle input { width: 20px; height: 20px; accent-color: var(--accent); }
 
 /* ---------- カード ---------- */
+.map-note {
+  margin-bottom: 12px;
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.map-note h2 { margin: 0 0 4px; color: var(--muted); font-size: 0.9rem; }
+.map-note p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+
 .result-count { margin: 0 0 8px; color: var(--muted); font-size: 0.9rem; }
 
 .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }

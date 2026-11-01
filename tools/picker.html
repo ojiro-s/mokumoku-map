@@ -21,6 +21,8 @@
     .mode { display: flex; gap: 8px; flex-wrap: wrap; }
     .coord { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--text); }
     .output { width: 100%; min-height: 260px; font-family: ui-monospace, monospace; font-size: 0.8rem; }
+    .notes-form { margin-top: 16px; }
+    .notes-output { width: 100%; font-family: ui-monospace, monospace; font-size: 0.8rem; }
     .primary { min-height: var(--tap); border: 0; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; }
     .primary:disabled { opacity: 0.4; cursor: not-allowed; }
     .hint { color: var(--muted); font-size: 0.85rem; margin: 0; }
@@ -52,6 +54,19 @@
       </div>
       <label class="toggle"><input type="checkbox" id="show-callouts" checked><span>場所の名前を表示</span></label>
       <p class="coord">配置位置: <span id="target-text">未設定</span> / 立ち位置: <span id="stand-text">未設定</span></p>
+
+      <div class="notes-form form">
+        <label>このマップのコツ（定点とは別に、自由に書けます）
+          <textarea id="map-note" placeholder="例：このマップは初動で中央を取ると動きやすい"></textarea>
+        </label>
+        <label class="copy-only">data/notes.json の全文（上の欄に合わせて変わります）
+          <textarea id="notes-output" class="notes-output" readonly></textarea>
+        </label>
+        <button type="button" id="copy-notes" class="primary copy-only">全文をコピーする</button>
+        <p class="hint copy-only">data/notes.json の中身をすべて消して、そのまま貼り付けてください。</p>
+        <button type="button" id="save-notes" class="primary save-only" hidden disabled>コツを保存する</button>
+        <p class="hint save-only" hidden>マップを切り替えて書いた分もまとめて保存します。</p>
+      </div>
     </section>
 
     <section class="form">
@@ -96,8 +111,10 @@
       <label>data/smokes.json に追加する1件分
         <textarea id="output" class="output" readonly></textarea>
       </label>
-      <button type="button" id="copy" class="primary">コピーする</button>
-      <p class="hint">smokes.json の最後の「}」の後ろに「,」を付けて貼り付けてください（全体は [ ] で囲まれた配列です）。</p>
+      <button type="button" id="copy" class="primary copy-only">コピーする</button>
+      <p class="hint copy-only">smokes.json の最後の「}」の後ろに「,」を付けて貼り付けてください（全体は [ ] で囲まれた配列です）。</p>
+      <button type="button" id="save-smoke" class="primary save-only" hidden disabled>定点を保存する</button>
+      <p class="hint save-only" hidden>data/smokes.json の最後に追加します。保存すると入力欄は空に戻ります。</p>
     </section>
   </main>
 

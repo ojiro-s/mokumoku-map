@@ -9,7 +9,7 @@ VALORANT のスモーク定点を試合前にスマホで確認するための�
 ## コマンド
 
 ```
-python3 -m http.server 8000           # 開発用サーバー（http://localhost:8000）
+python3 scripts/serve.py              # 開発用サーバー（http://localhost:8000）。登録補助ツールから data/ へ保存できる
 python3 scripts/fetch_minimaps.py     # 未取得のミニマップ画像を取得し、data/maps.json を生成する
 ```
 
@@ -18,9 +18,10 @@ python3 scripts/fetch_minimaps.py     # 未取得のミニマップ画像を取�
 ## 構成
 
 - `index.html` + `js/app.js`：閲覧ページ。`state` を更新して `renderAll()` で描き直す構成です。
-- `tools/picker.html` + `tools/picker.js`：定点の登録補助ツール（PC用）。出力した JSON を手で `data/smokes.json` に貼り付けます。
+- `tools/picker.html` + `tools/picker.js`：定点とコツの登録補助ツール（PC用）。`scripts/serve.py` で開くと `data/smokes.json` と `data/notes.json` へ直接保存します。それ以外のサーバーではコピーと貼り付けの手順になります。
 - `js/common.js`：両ページの共通処理を `window.VSN` として公開します（ラベル、JSON の読み込み、YouTube URL の解析、localStorage、DOM 生成の `el()`）。
 - `css/style.css`：両ページで共有します。変更したら `tools/picker.html` の表示も確認します。スマホ基準で書き、`min-width: 900px` で2列に広げます。
+- `data/notes.json`：マップごとのコツ（slug と本文の組）。`tools/picker.html` で書きます。
 - `data/pool.json`：現在のアクト、パッチ、マッププールを手で管理します。
 - `data/maps.json`：`scripts/fetch_minimaps.py` が生成します。手で編集しません。
 
@@ -33,7 +34,7 @@ python3 scripts/fetch_minimaps.py     # 未取得のミニマップ画像を取�
 
 ### 環境
 - 技術スタック: HTML / CSS / JavaScript と JSON（ビルド不要）、`scripts/` は Python 3
-- 起動: `python3 -m http.server 8000`
+- 起動: `python3 scripts/serve.py`
 - テスト: なし（テストの仕組みは未導入）
 - 型チェックとlint: なし（未導入）
 - 依存の導入: パッケージの追加は私が実行する。
@@ -44,7 +45,7 @@ python3 scripts/fetch_minimaps.py     # 未取得のミニマップ画像を取�
 
 ### 再開時の情報
 - ここには「次の1手」と決定事項だけを書く。完了したタスクの経緯は書かない。
-- 次にやること: ブランチ `smoke-real-size` を main へ入れて push するか、ユーザーに確認する。その後、マップごとのコツを書く欄に着手する。
+- 次にやること: スマホ実機で公開ページの表示を確認する。
 
 ### 決定事項(再検討しない)
 検証して「変更しない」と決めたことは、理由を添えてここに書く。

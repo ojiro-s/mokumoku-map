@@ -8,12 +8,14 @@ HTML・CSS・JavaScript と JSON だけで動きます（ビルド不要）。
 ```
 index.html            閲覧ページ（スマホ基準）
 tools/picker.html     登録補助ツール（PC用・ミニマップをクリックして座標を取る）
-data/smokes.json      定点データ（自分で追記していく）
+data/smokes.json      定点データ（登録補助ツールで追加する）
+data/notes.json       マップごとのコツ（登録補助ツールで書く）
 data/pool.json        今のマッププール（アクトが変わったら書き換える）
 data/maps.json        マップ情報（スクリプトで自動生成）
 assets/minimaps/      ミニマップ画像（スクリプトで自動取得）
 images/               自分で撮った照準・立ち位置のスクショ置き場
 scripts/fetch_minimaps.py  ミニマップ取得スクリプト
+scripts/serve.py      開発用サーバー（登録補助ツールから直接保存できる）
 ```
 
 ## はじめにやること（1回だけ）
@@ -27,26 +29,36 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
    全標準マップのミニマップ画像と、場所の名前（コールアウト）を取得して `data/maps.json` を作ります。
    取得元は valorant-api.com（コミュニティ運営の非公式API）です。
 
-2. 簡易サーバーを起動して開く
+2. 開発用サーバーを起動して開く
 
    ```
-   python3 -m http.server 8000
+   python3 scripts/serve.py
    ```
 
-   ブラウザで http://localhost:8000 を開きます。
-   VSCode の拡張機能「Live Server」を使っても構いません。
+   ブラウザで http://localhost:8000 を開きます。どのフォルダで実行しても同じです。
+   閲覧だけなら `python3 -m http.server 8000` や VSCode の拡張機能「Live Server」でも開けますが、登録補助ツールの保存ボタンは出ず、コピーと貼り付けの手順になります。
    ※ index.html をダブルクリックで開くと、ブラウザの制限で JSON を読み込めません。
 
 ## 定点を追加する手順
 
-1. 簡易サーバーを起動した状態で http://localhost:8000/tools/picker.html を開く
+1. `python3 scripts/serve.py` を起動した状態で http://localhost:8000/tools/picker.html を開く
 2. マップを選び、ミニマップ上で「スモークの配置位置」をクリック（オーメンは続けて「立ち位置」もクリック）
 3. エージェント（最初は「全キャラ共通」）、攻め・守り、サイト、目的、タイトル、コツを入力
 4. 解説動画があれば YouTube の URL を貼る（共有ボタンの「開始位置」をオンにした URL なら開始秒も入ります）
-5. 「コピーする」を押して、`data/smokes.json` の最後に貼り付ける（前の項目の `}` の後ろに `,` を付ける）
+5. 「定点を保存する」を押す（`data/smokes.json` の最後に追加され、入力欄は空に戻ります）
 6. 最初に入っている【サンプル】の項目は削除する
 
 照準のスクショを載せたいときは `images/マップ名/` に画像を置き、ツールの「画像のパス」欄にパスを書きます。
+
+## マップごとのコツを書く手順
+
+1. http://localhost:8000/tools/picker.html を開いてマップを選ぶ
+2. ミニマップの下の「このマップのコツ」に書く（別のマップを選んで続けて書けます）
+3. 「コツを保存する」を押す（`data/notes.json` に保存されます。本文を空にして保存すると、そのマップのコツは消えます）
+
+閲覧ページでは、選んでいるマップの定点一覧の上に表示されます。攻め・守りやエージェントの絞り込みには関係なく出ます。何も書いていないマップでは表示されません。
+
+保存はこの PC の `data/` を書き換えるだけです。スマホや公開ページに反映するには、commit して push します。
 
 ## データの項目（data/smokes.json）
 
@@ -75,7 +87,7 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
 閲覧ページを開いたときのエージェントは `DEFAULT_AGENT`（オーメン）で、マップの下のメニューから変えられます。全キャラ共通の定点は、表示中のエージェントのスモークの大きさで描きます。
 登録補助ツールの選択肢で先頭に並べるエージェントは `MAIN_AGENTS` で指定します。
 
-表示を確認したいときは、URL に `?test` を付けて開きます（例：`http://localhost:8000/?test`）。`data/smokes.json` の代わりに、エージェント9人分の確認用データ `data/smokes.test.json` を読み込みます。本物のデータには影響しません。
+表示を確認したいときは、URL に `?test` を付けて開きます（例：`http://localhost:8000/?test`）。`data/smokes.json` と `data/notes.json` の代わりに、確認用の `data/smokes.test.json` と `data/notes.test.json` を読み込みます。本物のデータには影響しません。登録補助ツールを `?test` 付きで開いたときは、本物のファイルを書き換えないよう保存ボタンは出ません。
 
 ## アクトが変わったら
 

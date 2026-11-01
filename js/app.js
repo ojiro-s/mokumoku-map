@@ -7,6 +7,7 @@
     maps: [],
     pool: { pool: [], patch: "" },
     smokes: [],
+    notes: {}, // マップの slug ごとのコツ
     map: null, // マップの slug
     side: store.get("vsn.side", "attack"),
     site: "all",
@@ -23,6 +24,7 @@
       state.maps = data.maps;
       state.pool = data.pool;
       state.smokes = data.smokes;
+      state.notes = data.notes;
     } catch (e) {
       showSetupMessage(e);
       return;
@@ -76,7 +78,20 @@
     renderSiteChips();
     renderAgentMenu();
     renderMinimap();
+    renderMapNote();
     renderCards();
+  }
+
+  // ---------- マップのコツ ----------
+
+  function renderMapNote() {
+    const map = currentMap();
+    const note = map && state.notes[map.slug];
+    const box = $("map-note");
+    box.hidden = !note;
+    box.replaceChildren(
+      ...(note ? [el("h2", { text: `${map.nameJa}のコツ` }), el("p", { text: note })] : [])
+    );
   }
 
   // ---------- 絞り込みUI ----------
@@ -363,7 +378,7 @@
       el("p", { text: "次の2点を確認してください。" }),
       el("ol", {}, [
         el("li", {}, ["ミニマップを取得したか：", el("code", { text: "python3 scripts/fetch_minimaps.py" })]),
-        el("li", {}, ["簡易サーバー経由で開いているか：", el("code", { text: "python3 -m http.server 8000" }), " を実行して http://localhost:8000 を開く"]),
+        el("li", {}, ["開発用サーバー経由で開いているか：", el("code", { text: "python3 scripts/serve.py" }), " を実行して http://localhost:8000 を開く"]),
       ])
     );
   }

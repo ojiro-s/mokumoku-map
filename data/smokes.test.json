@@ -1,0 +1,1437 @@
+[
+  {
+    "id": "test-abyss-omen",
+    "map": "abyss",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】オーメン：A ブリッジ",
+    "target": {
+      "x": 0.4696,
+      "y": 0.0383
+    },
+    "stand": {
+      "x": 0.901,
+      "y": 0.423
+    },
+    "comment": "表示確認用のデータです。A Bridge の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-clove",
+    "map": "abyss",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：A ロビー",
+    "target": {
+      "x": 0.7754,
+      "y": 0.2367
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-astra",
+    "map": "abyss",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】アストラ：A サイト",
+    "target": {
+      "x": 0.4838,
+      "y": 0.1517
+    },
+    "stand": {
+      "x": 0.901,
+      "y": 0.423
+    },
+    "comment": "表示確認用のデータです。A Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-brimstone",
+    "map": "abyss",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：中央 ベンド",
+    "target": {
+      "x": 0.5871,
+      "y": 0.6377
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。Mid Bend の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-harbor",
+    "map": "abyss",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：B ロビー",
+    "target": {
+      "x": 0.826,
+      "y": 0.7956
+    },
+    "stand": {
+      "x": 0.901,
+      "y": 0.423
+    },
+    "comment": "表示確認用のデータです。B Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-miks",
+    "map": "abyss",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ミクス：B ネスト",
+    "target": {
+      "x": 0.6742,
+      "y": 0.903
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Nest の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-viper",
+    "map": "abyss",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：B サイト",
+    "target": {
+      "x": 0.4048,
+      "y": 0.8584
+    },
+    "stand": {
+      "x": 0.901,
+      "y": 0.423
+    },
+    "comment": "表示確認用のデータです。B Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-jett",
+    "map": "abyss",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】ジェット：中央 ライブラリー",
+    "target": {
+      "x": 0.4514,
+      "y": 0.5263
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。Mid Library の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-cypher",
+    "map": "abyss",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】サイファー：A セキュリティー",
+    "target": {
+      "x": 0.259,
+      "y": 0.1031
+    },
+    "stand": {
+      "x": 0.901,
+      "y": 0.423
+    },
+    "comment": "表示確認用のデータです。A Security の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-abyss-all",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：B タワー",
+    "target": {
+      "x": 0.2975,
+      "y": 0.8179
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Tower の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-omen",
+    "map": "bind",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】オーメン：A 出口",
+    "target": {
+      "x": 0.9235,
+      "y": 0.5221
+    },
+    "stand": {
+      "x": 0.5815,
+      "y": 0.958
+    },
+    "comment": "表示確認用のデータです。A Exit の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-clove",
+    "map": "bind",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：A ロビー",
+    "target": {
+      "x": 0.7633,
+      "y": 0.6069
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-astra",
+    "map": "bind",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】アストラ：A サイト",
+    "target": {
+      "x": 0.7341,
+      "y": 0.3334
+    },
+    "stand": {
+      "x": 0.5815,
+      "y": 0.958
+    },
+    "comment": "表示確認用のデータです。A Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-brimstone",
+    "map": "bind",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：B 出口",
+    "target": {
+      "x": 0.4729,
+      "y": 0.4412
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Exit の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-harbor",
+    "map": "bind",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：B リンク",
+    "target": {
+      "x": 0.4223,
+      "y": 0.5922
+    },
+    "stand": {
+      "x": 0.5815,
+      "y": 0.958
+    },
+    "comment": "表示確認用のデータです。B Link の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-miks",
+    "map": "bind",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ミクス：B ロング",
+    "target": {
+      "x": 0.1927,
+      "y": 0.5152
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Long の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-viper",
+    "map": "bind",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：B サイト",
+    "target": {
+      "x": 0.2919,
+      "y": 0.3122
+    },
+    "stand": {
+      "x": 0.5815,
+      "y": 0.958
+    },
+    "comment": "表示確認用のデータです。B Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-jett",
+    "map": "bind",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ジェット：B ウィンドウ",
+    "target": {
+      "x": 0.3227,
+      "y": 0.4468
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Window の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-cypher",
+    "map": "bind",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】サイファー：A 小部屋",
+    "target": {
+      "x": 0.5873,
+      "y": 0.4599
+    },
+    "stand": {
+      "x": 0.5815,
+      "y": 0.958
+    },
+    "comment": "表示確認用のデータです。A Cubby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-bind-all",
+    "map": "bind",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：B ガーデン",
+    "target": {
+      "x": 0.2467,
+      "y": 0.4281
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Garden の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-omen",
+    "map": "corrode",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】オーメン：A クレーン",
+    "target": {
+      "x": 0.243,
+      "y": 0.2035
+    },
+    "stand": {
+      "x": 0.9234,
+      "y": 0.5018
+    },
+    "comment": "表示確認用のデータです。A Crane の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-clove",
+    "map": "corrode",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：A エルボー",
+    "target": {
+      "x": 0.3809,
+      "y": 0.1092
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Elbow の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-astra",
+    "map": "corrode",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】アストラ：A リンク",
+    "target": {
+      "x": 0.4527,
+      "y": 0.3752
+    },
+    "stand": {
+      "x": 0.9234,
+      "y": 0.5018
+    },
+    "comment": "表示確認用のデータです。A Link の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-brimstone",
+    "map": "corrode",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：A ロビー",
+    "target": {
+      "x": 0.7082,
+      "y": 0.1967
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-harbor",
+    "map": "corrode",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：A メイン",
+    "target": {
+      "x": 0.6119,
+      "y": 0.0847
+    },
+    "stand": {
+      "x": 0.9234,
+      "y": 0.5018
+    },
+    "comment": "表示確認用のデータです。A Main の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-miks",
+    "map": "corrode",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ミクス：A ポケット",
+    "target": {
+      "x": 0.4702,
+      "y": 0.1092
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Pocket の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-viper",
+    "map": "corrode",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：A サイト",
+    "target": {
+      "x": 0.3984,
+      "y": 0.2579
+    },
+    "stand": {
+      "x": 0.9234,
+      "y": 0.5018
+    },
+    "comment": "表示確認用のデータです。A Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-jett",
+    "map": "corrode",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ジェット：A ヤード",
+    "target": {
+      "x": 0.4702,
+      "y": 0.1967
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Yard の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-cypher",
+    "map": "corrode",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】サイファー：B アーチ",
+    "target": {
+      "x": 0.2182,
+      "y": 0.7169
+    },
+    "stand": {
+      "x": 0.9234,
+      "y": 0.5018
+    },
+    "comment": "表示確認用のデータです。B Arch の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-corrode-all",
+    "map": "corrode",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：B エルボー",
+    "target": {
+      "x": 0.3214,
+      "y": 0.8914
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Elbow の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-omen",
+    "map": "haven",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】オーメン：A ガーデン",
+    "target": {
+      "x": 0.7422,
+      "y": 0.4102
+    },
+    "stand": {
+      "x": 0.8952,
+      "y": 0.5121
+    },
+    "comment": "表示確認用のデータです。A Garden の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-clove",
+    "map": "haven",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：A リンク",
+    "target": {
+      "x": 0.2898,
+      "y": 0.3244
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Link の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-astra",
+    "map": "haven",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】アストラ：A ロビー",
+    "target": {
+      "x": 0.6239,
+      "y": 0.3848
+    },
+    "stand": {
+      "x": 0.8952,
+      "y": 0.5121
+    },
+    "comment": "表示確認用のデータです。A Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-brimstone",
+    "map": "haven",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：A ロング",
+    "target": {
+      "x": 0.5759,
+      "y": 0.177
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Long の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-harbor",
+    "map": "haven",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：A 下水道",
+    "target": {
+      "x": 0.4998,
+      "y": 0.3838
+    },
+    "stand": {
+      "x": 0.8952,
+      "y": 0.5121
+    },
+    "comment": "表示確認用のデータです。A Sewer の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-miks",
+    "map": "haven",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ミクス：A サイト",
+    "target": {
+      "x": 0.4015,
+      "y": 0.1695
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-viper",
+    "map": "haven",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：B バック",
+    "target": {
+      "x": 0.2936,
+      "y": 0.4953
+    },
+    "stand": {
+      "x": 0.8952,
+      "y": 0.5121
+    },
+    "comment": "表示確認用のデータです。B Back の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-jett",
+    "map": "haven",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ジェット：B サイト",
+    "target": {
+      "x": 0.4011,
+      "y": 0.5014
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-cypher",
+    "map": "haven",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "C",
+    "purpose": "other",
+    "title": "【テスト】サイファー：C リンク",
+    "target": {
+      "x": 0.3431,
+      "y": 0.6493
+    },
+    "stand": {
+      "x": 0.8952,
+      "y": 0.5121
+    },
+    "comment": "表示確認用のデータです。C Link の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-haven-all",
+    "map": "haven",
+    "agent": "All",
+    "side": "attack",
+    "site": "C",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：C ロビー",
+    "target": {
+      "x": 0.6644,
+      "y": 0.7659
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。C Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-omen",
+    "map": "lotus",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】オーメン：A トップ",
+    "target": {
+      "x": 0.8181,
+      "y": 0.251
+    },
+    "stand": {
+      "x": 0.577,
+      "y": 0.2203
+    },
+    "comment": "表示確認用のデータです。A Top の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-clove",
+    "map": "lotus",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：A サイト",
+    "target": {
+      "x": 0.8549,
+      "y": 0.3608
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-astra",
+    "map": "lotus",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】アストラ：A ツリー",
+    "target": {
+      "x": 0.8549,
+      "y": 0.475
+    },
+    "stand": {
+      "x": 0.577,
+      "y": 0.2203
+    },
+    "comment": "表示確認用のデータです。A Tree の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-brimstone",
+    "map": "lotus",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：A メイン",
+    "target": {
+      "x": 0.7543,
+      "y": 0.537
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Main の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-harbor",
+    "map": "lotus",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：A ルート",
+    "target": {
+      "x": 0.692,
+      "y": 0.6009
+    },
+    "stand": {
+      "x": 0.577,
+      "y": 0.2203
+    },
+    "comment": "表示確認用のデータです。A Root の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-miks",
+    "map": "lotus",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "C",
+    "purpose": "other",
+    "title": "【テスト】ミクス：C ロビー",
+    "target": {
+      "x": 0.3413,
+      "y": 0.8167
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。C Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-viper",
+    "map": "lotus",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：B メイン",
+    "target": {
+      "x": 0.4513,
+      "y": 0.5666
+    },
+    "stand": {
+      "x": 0.577,
+      "y": 0.2203
+    },
+    "comment": "表示確認用のデータです。B Main の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-jett",
+    "map": "lotus",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ジェット：B サイト",
+    "target": {
+      "x": 0.5029,
+      "y": 0.4593
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-cypher",
+    "map": "lotus",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】サイファー：B アッパー",
+    "target": {
+      "x": 0.564,
+      "y": 0.3646
+    },
+    "stand": {
+      "x": 0.577,
+      "y": 0.2203
+    },
+    "comment": "表示確認用のデータです。B Upper の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-lotus-all",
+    "map": "lotus",
+    "agent": "All",
+    "side": "attack",
+    "site": "C",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：C リンク",
+    "target": {
+      "x": 0.3556,
+      "y": 0.3775
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。C Link の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-omen",
+    "map": "summit",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】オーメン：中央 ボトム",
+    "target": {
+      "x": 0.4843,
+      "y": 0.4164
+    },
+    "stand": {
+      "x": 0.5105,
+      "y": 0.0733
+    },
+    "comment": "表示確認用のデータです。Mid Bottom の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-clove",
+    "map": "summit",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：A ロビー",
+    "target": {
+      "x": 0.6943,
+      "y": 0.7408
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-astra",
+    "map": "summit",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】アストラ：A ガーデン",
+    "target": {
+      "x": 0.7918,
+      "y": 0.4033
+    },
+    "stand": {
+      "x": 0.5105,
+      "y": 0.0733
+    },
+    "comment": "表示確認用のデータです。A Garden の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-brimstone",
+    "map": "summit",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：A アート",
+    "target": {
+      "x": 0.7918,
+      "y": 0.2645
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Art の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-harbor",
+    "map": "summit",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：A ホール",
+    "target": {
+      "x": 0.6924,
+      "y": 0.2645
+    },
+    "stand": {
+      "x": 0.5105,
+      "y": 0.0733
+    },
+    "comment": "表示確認用のデータです。A Hall の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-miks",
+    "map": "summit",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ミクス：B ロビー",
+    "target": {
+      "x": 0.2893,
+      "y": 0.5945
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-viper",
+    "map": "summit",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：B ジム",
+    "target": {
+      "x": 0.2799,
+      "y": 0.1895
+    },
+    "stand": {
+      "x": 0.5105,
+      "y": 0.0733
+    },
+    "comment": "表示確認用のデータです。B Gym の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-jett",
+    "map": "summit",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ジェット：B タワー",
+    "target": {
+      "x": 0.1562,
+      "y": 0.2158
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Tower の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-cypher",
+    "map": "summit",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】サイファー：B サイト",
+    "target": {
+      "x": 0.1505,
+      "y": 0.3376
+    },
+    "stand": {
+      "x": 0.5105,
+      "y": 0.0733
+    },
+    "comment": "表示確認用のデータです。B Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-summit-all",
+    "map": "summit",
+    "agent": "All",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：中央 ファウンテン",
+    "target": {
+      "x": 0.5105,
+      "y": 0.5533
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。Mid Fountain の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-omen",
+    "map": "sunset",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】オーメン：B タピオカ",
+    "target": {
+      "x": 0.1256,
+      "y": 0.344
+    },
+    "stand": {
+      "x": 0.3449,
+      "y": 0.2188
+    },
+    "comment": "表示確認用のデータです。B Boba の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-clove",
+    "map": "sunset",
+    "agent": "Clove",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】クローヴ：中央 タイル",
+    "target": {
+      "x": 0.5312,
+      "y": 0.656
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。Mid Tiles の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-astra",
+    "map": "sunset",
+    "agent": "Astra",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】アストラ：B マーケット",
+    "target": {
+      "x": 0.2348,
+      "y": 0.5312
+    },
+    "stand": {
+      "x": 0.3449,
+      "y": 0.2188
+    },
+    "comment": "表示確認用のデータです。B Market の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-brimstone",
+    "map": "sunset",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ブリムストーン：B サイト",
+    "target": {
+      "x": 0.0437,
+      "y": 0.5624
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Site の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-harbor",
+    "map": "sunset",
+    "agent": "Harbor",
+    "side": "attack",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ハーバー：B メイン",
+    "target": {
+      "x": 0.0593,
+      "y": 0.6716
+    },
+    "stand": {
+      "x": 0.3449,
+      "y": 0.2188
+    },
+    "comment": "表示確認用のデータです。B Main の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-miks",
+    "map": "sunset",
+    "agent": "Miks",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "【テスト】ミクス：B ロビー",
+    "target": {
+      "x": 0.2972,
+      "y": 0.7808
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。B Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-viper",
+    "map": "sunset",
+    "agent": "Viper",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】ヴァイパー：中央 ボトム",
+    "target": {
+      "x": 0.342,
+      "y": 0.656
+    },
+    "stand": {
+      "x": 0.3449,
+      "y": 0.2188
+    },
+    "comment": "表示確認用のデータです。Mid Bottom の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-jett",
+    "map": "sunset",
+    "agent": "Jett",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "【テスト】ジェット：中央 コートヤード",
+    "target": {
+      "x": 0.4064,
+      "y": 0.5624
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。Mid Courtyard の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-cypher",
+    "map": "sunset",
+    "agent": "Cypher",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】サイファー：A ロビー",
+    "target": {
+      "x": 0.656,
+      "y": 0.656
+    },
+    "stand": {
+      "x": 0.3449,
+      "y": 0.2188
+    },
+    "comment": "表示確認用のデータです。A Lobby の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "test-sunset-all",
+    "map": "sunset",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "【テスト】全キャラ共通：A メイン",
+    "target": {
+      "x": 0.6716,
+      "y": 0.5468
+    },
+    "stand": null,
+    "comment": "表示確認用のデータです。A Main の位置に置いています。",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  }
+]

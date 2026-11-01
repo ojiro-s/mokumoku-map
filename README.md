@@ -41,7 +41,7 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
 
 1. 簡易サーバーを起動した状態で http://localhost:8000/tools/picker.html を開く
 2. マップを選び、ミニマップ上で「スモークの配置位置」をクリック（オーメンは続けて「立ち位置」もクリック）
-3. 攻め・守り、サイト、目的、タイトル、コツを入力
+3. エージェント（最初は「全キャラ共通」）、攻め・守り、サイト、目的、タイトル、コツを入力
 4. 解説動画があれば YouTube の URL を貼る（共有ボタンの「開始位置」をオンにした URL なら開始秒も入ります）
 5. 「コピーする」を押して、`data/smokes.json` の最後に貼り付ける（前の項目の `}` の後ろに `,` を付ける）
 6. 最初に入っている【サンプル】の項目は削除する
@@ -54,7 +54,7 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
 |---|---|---|
 | id | 重複しない名前（ツールが自動で付けます） | `bind-attack-a-2611011234` |
 | map | マップ（maps.json の slug） | `bind` |
-| agent | エージェント（`js/common.js` の `LABELS.agent` にある名前） | `Omen` / `Clove` / `Viper` など |
+| agent | エージェント（`js/common.js` の `LABELS.agent` にある名前）。`All` は全キャラ共通で、どのエージェントを選んでいても表示されます | `All` / `Omen` / `Clove` / `Viper` など |
 | side | 攻め・守り | `attack` / `defense` |
 | site | サイト | `A` / `B` / `C` / `Mid` |
 | purpose | 目的 | `entry` / `retake` / `postplant` / `oneway` / `other` |
@@ -72,7 +72,10 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
 
 ピンの円はスモークの実寸です。半径は `js/common.js` の `SMOKE_RADIUS_M`、マップごとの縮尺は `data/maps.json` の `meterRatio`（`scripts/fetch_minimaps.py` が生成）から計算します。
 パッチで半径が変わったら `SMOKE_RADIUS_M` を直してください。エージェントを追加するときは、ここに半径を、`LABELS.agent` に表示名を足します。
-普段使うエージェントは `MAIN_AGENTS` で指定します。それ以外は登録補助ツールでは「その他」にまとまり、閲覧ページでは登録があるときだけプルダウンに出ます。
+閲覧ページを開いたときのエージェントは `DEFAULT_AGENT`（オーメン）で、マップの下のメニューから変えられます。全キャラ共通の定点は、表示中のエージェントのスモークの大きさで描きます。
+登録補助ツールの選択肢で先頭に並べるエージェントは `MAIN_AGENTS` で指定します。
+
+表示を確認したいときは、URL に `?test` を付けて開きます（例：`http://localhost:8000/?test`）。`data/smokes.json` の代わりに、エージェント9人分の確認用データ `data/smokes.test.json` を読み込みます。本物のデータには影響しません。
 
 ## アクトが変わったら
 

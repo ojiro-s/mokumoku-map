@@ -17,15 +17,14 @@
     <section class="controls" aria-label="絞り込み">
       <div class="map-picker">
         <div id="pool-maps" class="chips scroll-x" role="radiogroup" aria-label="マップ（今のプール）"></div>
-        <details class="other-maps">
-          <summary>プール外のマップ</summary>
-          <div id="other-maps" class="chips wrap" role="radiogroup" aria-label="マップ（プール外）"></div>
-        </details>
+        <div class="sub-menus">
+          <div id="other-maps-menu"></div>
+          <div id="agent-menu"></div>
+        </div>
       </div>
 
       <div id="side-toggle" class="segmented" role="radiogroup" aria-label="攻め・守り"></div>
       <div id="site-chips" class="chips wrap" role="radiogroup" aria-label="サイト"></div>
-      <div id="agent-chips" class="chips wrap" role="radiogroup" aria-label="エージェント"></div>
     </section>
 
     <section class="map-panel" aria-label="ミニマップ">

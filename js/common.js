@@ -22,11 +22,20 @@ window.VSN = (function () {
     },
   };
 
-  // 普段使うエージェント。これ以外はプルダウンにまとめて幅を取らないようにする
+  // 普段使うエージェント。登録補助ツールの選択肢で先頭に並べる
   const MAIN_AGENTS = ["Omen", "Clove"];
+  // 閲覧ページを開いたときに表示するエージェント
+  const DEFAULT_AGENT = "Omen";
+  // どのエージェントでも使える定点の agent の値
+  const COMMON_AGENT = "All";
+
+  function agentLabel(agent) {
+    return agent === COMMON_AGENT ? "全キャラ共通" : LABELS.agent[agent] || agent;
+  }
 
   // スモークの半径（m）。パッチで変わったらここを直す
-  // 出典は wiki.playvalorant.com の各能力ページ。Miks の値は同ページでも推定値の扱い
+  // 公式パッチノートで数値を確認できたのは Brimstone のみ（8.09 で 410 → 415 単位）。
+  // 他の出典は wiki.playvalorant.com の各能力ページ。Miks の値は同ページでも推定値の扱い
   const SMOKE_RADIUS_M = {
     Omen: 4.1, // Dark Cover
     Clove: 4, // Ruse
@@ -40,9 +49,10 @@ window.VSN = (function () {
   };
 
   // ピンの位置と、実寸どおりの直径（マップ幅に対する比率）を style 文字列にする
-  function smokeStyle(point, agent, map) {
+  // 共通の定点は、viewAgent（いま表示しているエージェント）の大きさで描く
+  function smokeStyle(point, agent, map, viewAgent = DEFAULT_AGENT) {
     const place = `left:${point.x * 100}%;top:${point.y * 100}%`;
-    const radius = SMOKE_RADIUS_M[agent];
+    const radius = SMOKE_RADIUS_M[agent === COMMON_AGENT ? viewAgent : agent];
     if (!radius || !map.meterRatio) return place;
     return `${place};--pin-size:${radius * 2 * map.meterRatio * 100}cqw`;
   }
@@ -55,10 +65,12 @@ window.VSN = (function () {
   }
 
   async function loadAll(base = "") {
+    // URL に ?test を付けると、表示確認用のデータに差し替える
+    const isTest = new URLSearchParams(location.search).has("test");
     const [maps, pool, smokes] = await Promise.all([
       loadJson(base + "data/maps.json"),
       loadJson(base + "data/pool.json"),
-      loadJson(base + "data/smokes.json"),
+      loadJson(base + (isTest ? "data/smokes.test.json" : "data/smokes.json")),
     ]);
     return { maps: maps.maps, pool, smokes };
   }
@@ -133,5 +145,5 @@ window.VSN = (function () {
     return node;
   }
 
-  return { LABELS, MAIN_AGENTS, smokeStyle, loadJson, loadAll, parseYouTube, parseTime, formatTime, store, el };
+  return { LABELS, MAIN_AGENTS, DEFAULT_AGENT, COMMON_AGENT, agentLabel, smokeStyle, loadJson, loadAll, parseYouTube, parseTime, formatTime, store, el };
 })();

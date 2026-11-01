@@ -95,17 +95,52 @@ button { font: inherit; color: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 .chip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
-.chip-select {
-  min-height: var(--tap);
-  max-width: 100%;
-  padding: 0 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--text);
-  font: inherit;
+/* プール外のマップとエージェントのメニュー（一覧の角も丸くするため自前で作っている） */
+.chip-menu { position: relative; }
+.chip-menu-toggle::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin: -3px 2px 0 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
 }
-.chip-select.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.chip-menu-toggle[aria-expanded="true"]::after { margin-top: 3px; transform: rotate(225deg); }
+.chip.is-outlined { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.chip-menu-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 5;
+  display: grid;
+  gap: 2px;
+  min-width: 11em;
+  max-height: 75vh;
+  overflow-y: auto;
+  scrollbar-width: none; /* 太いスクロールバーが角丸の内側に出ないようにする */
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 6px 20px #0008;
+}
+.chip-menu-list.align-right { left: auto; right: 0; }
+.chip-menu-list button {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  text-align: left;
+  white-space: nowrap;
+}
+.chip-menu-list button:hover { background: var(--panel-2); }
+.chip-menu-list button.is-active { color: var(--accent); font-weight: 700; }
 .chip-count {
   font-size: 0.75rem;
   min-width: 1.4em;
@@ -115,19 +150,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   text-align: center;
 }
 
-.other-maps summary {
-  min-height: var(--tap);
-  display: flex;
-  align-items: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-.other-maps[open] summary { margin-bottom: 6px; }
+.sub-menus { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 
 .segmented {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   padding: 4px;
   gap: 4px;
   background: var(--panel);

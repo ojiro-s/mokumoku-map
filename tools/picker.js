@@ -1,6 +1,6 @@
 // 登録補助ツール：ミニマップをクリックして座標を取り、smokes.json に貼る1件分を作る
 (function () {
-  const { LABELS, MAIN_AGENTS, smokeStyle, loadAll, parseYouTube, el } = window.VSN;
+  const { LABELS, MAIN_AGENTS, COMMON_AGENT, agentLabel, smokeStyle, loadAll, parseYouTube, el } = window.VSN;
   const $ = (id) => document.getElementById(id);
   const BASE = "../"; // tools/ から見たプロジェクトのルート
 
@@ -26,9 +26,10 @@
     $("map").replaceChildren(
       ...sorted.map((m) => el("option", { value: m.slug, text: m.nameJa + (poolSet.has(m.slug) ? "" : "（プール外）") }))
     );
-    // エージェントの選択肢（普段使う分を先頭に、他はグループにまとめる）
-    const agentOption = (a) => el("option", { value: a, text: LABELS.agent[a] });
+    // エージェントの選択肢（全キャラ共通と普段使う分を先頭に、他はグループにまとめる）
+    const agentOption = (a) => el("option", { value: a, text: agentLabel(a) });
     $("agent").replaceChildren(
+      agentOption(COMMON_AGENT),
       ...MAIN_AGENTS.map(agentOption),
       el(
         "optgroup",

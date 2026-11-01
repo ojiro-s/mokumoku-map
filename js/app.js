@@ -1,6 +1,6 @@
 // 閲覧サイトの本体
 (function () {
-  const { LABELS, MAIN_AGENTS, smokeStyle, loadAll, formatTime, store, el } = window.VSN;
+  const { LABELS, DEFAULT_AGENT, COMMON_AGENT, agentLabel, smokeStyle, loadAll, formatTime, store, el } = window.VSN;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -10,7 +10,7 @@
     map: null, // マップの slug
     side: store.get("vsn.side", "attack"),
     site: "all",
-    agent: "all",
+    agent: DEFAULT_AGENT, // 開くたびにこのエージェントから始める
     selected: null, // 選択中の定点 id
     showCallouts: store.get("vsn.callouts", false),
   };
@@ -41,6 +41,14 @@
       renderMinimap();
     });
 
+    // メニューは、外側のクリックと Esc で閉じる
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".chip-menu")) closeMenus();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenus();
+    });
+
     renderAll();
   }
 
@@ -48,14 +56,17 @@
     return state.maps.find((m) => m.slug === state.map);
   }
 
+  // 攻め・守りとエージェントの条件に合うか（マップをまたいで使う条件）
+  function matchesSideAndAgent(s) {
+    const sideOk = state.side === "all" || s.side === state.side;
+    const agentOk = state.agent === "all" || s.agent === state.agent || s.agent === COMMON_AGENT;
+    return sideOk && agentOk;
+  }
+
   // 今の絞り込み条件に合う定点
   function filteredSmokes() {
     return state.smokes.filter(
-      (s) =>
-        s.map === state.map &&
-        s.side === state.side &&
-        (state.site === "all" || s.site === state.site) &&
-        (state.agent === "all" || s.agent === state.agent)
+      (s) => s.map === state.map && matchesSideAndAgent(s) && (state.site === "all" || s.site === state.site)
     );
   }
 
@@ -63,7 +74,7 @@
     renderMapChips();
     renderSideToggle();
     renderSiteChips();
-    renderAgentChips();
+    renderAgentMenu();
     renderMinimap();
     renderCards();
   }
@@ -80,18 +91,33 @@
 
   function renderMapChips() {
     const poolSet = new Set(state.pool.pool || []);
-    const countFor = (slug) => state.smokes.filter((s) => s.map === slug).length || null;
+    // サイトはマップごとに違うので、件数には攻め・守りとエージェントの条件だけ反映する
+    const countFor = (slug) => state.smokes.filter((s) => s.map === slug && matchesSideAndAgent(s)).length || null;
     const make = (m) =>
       chip(m.nameJa, m.slug === state.map, () => selectMap(m.slug), countFor(m.slug));
 
     const inPool = state.maps.filter((m) => poolSet.has(m.slug));
     const outPool = state.maps.filter((m) => !poolSet.has(m.slug));
     $("pool-maps").replaceChildren(...inPool.map(make));
-    $("other-maps").replaceChildren(...outPool.map(make));
-    const details = document.querySelector(".other-maps");
-    details.hidden = outPool.length === 0;
-    // プール外のマップを選んでいるときは開いておく
-    if (!poolSet.has(state.map)) details.open = true;
+
+    // プール外のマップはメニューにまとめる。選んでいるときはボタンにマップ名を出す
+    const current = outPool.find((m) => m.slug === state.map);
+    $("other-maps-menu").replaceChildren(
+      ...(outPool.length === 0
+        ? []
+        : [
+            chipMenu({
+              label: current ? current.nameJa : "プール外のマップ",
+              toggleClass: current ? "is-active" : "",
+              items: outPool.map((m) => ({
+                label: m.nameJa,
+                active: m.slug === state.map,
+                count: countFor(m.slug),
+                onPick: () => selectMap(m.slug),
+              })),
+            }),
+          ])
+    );
   }
 
   function selectMap(slug) {
@@ -103,7 +129,7 @@
   }
 
   function renderSideToggle() {
-    const buttons = Object.entries(LABELS.side).map(([key, label]) =>
+    const buttons = [...Object.entries(LABELS.side), ["all", "両方"]].map(([key, label]) =>
       el("button", {
         type: "button",
         class: state.side === key ? "is-active" : "",
@@ -135,43 +161,63 @@
     );
   }
 
-  function renderAgentChips() {
-    const agents = [...new Set(state.smokes.filter((s) => s.map === state.map).map((s) => s.agent))];
-    // エージェントが1人分しか登録されていなければ絞り込みは出さない
-    if (agents.length < 2) {
-      $("agent-chips").replaceChildren();
-      state.agent = "all";
-      return;
-    }
+  function renderAgentMenu() {
     const pick = (a) => {
       state.agent = a;
       state.selected = null;
       renderAll();
     };
-    const label = (a) => LABELS.agent[a] || a;
-    const items = ["all", ...agents.filter((a) => MAIN_AGENTS.includes(a))];
-    const others = agents.filter((a) => !MAIN_AGENTS.includes(a));
-    const chips = items.map((a) => chip(a === "all" ? "全員" : label(a), state.agent === a, () => pick(a)));
+    const registered = state.smokes.map((s) => s.agent).filter((a) => a !== COMMON_AGENT);
+    const agents = [...new Set([...Object.keys(LABELS.agent), ...registered])];
+    const label = state.agent === "all" ? "全員" : agentLabel(state.agent);
+    $("agent-menu").replaceChildren(
+      chipMenu({
+        label,
+        // いつものエージェント以外を見ているときは、枠の色で気づけるようにする
+        toggleClass: state.agent === DEFAULT_AGENT ? "" : "is-outlined",
+        items: [
+          { label: "全員", active: state.agent === "all", onPick: () => pick("all") },
+          ...agents.map((a) => ({ label: agentLabel(a), active: state.agent === a, onPick: () => pick(a) })),
+        ],
+      })
+    );
+  }
 
-    // 普段使わないエージェントは、登録があるときだけプルダウン1つにまとめる
-    if (others.length) {
-      const isActive = others.includes(state.agent);
-      chips.push(
+  // 標準の select は開いた一覧の角を丸くできないので、ボタンと一覧で作る
+  function chipMenu({ label, toggleClass, items }) {
+    const list = el(
+      "div",
+      { class: "chip-menu-list", role: "menu", hidden: true },
+      items.map((item) =>
         el(
-          "select",
-          {
-            class: "chip-select" + (isActive ? " is-active" : ""),
-            "aria-label": "他のエージェント",
-            onchange: (e) => pick(e.target.value || "all"),
-          },
-          [
-            el("option", { value: "", text: "他のエージェント" }),
-            ...others.map((a) => el("option", { value: a, text: label(a), selected: state.agent === a })),
-          ]
+          "button",
+          { type: "button", class: item.active ? "is-active" : "", role: "menuitem", onclick: item.onPick },
+          [item.label, item.count ? el("span", { class: "chip-count", text: item.count }) : null]
         )
-      );
-    }
-    $("agent-chips").replaceChildren(...chips);
+      )
+    );
+    const toggle = el("button", {
+      type: "button",
+      class: `chip chip-menu-toggle ${toggleClass}`,
+      "aria-haspopup": "menu",
+      "aria-expanded": "false",
+      text: label,
+      onclick: () => {
+        const opening = list.hidden;
+        closeMenus();
+        if (!opening) return;
+        list.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+        // 右端で画面からはみ出すときは、ボタンの右端に揃えて開く
+        list.classList.toggle("align-right", list.getBoundingClientRect().right > document.documentElement.clientWidth - 8);
+      },
+    });
+    return el("div", { class: "chip-menu" }, [toggle, list]);
+  }
+
+  function closeMenus() {
+    document.querySelectorAll(".chip-menu-list").forEach((list) => (list.hidden = true));
+    document.querySelectorAll(".chip-menu-toggle").forEach((b) => b.setAttribute("aria-expanded", "false"));
   }
 
   // ---------- ミニマップ ----------
@@ -202,7 +248,7 @@
         el("button", {
           type: "button",
           class: "pin" + (selected ? " is-selected" : ""),
-          style: smokeStyle(s.target, s.agent, map),
+          style: smokeStyle(s.target, s.agent, map, state.agent === "all" ? undefined : state.agent),
           "aria-label": `${i + 1}. ${s.title}`,
           text: String(i + 1),
           onclick: () => selectSmoke(s.id, true),
@@ -240,9 +286,8 @@
   function renderCards() {
     const smokes = filteredSmokes();
     const map = currentMap();
-    $("result-count").textContent = map
-      ? `${map.nameJa} / ${LABELS.side[state.side]}：${smokes.length}件`
-      : "";
+    const sideLabel = state.side === "all" ? "両方" : LABELS.side[state.side];
+    $("result-count").textContent = map ? `${map.nameJa} / ${sideLabel}：${smokes.length}件` : "";
 
     if (smokes.length === 0) {
       $("cards").replaceChildren(
@@ -258,9 +303,11 @@
     const oldPatch = s.patch && state.pool.patch && s.patch !== state.pool.patch;
 
     const badges = el("div", { class: "badges" }, [
+      // 両方を表示しているときは、どちらの定点か分かるようにする
+      state.side === "all" ? el("span", { class: "badge badge-agent", text: LABELS.side[s.side] }) : null,
       el("span", { class: "badge", text: s.site === "Mid" ? "ミッド" : `${s.site}サイト` }),
       el("span", { class: "badge", text: LABELS.purpose[s.purpose] || s.purpose }),
-      el("span", { class: "badge badge-agent", text: LABELS.agent[s.agent] || s.agent }),
+      el("span", { class: "badge badge-agent", text: agentLabel(s.agent) }),
       oldPatch ? el("span", { class: "badge badge-warn", text: `パッチ ${s.patch} の情報` }) : null,
     ]);
 

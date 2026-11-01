@@ -42,5 +42,27 @@
     "video": null,
     "source": "",
     "patch": "13.08"
+  },
+  {
+    "id": "abyss-attack-a-261101104157",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aブリッジに射線を絞る",
+    "target": {
+      "x": 0.412,
+      "y": 0.185
+    },
+    "stand": {
+      "x": 0.629,
+      "y": 0.228
+    },
+    "comment": "",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
   }
 ]

@@ -70,6 +70,9 @@
     </section>
 
     <section class="form">
+      <label class="save-only" hidden>編集する定点（選んでいるマップの登録済みから選べます）
+        <select id="edit-target"></select>
+      </label>
       <div class="row">
         <label>エージェント
           <select id="agent"></select>
@@ -114,7 +117,7 @@
       <button type="button" id="copy" class="primary copy-only">コピーする</button>
       <p class="hint copy-only">smokes.json の最後の「}」の後ろに「,」を付けて貼り付けてください（全体は [ ] で囲まれた配列です）。</p>
       <button type="button" id="save-smoke" class="primary save-only" hidden disabled>定点を保存する</button>
-      <p class="hint save-only" hidden>data/smokes.json の最後に追加します。保存すると入力欄は空に戻ります。</p>
+      <p class="hint save-only" hidden>data/smokes.json の最後に追加します。編集中は、選んだ定点を上書きします。保存すると入力欄は空に戻ります。</p>
     </section>
   </main>
 

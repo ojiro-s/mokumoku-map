@@ -13,6 +13,7 @@
     target: null,
     stand: null,
     canSave: false, // scripts/serve.py で開いていて直接保存できるか
+    editingId: null, // 編集中の定点の id（新規登録のときは null）
     changedNotes: new Set(), // コツを書き換えて未保存のマップ
   };
 
@@ -61,11 +62,16 @@
 
     $("minimap").addEventListener("click", onMapClick);
     $("map").addEventListener("change", () => {
+      const wasEditing = state.editingId !== null;
+      state.editingId = null;
       state.target = state.stand = null;
       renderMap();
       showMapNote();
+      renderEditList();
+      if (wasEditing) clearSmokeForm();
       update();
     });
+    $("edit-target").addEventListener("change", (e) => startEditing(e.target.value));
     $("map-note").addEventListener("input", () => {
       state.notes[$("map").value] = $("map-note").value;
       state.changedNotes.add($("map").value);
@@ -89,6 +95,7 @@
     await setupSaving();
     renderMap();
     showMapNote();
+    renderEditList();
     update();
   }
 
@@ -119,11 +126,13 @@
   }
 
   // 結果を2秒だけボタンに出して元に戻す
-  function flash(button, text) {
-    const label = button.dataset.label || (button.dataset.label = button.textContent);
+  function flash(button, text, idleLabel) {
     button.textContent = text;
-    setTimeout(() => (button.textContent = label), 2000);
+    setTimeout(() => (button.textContent = idleLabel()), 2000);
   }
+
+  const notesButtonLabel = () => "コツを保存する";
+  const smokeButtonLabel = () => (state.editingId ? "定点を更新する" : "定点を保存する");
 
   async function saveNotes() {
     const changes = Object.fromEntries([...state.changedNotes].map((slug) => [slug, state.notes[slug] || ""]));
@@ -131,22 +140,66 @@
       await postJson("api/notes", { notes: changes });
       state.changedNotes.clear();
       updateNotesOutput();
-      flash($("save-notes"), "保存しました");
+      flash($("save-notes"), "保存しました", notesButtonLabel);
     } catch (e) {
-      flash($("save-notes"), e.message);
+      flash($("save-notes"), e.message, notesButtonLabel);
     }
   }
 
   async function saveSmoke() {
     const entry = JSON.parse($("output").value);
+    const editing = state.editingId !== null;
     try {
-      await postJson("api/smokes", entry);
-      state.smokes.push(entry);
+      await postJson(editing ? "api/smokes/update" : "api/smokes", entry);
+      if (editing) state.smokes[state.smokes.findIndex((s) => s.id === entry.id)] = entry;
+      else state.smokes.push(entry);
+      state.editingId = null;
       clearSmokeForm();
-      flash($("save-smoke"), "保存しました");
+      renderEditList();
+      flash($("save-smoke"), editing ? "更新しました" : "保存しました", smokeButtonLabel);
     } catch (e) {
-      flash($("save-smoke"), e.message);
+      flash($("save-smoke"), e.message, smokeButtonLabel);
     }
+  }
+
+  // 編集できる定点の一覧（選んでいるマップの分だけ）
+  function renderEditList() {
+    const list = state.smokes.filter((s) => s.map === $("map").value);
+    $("edit-target").replaceChildren(
+      el("option", { value: "", text: "新規登録" }),
+      ...list.map((s) =>
+        el("option", {
+          value: s.id,
+          text: `${s.title}（${LABELS.side[s.side] || s.side}・${agentLabel(s.agent)}）`,
+          selected: s.id === state.editingId,
+        })
+      )
+    );
+  }
+
+  // 登録済みの定点を入力欄へ読み込む。空の値が来たら新規登録に戻す
+  function startEditing(id) {
+    const smoke = state.smokes.find((s) => s.id === id);
+    state.editingId = smoke ? smoke.id : null;
+    if (!smoke) {
+      clearSmokeForm();
+      return;
+    }
+    state.target = smoke.target;
+    state.stand = smoke.stand;
+    $("agent").value = smoke.agent;
+    $("side").value = smoke.side;
+    $("purpose").value = smoke.purpose;
+    $("title").value = smoke.title;
+    $("comment").value = smoke.comment || "";
+    $("youtube").value = smoke.video ? `https://youtu.be/${smoke.video.youtubeId}?t=${smoke.video.start || 0}` : "";
+    $("start").value = smoke.video?.start || 0;
+    $("images").value = (smoke.images || []).join(", ");
+    $("source").value = smoke.source || "";
+    $("patch").value = smoke.patch || "";
+    renderMap();
+    $("site").value = smoke.site;
+    update();
   }
 
   // 続けて登録しやすいよう、マップなどの選択は残して入力だけ空にする
@@ -185,8 +238,6 @@
       y: round((e.clientY - rect.top) / rect.height),
     };
     state[state.mode] = p;
-    // 配置位置を決めたら、次は立ち位置を入力しやすいように自動で切り替える
-    if (state.mode === "target") document.querySelector('[data-mode="stand"]').click();
     renderMap();
     update();
   }
@@ -205,9 +256,12 @@
     $("minimap-img").src = BASE + map.minimap;
     $("minimap-img").alt = `${map.nameJa}のミニマップ`;
 
+    // 選択肢を作り直しても、選んでいるサイトは残す
+    const site = $("site").value;
     $("site").replaceChildren(
       ...[...map.sites, "Mid"].map((s) => el("option", { value: s, text: s === "Mid" ? "ミッド" : `${s}サイト` }))
     );
+    if ([...$("site").options].some((o) => o.value === site)) $("site").value = site;
 
     $("minimap-callouts").replaceChildren(
       ...($("show-callouts").checked ? map.callouts : []).map((c) =>
@@ -216,7 +270,7 @@
     );
 
     const pins = state.smokes
-      .filter((s) => s.map === map.slug)
+      .filter((s) => s.map === map.slug && s.id !== state.editingId)
       .map((s) => el("span", { class: "pin ghost", style: smokeStyle(s.target, s.agent, map), title: s.title, text: "・" }));
     if (state.target) {
       pins.push(el("span", { class: "pin is-selected", style: smokeStyle(state.target, $("agent").value, map), text: "★" }));
@@ -263,7 +317,7 @@
       source: $("source").value.trim(),
       patch: $("patch").value.trim(),
     };
-    entry.id = makeId(entry);
+    entry.id = state.editingId || makeId(entry);
 
     const missing = [];
     if (!entry.target) missing.push("配置位置（ミニマップをクリック）");
@@ -273,6 +327,7 @@
       : JSON.stringify(entry, null, 2);
     $("copy").disabled = missing.length > 0;
     $("save-smoke").disabled = missing.length > 0;
+    $("save-smoke").textContent = smokeButtonLabel();
   }
 
   async function copyText(source, button) {

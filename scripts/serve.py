@@ -72,7 +72,21 @@ def save_smoke(body):
     return {"count": len(smokes)}
 
 
-ROUTES = {"/api/notes": save_notes, "/api/smokes": save_smoke}
+def update_smoke(body):
+    """同じ id の定点を、一覧の位置を保ったまま置き換える"""
+    missing = [k for k in SMOKE_REQUIRED if not body.get(k)]
+    if missing:
+        raise BadRequest(400, f"足りない項目があります: {', '.join(missing)}")
+    smokes = json.loads(SMOKES_PATH.read_text(encoding="utf-8"))
+    for i, smoke in enumerate(smokes):
+        if smoke.get("id") == body["id"]:
+            smokes[i] = body
+            write_json(SMOKES_PATH, smokes)
+            return {"count": len(smokes)}
+    raise BadRequest(404, f"この id の定点がありません: {body['id']}")
+
+
+ROUTES = {"/api/notes": save_notes, "/api/smokes": save_smoke, "/api/smokes/update": update_smoke}
 
 
 class Handler(SimpleHTTPRequestHandler):

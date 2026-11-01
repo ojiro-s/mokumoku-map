@@ -34,19 +34,30 @@ button { font: inherit; color: inherit; cursor: pointer; }
   top: 0;
   z-index: 10;
   display: flex;
+  flex-wrap: wrap; /* 1行に収まらなければ右側の表示を2行目へ回す */
   align-items: baseline;
   justify-content: space-between;
-  gap: 8px;
+  gap: 2px 8px;
   padding: 10px 16px;
   background: rgba(15, 20, 25, 0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line);
 }
-.topbar h1 { margin: 0; font-size: 1.05rem; }
-.act-label { color: var(--muted); font-size: 0.75rem; text-align: right; }
+.topbar h1 { margin: 0; font-size: 1.05rem; white-space: nowrap; }
+.act-label {
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 .layout {
   display: grid;
+  /* minmax(0, …)：マップ選択行の長さで列が広がらないようにする */
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   padding: 12px 16px 24px;
   max-width: 1200px;
@@ -54,7 +65,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 /* ---------- 絞り込み ---------- */
-.controls { display: grid; gap: 10px; }
+.controls { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
 
 .chips { display: flex; gap: 8px; }
 .chips.wrap { flex-wrap: wrap; }
@@ -266,8 +277,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .setup-message { max-width: 640px; margin: 24px auto; padding: 16px; }
 .setup-message code { background: var(--panel-2); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
 
-.footer { padding: 16px; color: var(--muted); font-size: 0.75rem; text-align: center; border-top: 1px solid var(--line); }
-.footer p { margin: 0; }
+.footer { padding: 16px; color: var(--muted); font-size: 0.75rem; border-top: 1px solid var(--line); }
+.footer p { max-width: 40rem; margin: 0 auto; text-wrap: pretty; }
+.footer p + p { margin-top: 8px; }
 
 /* ---------- 広い画面（PC・タブレット横） ---------- */
 @media (min-width: 900px) {
@@ -284,4 +296,5 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .chips.scroll-x { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; }
   .segmented { max-width: 320px; }
   .callout { font-size: 0.72rem; }
+  .footer { text-align: center; }
 }

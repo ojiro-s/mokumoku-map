@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T18:51:56+00:00",
+  "generatedAt": "2026-11-01T08:42:59+00:00",
   "source": "valorant-api.com",
   "maps": [
     {
@@ -12,6 +12,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/abyss.png",
+      "meterRatio": 0.0081,
       "callouts": [
         {
           "nameEn": "A Bridge",
@@ -163,6 +164,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/ascent.png",
+      "meterRatio": 0.007,
       "callouts": [
         {
           "nameEn": "A Tree",
@@ -308,6 +310,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/bind.png",
+      "meterRatio": 0.0059,
       "callouts": [
         {
           "nameEn": "A Exit",
@@ -465,6 +468,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/breeze.png",
+      "meterRatio": 0.007,
       "callouts": [
         {
           "nameEn": "Mid Hall",
@@ -616,6 +620,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/corrode.png",
+      "meterRatio": 0.007,
       "callouts": [
         {
           "nameEn": "A Crane",
@@ -755,6 +760,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/fracture.png",
+      "meterRatio": 0.0078,
       "callouts": [
         {
           "nameEn": "Attacker Side Bridge",
@@ -901,6 +907,7 @@
         "C"
       ],
       "minimap": "assets/minimaps/haven.png",
+      "meterRatio": 0.0075,
       "callouts": [
         {
           "nameEn": "A Garden",
@@ -1040,6 +1047,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/icebox.png",
+      "meterRatio": 0.0072,
       "callouts": [
         {
           "nameEn": "B Garage",
@@ -1204,6 +1212,7 @@
         "C"
       ],
       "minimap": "assets/minimaps/lotus.png",
+      "meterRatio": 0.0072,
       "callouts": [
         {
           "nameEn": "A Top",
@@ -1385,6 +1394,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/pearl.png",
+      "meterRatio": 0.0078,
       "callouts": [
         {
           "nameEn": "B Hall",
@@ -1554,6 +1564,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/split.png",
+      "meterRatio": 0.0078,
       "callouts": [
         {
           "nameEn": "A Back",
@@ -1711,6 +1722,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/summit.png",
+      "meterRatio": 0.0075,
       "callouts": [
         {
           "nameEn": "Mid Bottom",
@@ -1868,6 +1880,7 @@
         "B"
       ],
       "minimap": "assets/minimaps/sunset.png",
+      "meterRatio": 0.0078,
       "callouts": [
         {
           "nameEn": "B Boba",

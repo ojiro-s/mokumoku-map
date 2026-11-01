@@ -1,6 +1,6 @@
 // 登録補助ツール：ミニマップをクリックして座標を取り、smokes.json に貼る1件分を作る
 (function () {
-  const { LABELS, loadAll, parseYouTube, el } = window.VSN;
+  const { LABELS, MAIN_AGENTS, smokeStyle, loadAll, parseYouTube, el } = window.VSN;
   const $ = (id) => document.getElementById(id);
   const BASE = "../"; // tools/ から見たプロジェクトのルート
 
@@ -26,6 +26,16 @@
     $("map").replaceChildren(
       ...sorted.map((m) => el("option", { value: m.slug, text: m.nameJa + (poolSet.has(m.slug) ? "" : "（プール外）") }))
     );
+    // エージェントの選択肢（普段使う分を先頭に、他はグループにまとめる）
+    const agentOption = (a) => el("option", { value: a, text: LABELS.agent[a] });
+    $("agent").replaceChildren(
+      ...MAIN_AGENTS.map(agentOption),
+      el(
+        "optgroup",
+        { label: "その他" },
+        Object.keys(LABELS.agent).filter((a) => !MAIN_AGENTS.includes(a)).map(agentOption)
+      )
+    );
     $("purpose").replaceChildren(
       ...Object.entries(LABELS.purpose).map(([k, v]) => el("option", { value: k, text: v }))
     );
@@ -45,6 +55,7 @@
       update();
     });
     $("show-callouts").addEventListener("change", renderMap);
+    $("agent").addEventListener("change", renderMap); // エージェントでスモークの大きさが変わる
     $("youtube").addEventListener("input", () => {
       const yt = parseYouTube($("youtube").value);
       if (yt) $("start").value = yt.start;
@@ -102,8 +113,10 @@
 
     const pins = state.smokes
       .filter((s) => s.map === map.slug)
-      .map((s) => el("span", { class: "pin ghost", style: pos(s.target), title: s.title, text: "・" }));
-    if (state.target) pins.push(el("span", { class: "pin is-selected", style: pos(state.target), text: "★" }));
+      .map((s) => el("span", { class: "pin ghost", style: smokeStyle(s.target, s.agent, map), title: s.title, text: "・" }));
+    if (state.target) {
+      pins.push(el("span", { class: "pin is-selected", style: smokeStyle(state.target, $("agent").value, map), text: "★" }));
+    }
     if (state.stand) pins.push(el("span", { class: "stand", style: pos(state.stand) }));
     $("minimap-pins").replaceChildren(...pins);
 

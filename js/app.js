@@ -1,6 +1,6 @@
 // 閲覧サイトの本体
 (function () {
-  const { LABELS, loadAll, formatTime, store, el } = window.VSN;
+  const { LABELS, MAIN_AGENTS, smokeStyle, loadAll, formatTime, store, el } = window.VSN;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -143,16 +143,35 @@
       state.agent = "all";
       return;
     }
-    const items = ["all", ...agents];
-    $("agent-chips").replaceChildren(
-      ...items.map((a) =>
-        chip(a === "all" ? "全員" : LABELS.agent[a] || a, state.agent === a, () => {
-          state.agent = a;
-          state.selected = null;
-          renderAll();
-        })
-      )
-    );
+    const pick = (a) => {
+      state.agent = a;
+      state.selected = null;
+      renderAll();
+    };
+    const label = (a) => LABELS.agent[a] || a;
+    const items = ["all", ...agents.filter((a) => MAIN_AGENTS.includes(a))];
+    const others = agents.filter((a) => !MAIN_AGENTS.includes(a));
+    const chips = items.map((a) => chip(a === "all" ? "全員" : label(a), state.agent === a, () => pick(a)));
+
+    // 普段使わないエージェントは、登録があるときだけプルダウン1つにまとめる
+    if (others.length) {
+      const isActive = others.includes(state.agent);
+      chips.push(
+        el(
+          "select",
+          {
+            class: "chip-select" + (isActive ? " is-active" : ""),
+            "aria-label": "他のエージェント",
+            onchange: (e) => pick(e.target.value || "all"),
+          },
+          [
+            el("option", { value: "", text: "他のエージェント" }),
+            ...others.map((a) => el("option", { value: a, text: label(a), selected: state.agent === a })),
+          ]
+        )
+      );
+    }
+    $("agent-chips").replaceChildren(...chips);
   }
 
   // ---------- ミニマップ ----------
@@ -183,7 +202,7 @@
         el("button", {
           type: "button",
           class: "pin" + (selected ? " is-selected" : ""),
-          style: pos(s.target),
+          style: smokeStyle(s.target, s.agent, map),
           "aria-label": `${i + 1}. ${s.title}`,
           text: String(i + 1),
           onclick: () => selectSmoke(s.id, true),

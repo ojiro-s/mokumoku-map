@@ -16,6 +16,9 @@
 
 * { box-sizing: border-box; }
 
+/* display を指定した要素でも hidden 属性で確実に隠す */
+[hidden] { display: none !important; }
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -92,6 +95,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 .chip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.chip-select {
+  min-height: var(--tap);
+  max-width: 100%;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+}
+.chip-select.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
 .chip-count {
   font-size: 0.75rem;
   min-width: 1.4em;
@@ -138,6 +152,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--line);
+  container-type: inline-size; /* ピンの大きさをマップの表示幅に合わせるため */
 }
 .minimap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .minimap-layer, .minimap-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -152,28 +167,45 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .pin {
+  /* 直径は smokeStyle() が実寸から計算して渡す。下の 6cqw は半径が未登録のエージェント用 */
+  width: var(--pin-size, 6cqw);
+  height: var(--pin-size, 6cqw);
+  margin: calc(var(--pin-size, 6cqw) / -2) 0 0 calc(var(--pin-size, 6cqw) / -2);
   position: absolute;
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border-radius: 50%;
-  border: 2px solid #fff;
-  background: var(--accent);
+  border: 1.5px solid #fff;
+  background: #ff465566; /* 塗りだけ透かして下の地形を見えるようにする */
   color: #fff;
   font-weight: 800;
-  font-size: 0.9rem;
-  box-shadow: 0 2px 6px #0008;
-  /* 見た目は34pxでもタップ判定は広めにとる */
+  font-size: max(10px, 2.8cqw); /* 円が小さくても番号は読める大きさを保つ */
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px #000;
   outline-offset: 2px;
 }
-.pin::after { content: ""; position: absolute; inset: -6px; }
-.pin.is-selected { transform: scale(1.2); box-shadow: 0 0 0 6px var(--accent-soft), 0 2px 6px #0008; z-index: 2; }
+/* 見た目が小さくてもタップ判定は44px確保する */
+.pin::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--tap));
+  height: max(100%, var(--tap));
+  transform: translate(-50%, -50%);
+}
+/* 円の大きさは実寸なので、選択中も拡大せず色で区別する */
+.pin.is-selected { background: #ff4655aa; box-shadow: 0 0 0 3px var(--accent-soft); z-index: 2; }
 
 .stand {
+  --stand-size: max(8px, 2.4cqw);
   position: absolute;
-  width: 16px;
-  height: 16px;
-  margin: -8px 0 0 -8px;
+  width: var(--stand-size);
+  height: var(--stand-size);
+  margin: calc(var(--stand-size) / -2) 0 0 calc(var(--stand-size) / -2);
   border-radius: 50%;
   background: var(--stand);
   border: 2px solid #fff;

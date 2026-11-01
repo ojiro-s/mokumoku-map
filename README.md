@@ -54,7 +54,7 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
 |---|---|---|
 | id | 重複しない名前（ツールが自動で付けます） | `bind-attack-a-2611011234` |
 | map | マップ（maps.json の slug） | `bind` |
-| agent | エージェント | `Omen` / `Clove` |
+| agent | エージェント（`js/common.js` の `LABELS.agent` にある名前） | `Omen` / `Clove` / `Viper` など |
 | side | 攻め・守り | `attack` / `defense` |
 | site | サイト | `A` / `B` / `C` / `Mid` |
 | purpose | 目的 | `entry` / `retake` / `postplant` / `oneway` / `other` |
@@ -69,6 +69,10 @@ scripts/fetch_minimaps.py  ミニマップ取得スクリプト
 
 `patch` が `data/pool.json` のパッチと違うと、カードに「パッチ ○○ の情報」と表示されます。
 マップ改修で位置が変わっていないか確認する目安にしてください。
+
+ピンの円はスモークの実寸です。半径は `js/common.js` の `SMOKE_RADIUS_M`、マップごとの縮尺は `data/maps.json` の `meterRatio`（`scripts/fetch_minimaps.py` が生成）から計算します。
+パッチで半径が変わったら `SMOKE_RADIUS_M` を直してください。エージェントを追加するときは、ここに半径を、`LABELS.agent` に表示名を足します。
+普段使うエージェントは `MAIN_AGENTS` で指定します。それ以外は登録補助ツールでは「その他」にまとまり、閲覧ページでは登録があるときだけプルダウンに出ます。
 
 ## アクトが変わったら
 

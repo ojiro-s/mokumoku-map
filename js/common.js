@@ -9,8 +9,43 @@ window.VSN = (function () {
       oneway: "ワンウェイ",
       other: "その他",
     },
-    agent: { Omen: "オーメン", Clove: "クローブ" },
+    agent: {
+      Omen: "オーメン",
+      Clove: "クローヴ",
+      Astra: "アストラ",
+      Brimstone: "ブリムストーン",
+      Harbor: "ハーバー",
+      Miks: "ミクス",
+      Viper: "ヴァイパー",
+      Jett: "ジェット",
+      Cypher: "サイファー",
+    },
   };
+
+  // 普段使うエージェント。これ以外はプルダウンにまとめて幅を取らないようにする
+  const MAIN_AGENTS = ["Omen", "Clove"];
+
+  // スモークの半径（m）。パッチで変わったらここを直す
+  // 出典は wiki.playvalorant.com の各能力ページ。Miks の値は同ページでも推定値の扱い
+  const SMOKE_RADIUS_M = {
+    Omen: 4.1, // Dark Cover
+    Clove: 4, // Ruse
+    Astra: 4.75, // Nebula
+    Brimstone: 4.15, // Sky Smoke
+    Harbor: 4.6, // Cove
+    Miks: 4.72, // Waveform
+    Viper: 4.5, // Poison Cloud
+    Jett: 3.35, // Cloudburst
+    Cypher: 3.72, // Cyber Cage（スモークではなく円柱の半径）
+  };
+
+  // ピンの位置と、実寸どおりの直径（マップ幅に対する比率）を style 文字列にする
+  function smokeStyle(point, agent, map) {
+    const place = `left:${point.x * 100}%;top:${point.y * 100}%`;
+    const radius = SMOKE_RADIUS_M[agent];
+    if (!radius || !map.meterRatio) return place;
+    return `${place};--pin-size:${radius * 2 * map.meterRatio * 100}cqw`;
+  }
 
   // base: index.html から見たデータの場所（ツールからは "../"）
   async function loadJson(path) {
@@ -98,5 +133,5 @@ window.VSN = (function () {
     return node;
   }
 
-  return { LABELS, loadJson, loadAll, parseYouTube, parseTime, formatTime, store, el };
+  return { LABELS, MAIN_AGENTS, smokeStyle, loadJson, loadAll, parseYouTube, parseTime, formatTime, store, el };
 })();

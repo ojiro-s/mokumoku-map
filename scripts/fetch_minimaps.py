@@ -63,6 +63,11 @@ def to_normalized(location, m, swap):
     return x, y
 
 
+def meter_ratio(m):
+    """ミニマップ画像の幅を1としたときの1mの長さ（ゲーム内座標は100単位が1m）"""
+    return round(abs(m["xMultiplier"]) * 100, 6)
+
+
 def choose_swap(m):
     """
     座標変換で x と y を入れ替えるかどうかを自動判定する。
@@ -132,6 +137,7 @@ def main():
             "nameJa": mj.get("displayName") or m["displayName"],
             "sites": parse_sites(m["tacticalDescription"]),
             "minimap": f"assets/minimaps/{slug}.png",
+            "meterRatio": meter_ratio(m),
             "callouts": build_callouts(m, mj, swap),
         })
         warn = "" if ratio >= 0.8 else "  ※コールアウト位置がずれている可能性があります"

@@ -76,5 +76,542 @@
     "video": null,
     "source": "",
     "patch": "13.08"
+  },
+  {
+    "id": "bind-attack-a-261112040613",
+    "map": "bind",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトを半分に区切るスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.724,
+          "y": 0.321
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.769,
+          "y": 0.337
+        },
+        "stand": null
+      }
+    ],
+    "comment": "サイトを半分に区切り、ランプやシャワーのエリア取りを優先するスモーク。設置するプレイヤーが抜かれないように、右側のスモークは後ろに下げず手前に膨らむように焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 44
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "bind-attack-a-261112040752",
+    "map": "bind",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの奥目に焚く強気のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.772,
+          "y": 0.245
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.619,
+          "y": 0.278
+        },
+        "stand": null
+      }
+    ],
+    "comment": "味方にレイズのショーストッパーなど強いアルティメットがあり、バックサイトまで取り切れる時に使用する。ポジションを広げて相手のリテイクを送らせる狙いがある。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 192
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "bind-attack-b-261112041014",
+    "map": "bind",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの中を孤立させるスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.187,
+          "y": 0.326
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.34,
+          "y": 0.206
+        },
+        "stand": null
+      }
+    ],
+    "comment": "エルボーやサイト内の敵が出られないようにする。スモークから抜けて勝負されないよう、手前の壁とラインを揃えてギリギリに焚く。Bロングのガーデン付近までエリアを取れてから焚き始める。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 227
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "bind-attack-b-261112041327",
+    "map": "bind",
+    "agent": "Brimstone",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bウィンドウが取れていない時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.34,
+          "y": 0.205
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.313,
+          "y": 0.383
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.189,
+          "y": 0.326
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bロングは取れたがウィンドウ（フッカー）が取れていない時、フッカーからの射線を防いでロングから5人で入る。スモークが3つある場合に有効。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 330
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "bind-attack-b-261112041339",
+    "map": "bind",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "エルボーまでエリアを広げるスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.339,
+          "y": 0.204
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.314,
+          "y": 0.384
+        },
+        "stand": null
+      }
+    ],
+    "comment": "フッカーが取れておらず敵に囲まれるのを防ぐため、エルボーにはスモークを焚かず、自分たちでエルボーまでエリアを取りに行く。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 389
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "haven-attack-a-261112041532",
+    "map": "haven",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.305,
+          "y": 0.127
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.299,
+          "y": 0.271
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aショートを味方が取れていて、Aロングの瓦礫の裏までクリアが終わり、味方が3人ほどいるタイミングで焚く。スモークが1個しかない場合はヘブンを優先する。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 454
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "haven-attack-b-261112041644",
+    "map": "haven",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.393,
+          "y": 0.395
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.363,
+          "y": 0.604
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ミッドの階段付近まで来たら焚く。スモークが1個しかない場合は、先に射線が通るAリンク側を優先して焚き、Cリンク側はケアしながら進む。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 559
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "haven-attack-b-261112041811",
+    "map": "haven",
+    "agent": "Omen",
+    "side": "attack",
+    "site": "B",
+    "purpose": "oneway",
+    "title": "Cリンクへのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.402,
+          "y": 0.525
+        },
+        "stand": null
+      }
+    ],
+    "comment": "周りと差をつけたい時のおしゃれなスモーク。シュラウドステップで上に入り、上から一方的にキルを狙う。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 632
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "haven-attack-c-261112041927",
+    "map": "haven",
+    "agent": "All",
+    "side": "attack",
+    "site": "C",
+    "purpose": "entry",
+    "title": "Cサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.469,
+          "y": 0.72
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.291,
+          "y": 0.742
+        },
+        "stand": null
+      }
+    ],
+    "comment": "サイトに入る段階で射線を消すため、壁に沿ってサイト側に膨らませるように焚く。スモークが1個しかない時は、最初に射線が通るガレージ側を優先する。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 669
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "split-attack-a-261112042326",
+    "map": "split",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.162,
+          "y": 0.215
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.304,
+          "y": 0.292
+        },
+        "stand": null
+      }
+    ],
+    "comment": "スクリーン側は入り口を綺麗に塞ぐように焚き、ヘブン側は上からの射線を潰すために手前に膨らませて焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 788
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "split-attack-b-261112042701",
+    "map": "split",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.402,
+          "y": 0.714
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.259,
+          "y": 0.808
+        },
+        "stand": null
+      }
+    ],
+    "comment": "左の円が壁にぶつかった瞬間に少し切れるので、切れた瞬間に焚くと隙間なく綺麗に焚ける。スモークが1個しかない時はヘブンを優先する。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 997
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "split-attack-b-261112043019",
+    "map": "split",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "ミッドからBへ行く時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.411,
+          "y": 0.519
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.324,
+          "y": 0.662
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ベントにスモークを焚いている想定。メールボックス付近まで来たらヘブンに焚き、スポーン側はケアしながら入る。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 1120
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "pearl-attack-a-261112043307",
+    "map": "pearl",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aメインから攻める時の基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.77,
+          "y": 0.354
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.762,
+          "y": 0.258
+        },
+        "stand": null
+      }
+    ],
+    "comment": "壁に張り付いてのピークをさせないため、道のど真ん中ではなく少し左に寄せて焚く。フラワーは角に焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 1179
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "pearl-attack-a-261112043440",
+    "map": "pearl",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "アート側から挟む時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.629,
+          "y": 0.424
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.762,
+          "y": 0.258
+        },
+        "stand": null
+      }
+    ],
+    "comment": "リンク側が取れているため、コネクターには焚かずフラワーとシークレットに焚いて、バックサイトを触らずに設置する。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 1303
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "pearl-attack-b-261112044328",
+    "map": "pearl",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bヘブン+Bトンネルのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.285,
+          "y": 0.35
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.28,
+          "y": 0.399
+        },
+        "stand": {
+          "x": 0.127,
+          "y": 0.515
+        }
+      }
+    ],
+    "comment": "下に焚くのではなく、上に1個分ずらして焚くことで、敵の足だけが見えるワンウェイスモークになる。\nヘブンは出っ張って焚いても良い。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 1377
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "pearl-attack-b-261112044520",
+    "map": "pearl",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bリンクから挟む時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.453,
+          "y": 0.434
+        },
+        "stand": {
+          "x": 0.483,
+          "y": 0.559
+        }
+      },
+      {
+        "target": {
+          "x": 0.28,
+          "y": 0.4
+        },
+        "stand": {
+          "x": 0.286,
+          "y": 0.499
+        }
+      }
+    ],
+    "comment": "ドア前ぐらいのタイミングでコネクター側に焚き、サイト手前に着いたらヘブンからの射線を防ぐためにヘブンに焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "IscQn5YAcn8",
+      "start": 1564
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
   }
 ]

@@ -246,7 +246,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   line-height: 1.5;
   white-space: nowrap;
   color: #fff;
-  background: #000a;
+  background: #0006; /* 下の地形が透けるよう薄めにし、文字は影で読めるようにする */
+  text-shadow: 0 1px 2px #000;
   border-radius: 4px;
   pointer-events: none !important;
 }

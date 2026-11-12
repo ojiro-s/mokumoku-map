@@ -253,31 +253,34 @@
       )
     );
 
-    // ピン（番号付き）と、選択中なら立ち位置との線
+    // ピン（番号付き）と、選択中なら立ち位置との線。1件の定点の円はすべて同じ番号で描く
     const smokes = filteredSmokes();
     const pins = [];
     const lines = [];
     smokes.forEach((s, i) => {
       const selected = s.id === state.selected;
-      pins.push(
-        el("button", {
-          type: "button",
-          class: "pin" + (selected ? " is-selected" : ""),
-          style: smokeStyle(s.target, s.agent, map, state.agent === "all" ? undefined : state.agent),
-          "aria-label": `${i + 1}. ${s.title}`,
-          text: String(i + 1),
-          onclick: () => selectSmoke(s.id, true),
-        })
-      );
-      if (selected && s.stand) {
-        pins.push(el("span", { class: "stand", style: pos(s.stand), "aria-hidden": "true" }));
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", s.stand.x);
-        line.setAttribute("y1", s.stand.y);
-        line.setAttribute("x2", s.target.x);
-        line.setAttribute("y2", s.target.y);
-        lines.push(line);
-      }
+      s.points.forEach((p, j) => {
+        const nth = s.points.length > 1 ? `（${j + 1}/${s.points.length}）` : "";
+        pins.push(
+          el("button", {
+            type: "button",
+            class: "pin" + (selected ? " is-selected" : ""),
+            style: smokeStyle(p.target, s.agent, map, state.agent === "all" ? undefined : state.agent),
+            "aria-label": `${i + 1}. ${s.title}${nth}`,
+            text: String(i + 1),
+            onclick: () => selectSmoke(s.id, true),
+          })
+        );
+        if (selected && p.stand) {
+          pins.push(el("span", { class: "stand", style: pos(p.stand), "aria-hidden": "true" }));
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", p.stand.x);
+          line.setAttribute("y1", p.stand.y);
+          line.setAttribute("x2", p.target.x);
+          line.setAttribute("y2", p.target.y);
+          lines.push(line);
+        }
+      });
     });
     $("minimap-pins").replaceChildren(...pins);
     $("minimap-lines").replaceChildren(...lines);

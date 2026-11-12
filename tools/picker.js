@@ -9,9 +9,9 @@
     smokes: [],
     notes: {},
     pool: {},
-    mode: "target",
-    target: null,
-    stand: null,
+    mode: "target", // クリックで設定する位置（target か stand）
+    points: [newPoint()], // スモークの組。同時に焚く定点は2組以上になる
+    active: 0, // クリックで位置を設定する組の番号
     canSave: false, // scripts/serve.py で開いていて直接保存できるか
     editingId: null, // 編集中の定点の id（新規登録のときは null）
     deleteArmedId: null, // 削除ボタンを1回押した定点の id。別の定点に切り替えると押していない状態に戻る
@@ -19,6 +19,10 @@
   };
 
   init();
+
+  function newPoint() {
+    return { target: null, stand: null };
+  }
 
   async function init() {
     try {
@@ -54,18 +58,17 @@
     );
     $("patch").value = state.pool.patch || "";
 
-    document.querySelectorAll("[data-mode]").forEach((b) =>
-      b.addEventListener("click", () => {
-        state.mode = b.dataset.mode;
-        document.querySelectorAll("[data-mode]").forEach((x) => x.classList.toggle("is-active", x === b));
-      })
-    );
+    document.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
+    $("add-point").addEventListener("click", () => {
+      state.points.push(newPoint());
+      selectPoint(state.points.length - 1);
+    });
 
     $("minimap").addEventListener("click", onMapClick);
     $("map").addEventListener("change", () => {
       const wasEditing = state.editingId !== null;
       state.editingId = null;
-      state.target = state.stand = null;
+      resetPoints();
       renderMap();
       showMapNote();
       renderEditList();
@@ -220,8 +223,9 @@
       clearSmokeForm();
       return;
     }
-    state.target = smoke.target;
-    state.stand = smoke.stand;
+    state.points = smoke.points.map((p) => ({ target: p.target, stand: p.stand ?? null }));
+    state.active = 0;
+    setMode("target");
     $("agent").value = smoke.agent;
     $("side").value = smoke.side;
     $("purpose").value = smoke.purpose;
@@ -239,10 +243,9 @@
 
   // 続けて登録しやすいよう、マップなどの選択は残して入力だけ空にする
   function clearSmokeForm() {
-    state.target = state.stand = null;
+    resetPoints();
     ["title", "comment", "youtube", "images", "source"].forEach((id) => ($(id).value = ""));
     $("start").value = 0;
-    document.querySelector('[data-mode="target"]').click();
     renderMap();
     update();
   }
@@ -272,9 +275,61 @@
       x: round((e.clientX - rect.left) / rect.width),
       y: round((e.clientY - rect.top) / rect.height),
     };
-    state[state.mode] = p;
+    state.points[state.active][state.mode] = p;
     renderMap();
     update();
+  }
+
+  function setMode(mode) {
+    state.mode = mode;
+    document.querySelectorAll("[data-mode]").forEach((x) => x.classList.toggle("is-active", x.dataset.mode === mode));
+  }
+
+  function resetPoints() {
+    state.points = [newPoint()];
+    state.active = 0;
+    setMode("target");
+  }
+
+  // 組を選ぶと、まず配置位置から設定できるようにする
+  function selectPoint(index) {
+    state.active = index;
+    setMode("target");
+    renderMap();
+    update();
+  }
+
+  function removePoint(index) {
+    state.points.splice(index, 1);
+    if (state.points.length === 0) state.points.push(newPoint());
+    state.active = Math.min(state.active > index ? state.active - 1 : state.active, state.points.length - 1);
+    renderMap();
+    update();
+  }
+
+  function coordText(p) {
+    return p ? `x=${p.x}, y=${p.y}` : "未設定";
+  }
+
+  function renderPoints() {
+    $("points").replaceChildren(
+      ...state.points.map((p, i) =>
+        el("div", { class: "point-row" + (i === state.active ? " is-active" : ""), onclick: () => selectPoint(i) }, [
+          el("span", { class: "point-name", text: `組${i + 1}` }),
+          el("span", { class: "coord", text: `配置位置: ${coordText(p.target)} / 立ち位置: ${coordText(p.stand)}` }),
+          el("button", {
+            type: "button",
+            class: "chip",
+            text: "組を削除",
+            "aria-label": `組${i + 1}を削除`,
+            onclick: (e) => {
+              e.stopPropagation(); // 行のクリック（組の選択）を起こさない
+              removePoint(i);
+            },
+          }),
+        ])
+      )
+    );
   }
 
   function round(v) {
@@ -306,22 +361,33 @@
 
     const pins = state.smokes
       .filter((s) => s.map === map.slug && s.id !== state.editingId)
-      .map((s) => el("span", { class: "pin ghost", style: smokeStyle(s.target, s.agent, map), title: s.title, text: "・" }));
-    if (state.target) {
-      pins.push(el("span", { class: "pin is-selected", style: smokeStyle(state.target, $("agent").value, map), text: "★" }));
-    }
-    if (state.stand) pins.push(el("span", { class: "stand", style: pos(state.stand) }));
-    $("minimap-pins").replaceChildren(...pins);
-
+      .flatMap((s) =>
+        s.points.map((p) => el("span", { class: "pin ghost", style: smokeStyle(p.target, s.agent, map), title: s.title, text: "・" }))
+      );
+    // 入力中の組は番号で描き、クリックで設定する組だけを強調する
     const lines = [];
-    if (state.target && state.stand) {
-      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      line.setAttribute("x1", state.stand.x);
-      line.setAttribute("y1", state.stand.y);
-      line.setAttribute("x2", state.target.x);
-      line.setAttribute("y2", state.target.y);
-      lines.push(line);
-    }
+    state.points.forEach((p, i) => {
+      const active = i === state.active;
+      if (p.target) {
+        pins.push(
+          el("span", {
+            class: "pin" + (active ? " is-selected" : ""),
+            style: smokeStyle(p.target, $("agent").value, map),
+            text: state.points.length > 1 ? String(i + 1) : "★",
+          })
+        );
+      }
+      if (p.stand) pins.push(el("span", { class: "stand", style: pos(p.stand) }));
+      if (p.target && p.stand) {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", p.stand.x);
+        line.setAttribute("y1", p.stand.y);
+        line.setAttribute("x2", p.target.x);
+        line.setAttribute("y2", p.target.y);
+        lines.push(line);
+      }
+    });
+    $("minimap-pins").replaceChildren(...pins);
     $("minimap-lines").replaceChildren(...lines);
   }
 
@@ -332,8 +398,7 @@
 
   function update() {
     const map = currentMap();
-    $("target-text").textContent = state.target ? `x=${state.target.x}, y=${state.target.y}` : "未設定";
-    $("stand-text").textContent = state.stand ? `x=${state.stand.x}, y=${state.stand.y}` : "未設定";
+    renderPoints();
 
     const yt = parseYouTube($("youtube").value);
     const entry = {
@@ -344,8 +409,7 @@
       site: $("site").value,
       purpose: $("purpose").value,
       title: $("title").value.trim(),
-      target: state.target,
-      stand: state.stand,
+      points: state.points.map((p) => ({ target: p.target, stand: p.stand })),
       comment: $("comment").value.trim(),
       images: $("images").value.split(",").map((s) => s.trim()).filter(Boolean),
       video: yt ? { youtubeId: yt.youtubeId, start: Number($("start").value) || 0 } : null,
@@ -355,7 +419,9 @@
     entry.id = state.editingId || makeId(entry);
 
     const missing = [];
-    if (!entry.target) missing.push("配置位置（ミニマップをクリック）");
+    state.points.forEach((p, i) => {
+      if (!p.target) missing.push(`組${i + 1}の配置位置（ミニマップをクリック）`);
+    });
     if (!entry.title) missing.push("タイトル");
     $("output").value = missing.length
       ? `まだ入力が足りません：${missing.join("、")}`

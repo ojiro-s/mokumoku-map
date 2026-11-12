@@ -23,7 +23,7 @@ NOTES_PATH = ROOT / "data" / "notes.json"
 SMOKES_PATH = ROOT / "data" / "smokes.json"
 MAX_BODY_BYTES = 1024 * 1024
 SLUG = re.compile(r"[a-z0-9-]+")
-SMOKE_REQUIRED = ("id", "map", "agent", "side", "site", "title", "target")
+SMOKE_REQUIRED = ("id", "map", "agent", "side", "site", "title", "points")
 
 
 class BadRequest(Exception):
@@ -59,11 +59,22 @@ def save_notes(body):
     return {"saved": len(changes)}
 
 
-def save_smoke(body):
-    """定点を1件、一覧の最後に追加する"""
+def check_smoke(body):
+    """必須項目と、points の各組に配置位置があるかを確かめる"""
     missing = [k for k in SMOKE_REQUIRED if not body.get(k)]
     if missing:
         raise BadRequest(400, f"足りない項目があります: {', '.join(missing)}")
+    points = body["points"]
+    if not isinstance(points, list):
+        raise BadRequest(400, "points は配列にしてください")
+    for i, point in enumerate(points, 1):
+        if not isinstance(point, dict) or not isinstance(point.get("target"), dict):
+            raise BadRequest(400, f"{i}組目に配置位置（target）がありません")
+
+
+def save_smoke(body):
+    """定点を1件、一覧の最後に追加する"""
+    check_smoke(body)
     smokes = json.loads(SMOKES_PATH.read_text(encoding="utf-8"))
     if any(s.get("id") == body["id"] for s in smokes):
         raise BadRequest(409, f"同じ id が登録済みです: {body['id']}")
@@ -74,9 +85,7 @@ def save_smoke(body):
 
 def update_smoke(body):
     """同じ id の定点を、一覧の位置を保ったまま置き換える"""
-    missing = [k for k in SMOKE_REQUIRED if not body.get(k)]
-    if missing:
-        raise BadRequest(400, f"足りない項目があります: {', '.join(missing)}")
+    check_smoke(body)
     smokes = json.loads(SMOKES_PATH.read_text(encoding="utf-8"))
     for i, smoke in enumerate(smokes):
         if smoke.get("id") == body["id"]:

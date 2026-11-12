@@ -19,6 +19,16 @@
     .form textarea { min-height: 90px; resize: vertical; }
     .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
     .mode { display: flex; gap: 8px; flex-wrap: wrap; }
+    .points { display: grid; gap: 6px; }
+    .point-row {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px; min-height: var(--tap);
+      border: 1px solid var(--line); border-radius: 8px; background: var(--panel); cursor: pointer;
+    }
+    .point-row.is-active { border-color: var(--accent); background: var(--accent-soft); }
+    .point-row .point-name { font-weight: 700; white-space: nowrap; }
+    .point-row .coord { flex: 1; }
+    .point-row .chip { min-height: 32px; }
+    .mode-sep { flex: 1; }
     .coord { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--text); }
     .output { width: 100%; min-height: 260px; font-family: ui-monospace, monospace; font-size: 0.8rem; }
     .notes-form { margin-top: 16px; }
@@ -42,11 +52,16 @@
         <label>マップ
           <select id="map"></select>
         </label>
-        <div class="mode" role="radiogroup" aria-label="クリックで設定する位置">
-          <button type="button" class="chip is-active" data-mode="target">スモークの配置位置</button>
-          <button type="button" class="chip" data-mode="stand">立ち位置（任意）</button>
+        <div id="points" class="points" aria-label="スモークの組"></div>
+        <div class="mode">
+          <button type="button" id="add-point" class="chip">スモークを追加</button>
+          <span class="mode-sep" aria-hidden="true"></span>
+          <div class="mode" role="radiogroup" aria-label="クリックで設定する位置">
+            <button type="button" class="chip is-active" data-mode="target">スモークの配置位置</button>
+            <button type="button" class="chip" data-mode="stand">立ち位置（任意）</button>
+          </div>
         </div>
-        <p class="hint">ミニマップをクリックすると、選んでいる方の位置が入ります。薄いピンは登録済みの定点です。</p>
+        <p class="hint">ミニマップをクリックすると、枠で囲んだ組の、選んでいる方の位置が入ります。同時に焚く定点は「スモークを追加」で組を増やします。薄いピンは登録済みの定点です。</p>
       </div>
       <div id="minimap" class="minimap" style="margin-top:10px">
         <img id="minimap-img" alt="">
@@ -55,7 +70,6 @@
         <div id="minimap-pins" class="minimap-layer"></div>
       </div>
       <label class="toggle"><input type="checkbox" id="show-callouts" checked><span>場所の名前を表示</span></label>
-      <p class="coord">配置位置: <span id="target-text">未設定</span> / 立ち位置: <span id="stand-text">未設定</span></p>
 
       <div class="notes-form form">
         <label>このマップのコツ（定点とは別に、自由に書けます）

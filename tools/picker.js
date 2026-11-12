@@ -599,6 +599,9 @@
     if (draft.start !== undefined && !(Number.isInteger(draft.start) && draft.start >= 0)) {
       warnings.push(`開始秒「${draft.start}」は0以上の整数ではありません`);
     }
+    if (draft.mapStart !== undefined && draft.mapStart !== null && validSeconds(draft.mapStart) === null) {
+      warnings.push(`マップが映る秒数「${draft.mapStart}」は0以上の整数ではありません`);
+    }
     const points = Array.isArray(draft.points) ? draft.points : [];
     if (points.length === 0) warnings.push("points がありません");
     points.forEach((p, i) => {
@@ -612,12 +615,48 @@
     return warnings;
   }
 
+  // 位置を確かめるときに動画を開き直さずに済むよう、マップが映る秒数から埋め込みで再生する。
+  // 一覧を描き直すたびに読み込み直さないよう、同じ動画と秒数なら前の要素を使い回す
+  let draftVideo = { src: null, node: null };
+  function draftVideoBlock(draft) {
+    if (!draft.youtubeId) {
+      return el("li", { class: "draft-video hint", text: "動画の URL を入れずに取り込んだので、動画は出せません。" });
+    }
+    const mapStart = validSeconds(draft.mapStart);
+    const start = mapStart ?? validSeconds(draft.start) ?? 0;
+    // マップが映る場面を音なしですぐ見られるよう、ミュートで自動再生する
+    const src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(draft.youtubeId)}?start=${start}&autoplay=1&mute=1&playsinline=1`;
+    if (draftVideo.src !== src) {
+      draftVideo = {
+        src,
+        node: el("li", { class: "draft-video video" }, [
+          el("iframe", {
+            src,
+            title: "下書きの動画",
+            allow: "autoplay; encrypted-media; picture-in-picture",
+            allowfullscreen: true,
+          }),
+          el("p", {
+            class: "hint",
+            text: mapStart === null ? `マップが映る秒数がないため、説明の開始（${start}秒）から再生します。` : `マップが映る ${start}秒 から再生します。`,
+          }),
+        ]),
+      };
+    }
+    return draftVideo.node;
+  }
+
+  function validSeconds(value) {
+    return Number.isInteger(value) && value >= 0 ? value : null;
+  }
+
   function renderDrafts() {
     const mapName = (slug) => state.maps.find((m) => m.slug === slug)?.nameJa || slug;
     $("draft-list").replaceChildren(
-      ...state.drafts.map((d) => {
+      ...state.drafts.flatMap((d) => {
         const count = draftWarnings(d).length;
-        return el("li", { class: "draft-item" + (d.key === state.draftKey ? " is-active" : ""), onclick: () => loadDraft(d.key) }, [
+        const active = d.key === state.draftKey;
+        const item = el("li", { class: "draft-item" + (active ? " is-active" : ""), onclick: () => loadDraft(d.key) }, [
           el("span", {
             class: "draft-title",
             text: `${mapName(d.map)}：${d.title || "（タイトルなし）"}（${LABELS.side[d.side] || d.side}・${agentLabel(d.agent)}）`,
@@ -625,8 +664,10 @@
           count ? el("span", { class: "draft-warn", text: `注意 ${count}件` }) : null,
           rowButton("破棄", `下書き「${d.title}」を破棄`, () => removeDraft(d.key)),
         ]);
+        return active ? [item, draftVideoBlock(d)] : [item];
       })
     );
+    if (!state.draftKey) draftVideo = { src: null, node: null }; // 下書きを閉じたら、次に開くときは読み込み直す
     $("drafts-summary").textContent = state.drafts.length
       ? `LLM の下書きを取り込む（残り${state.drafts.length}件）`
       : "LLM の下書きを取り込む";

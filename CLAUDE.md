@@ -18,7 +18,7 @@ python3 scripts/fetch_minimaps.py     # 未取得のミニマップ画像を取�
 ## 構成
 
 - `index.html` + `js/app.js`：閲覧ページ。`state` を更新して `renderAll()` で描き直す構成です。
-- `tools/picker.html` + `tools/picker.js`：定点とコツの登録補助ツール（PC用）。`scripts/serve.py` で開くと `data/smokes.json` と `data/notes.json` へ直接保存し、定点の編集と削除もできます。それ以外のサーバーではコピーと貼り付けの手順になります。
+- `tools/picker.html` + `tools/picker.js`：定点とコツの登録補助ツール（PC用）。`scripts/serve.py` で開くと `data/smokes.json` と `data/notes.json` へ直接保存し、定点の編集と削除、LLM の下書きの取り込みもできます。それ以外のサーバーではコピーと貼り付けの手順になります。下書きの依頼文のひな形は `tools/draft-prompt.txt` で、マップと場所の名前は `data/maps.json`、選択肢は `LABELS` から毎回埋め込みます。
 - `js/common.js`：両ページの共通処理を `window.VSN` として公開します（ラベル、JSON の読み込み、YouTube URL の解析、localStorage、DOM 生成の `el()`）。
 - `css/style.css`：両ページで共有します。変更したら `tools/picker.html` の表示も確認します。スマホ基準で書き、`min-width: 900px` で2列に広げます。
 - `data/notes.json`：マップごとのコツ（slug と本文の組）。`tools/picker.html` で書きます。
@@ -45,7 +45,7 @@ python3 scripts/fetch_minimaps.py     # 未取得のミニマップ画像を取�
 
 ### 再開時の情報
 - ここには「次の1手」と決定事項だけを書く。完了したタスクの経緯は書かない。
-- 次にやること: LLM が作った下書きの取り込みを登録補助ツールに追加する（下書きは各件に map を持ち、依頼文は全マップ共通の1種類）。別途、スマホ実機で公開ページの表示を確認する。
+- 次にやること: 実際の解説動画と LLM で下書きの取り込みを試し、依頼文（`tools/draft-prompt.txt`）を直す。別途、スマホ実機で公開ページの表示を確認する。
 
 ### 決定事項(再検討しない)
 検証して「変更しない」と決めたことは、理由を添えてここに書く。

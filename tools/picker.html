@@ -29,6 +29,23 @@
     .point-row .coord { flex: 1; }
     .point-row .chip { min-height: 32px; }
     .mode-sep { flex: 1; }
+    .drafts { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--panel); }
+    .drafts summary { cursor: pointer; font-weight: 700; }
+    .drafts > .form { margin-top: 10px; }
+    .draft-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .draft-item {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px; min-height: var(--tap);
+      border: 1px solid var(--line); border-radius: 8px; cursor: pointer;
+    }
+    .draft-item.is-active { border-color: var(--accent); background: var(--accent-soft); }
+    .draft-item .draft-title { flex: 1; }
+    .draft-item .chip { min-height: 32px; }
+    .draft-warn { color: var(--warn); font-size: 0.8rem; white-space: nowrap; }
+    .draft-warnings { border: 1px solid var(--warn); border-radius: 8px; padding: 8px 10px; color: var(--warn); font-size: 0.85rem; }
+    .draft-warnings ul { margin: 4px 0 0; padding-left: 1.2em; }
+    /* 場所の名前から仮に置いた位置。クリックで直すと通常の見た目に戻る */
+    .pin.tentative { background: #f5b94233 !important; border: 2px dashed var(--warn); color: var(--warn); }
+    .stand.tentative { background: transparent; border: 2px dashed var(--warn); }
     .coord { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--text); }
     .output { width: 100%; min-height: 260px; font-family: ui-monospace, monospace; font-size: 0.8rem; }
     .notes-form { margin-top: 16px; }
@@ -52,7 +69,7 @@
         <label>マップ
           <select id="map"></select>
         </label>
-        <div id="points" class="points" aria-label="スモークの組"></div>
+        <div id="points" class="points" aria-label="同時に焚くスモーク"></div>
         <div class="mode">
           <button type="button" id="add-point" class="chip">スモークを追加</button>
           <span class="mode-sep" aria-hidden="true"></span>
@@ -61,7 +78,7 @@
             <button type="button" class="chip" data-mode="stand">立ち位置（任意）</button>
           </div>
         </div>
-        <p class="hint">ミニマップをクリックすると、枠で囲んだ組の、選んでいる方の位置が入ります。同時に焚く定点は「スモークを追加」で組を増やします。薄いピンは登録済みの定点です。</p>
+        <p class="hint">ミニマップをクリックすると、枠で囲んだスモークの、選んでいる方の位置が入ります。同時に焚くスモークは「スモークを追加」で増やし、行をクリックして切り替えます。薄いピンは登録済みの定点です。</p>
       </div>
       <div id="minimap" class="minimap" style="margin-top:10px">
         <img id="minimap-img" alt="">
@@ -86,6 +103,23 @@
     </section>
 
     <section class="form">
+      <details class="drafts save-only" hidden open>
+        <summary id="drafts-summary">LLM の下書きを取り込む</summary>
+        <div class="form">
+          <button type="button" id="copy-prompt" class="chip">依頼文をコピー</button>
+          <p class="hint">動画を読める LLM に、この依頼文と動画を渡します。返ってきた JSON 配列を下に貼り付けます。</p>
+          <label>動画の URL（取り込む全件に使います。開始秒は各下書きの start）
+            <input id="draft-video" type="url" placeholder="https://youtu.be/xxxx">
+          </label>
+          <label>下書き（JSON 配列）
+            <textarea id="draft-input" class="notes-output" placeholder='[{"map": "ascent", "agent": "Omen", ...}]'></textarea>
+          </label>
+          <button type="button" id="import-drafts" class="primary">下書きを貼り付けて取り込む</button>
+          <p id="import-message" class="hint" hidden></p>
+          <ul id="draft-list" class="draft-list"></ul>
+        </div>
+      </details>
+      <div id="draft-warnings" class="draft-warnings" hidden></div>
       <label class="save-only" hidden>編集する定点（選んでいるマップの登録済みから選べます）
         <select id="edit-target"></select>
       </label>
@@ -120,6 +154,7 @@
           <input id="patch" type="text">
         </label>
       </div>
+      <a id="open-video" class="hint" href="#" target="_blank" rel="noopener" hidden>この秒数から動画を開く</a>
       <label>画像のパス（任意。カンマ区切り。例：images/bind/a-short.jpg）
         <input id="images" type="text">
       </label>

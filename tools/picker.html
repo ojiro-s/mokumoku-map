@@ -25,6 +25,8 @@
     .notes-output { width: 100%; font-family: ui-monospace, monospace; font-size: 0.8rem; }
     .primary { min-height: var(--tap); border: 0; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; }
     .primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .danger { min-height: var(--tap); border: 1px solid var(--accent); border-radius: 8px; background: transparent; color: var(--accent); font-weight: 700; }
+    .danger.is-armed { background: var(--warn); border-color: var(--warn); color: #111; }
     .hint { color: var(--muted); font-size: 0.85rem; margin: 0; }
   </style>
 </head>
@@ -118,6 +120,7 @@
       <p class="hint copy-only">smokes.json の最後の「}」の後ろに「,」を付けて貼り付けてください（全体は [ ] で囲まれた配列です）。</p>
       <button type="button" id="save-smoke" class="primary save-only" hidden disabled>定点を保存する</button>
       <p class="hint save-only" hidden>data/smokes.json の最後に追加します。編集中は、選んだ定点を上書きします。保存すると入力欄は空に戻ります。</p>
+      <button type="button" id="delete-smoke" class="danger" hidden>この定点を削除する</button>
     </section>
   </main>
 

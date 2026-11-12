@@ -86,7 +86,25 @@ def update_smoke(body):
     raise BadRequest(404, f"この id の定点がありません: {body['id']}")
 
 
-ROUTES = {"/api/notes": save_notes, "/api/smokes": save_smoke, "/api/smokes/update": update_smoke}
+def delete_smoke(body):
+    """同じ id の定点を一覧から取り除く"""
+    smoke_id = body.get("id")
+    if not smoke_id:
+        raise BadRequest(400, "id がありません")
+    smokes = json.loads(SMOKES_PATH.read_text(encoding="utf-8"))
+    remaining = [s for s in smokes if s.get("id") != smoke_id]
+    if len(remaining) == len(smokes):
+        raise BadRequest(404, f"この id の定点がありません: {smoke_id}")
+    write_json(SMOKES_PATH, remaining)
+    return {"count": len(remaining)}
+
+
+ROUTES = {
+    "/api/notes": save_notes,
+    "/api/smokes": save_smoke,
+    "/api/smokes/update": update_smoke,
+    "/api/smokes/delete": delete_smoke,
+}
 
 
 class Handler(SimpleHTTPRequestHandler):

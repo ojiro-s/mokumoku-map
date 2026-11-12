@@ -14,6 +14,7 @@
     stand: null,
     canSave: false, // scripts/serve.py で開いていて直接保存できるか
     editingId: null, // 編集中の定点の id（新規登録のときは null）
+    deleteArmedId: null, // 削除ボタンを1回押した定点の id。別の定点に切り替えると押していない状態に戻る
     changedNotes: new Set(), // コツを書き換えて未保存のマップ
   };
 
@@ -91,6 +92,7 @@
     $("copy-notes").addEventListener("click", () => copyText($("notes-output"), $("copy-notes")));
     $("save-notes").addEventListener("click", saveNotes);
     $("save-smoke").addEventListener("click", saveSmoke);
+    $("delete-smoke").addEventListener("click", deleteSmoke);
 
     await setupSaving();
     renderMap();
@@ -160,6 +162,39 @@
     } catch (e) {
       flash($("save-smoke"), e.message, smokeButtonLabel);
     }
+  }
+
+  // 押し間違いを防ぐため、1回目は確認の表示に変えるだけにし、2回目で削除する
+  async function deleteSmoke() {
+    const id = state.editingId;
+    if (!id) return;
+    if (state.deleteArmedId !== id) {
+      state.deleteArmedId = id;
+      updateDeleteButton();
+      return;
+    }
+    try {
+      await postJson("api/smokes/delete", { id });
+      state.smokes = state.smokes.filter((s) => s.id !== id);
+      state.editingId = state.deleteArmedId = null;
+      clearSmokeForm();
+      renderEditList();
+      flash($("save-smoke"), "削除しました", smokeButtonLabel);
+    } catch (e) {
+      state.deleteArmedId = null;
+      updateDeleteButton();
+      flash($("save-smoke"), e.message, smokeButtonLabel);
+    }
+  }
+
+  function updateDeleteButton() {
+    const button = $("delete-smoke");
+    // 別の定点へ切り替えたら、戻ってきても押していない状態から始める
+    if (state.deleteArmedId !== state.editingId) state.deleteArmedId = null;
+    const armed = state.editingId !== null && state.deleteArmedId === state.editingId;
+    button.hidden = !(state.canSave && state.editingId);
+    button.classList.toggle("is-armed", armed);
+    button.textContent = armed ? "もう一度押すと削除します" : "この定点を削除する";
   }
 
   // 編集できる定点の一覧（選んでいるマップの分だけ）
@@ -328,6 +363,7 @@
     $("copy").disabled = missing.length > 0;
     $("save-smoke").disabled = missing.length > 0;
     $("save-smoke").textContent = smokeButtonLabel();
+    updateDeleteButton();
   }
 
   async function copyText(source, button) {

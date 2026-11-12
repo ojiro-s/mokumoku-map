@@ -7,8 +7,16 @@
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .picker { display: grid; gap: 16px; padding: 16px; max-width: 1200px; margin: 0 auto; }
-    @media (min-width: 900px) { .picker { grid-template-columns: 1fr 1fr; align-items: start; } }
-    .picker .minimap { cursor: crosshair; }
+    /* minmax(0, …) にして、行の文字の長さで列の幅（＝マップの大きさ）が変わらないようにする */
+    @media (min-width: 900px) { .picker { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+    .picker .minimap { cursor: crosshair; touch-action: none; user-select: none; }
+    .picker .minimap [data-kind] { cursor: grab; }
+    .picker .minimap:active [data-kind] { cursor: grabbing; }
+    /* 拡大はこの枠ごと transform で行う。ピンの円は実寸なので一緒に大きくし、
+       立ち位置の点と場所の名前は拡大率で割り戻して画面上の大きさを保つ */
+    .minimap-stage { position: absolute; inset: 0; transform-origin: 0 0; }
+    .minimap-stage .stand { scale: calc(1 / var(--zoom, 1)); }
+    .minimap-stage .callout { scale: calc(1 / var(--zoom, 1)); transform-origin: 0 0; }
     .ghost { opacity: 0.7; pointer-events: none !important; }
     .form { display: grid; gap: 10px; }
     .form label { display: grid; gap: 4px; font-size: 0.85rem; color: var(--muted); }
@@ -26,7 +34,8 @@
     }
     .point-row.is-active { border-color: var(--accent); background: var(--accent-soft); }
     .point-row .point-name { font-weight: 700; white-space: nowrap; }
-    .point-row .coord { flex: 1; }
+    /* 立ち位置を置いてボタンが増えても行が折り返さないようにする（折り返すとマップが下へずれる） */
+    .point-row .coord { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .point-row .chip { min-height: 32px; }
     .mode-sep { flex: 1; }
     .drafts { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--panel); }
@@ -44,7 +53,7 @@
     .draft-warn { color: var(--warn); font-size: 0.8rem; white-space: nowrap; }
     .draft-warnings { border: 1px solid var(--warn); border-radius: 8px; padding: 8px 10px; color: var(--warn); font-size: 0.85rem; }
     .draft-warnings ul { margin: 4px 0 0; padding-left: 1.2em; }
-    /* 場所の名前から仮に置いた位置。クリックで直すと通常の見た目に戻る */
+    /* 場所の名前から仮に置いた位置。クリックかドラッグで直すと通常の見た目に戻る */
     .pin.tentative { background: #f5b94233 !important; border: 2px dashed var(--warn); color: var(--warn); }
     .stand.tentative { background: transparent; border: 2px dashed var(--warn); }
     .coord { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--text); }
@@ -79,15 +88,22 @@
             <button type="button" class="chip" data-mode="stand">立ち位置（任意）</button>
           </div>
         </div>
-        <p class="hint">ミニマップをクリックすると、枠で囲んだスモークの、選んでいる方の位置が入ります。同時に焚くスモークは「スモークを追加」で増やし、行をクリックして切り替えます。薄いピンは登録済みの定点です。</p>
+        <p class="hint">ミニマップをクリックすると、枠で囲んだスモークの、選んでいる方の位置が入ります。置いたピンはドラッグで動かせます。同時に焚くスモークは「スモークを追加」で増やし、行をクリックして切り替えます。薄いピンは登録済みの定点です。</p>
       </div>
       <div id="minimap" class="minimap" style="margin-top:10px">
-        <img id="minimap-img" alt="">
-        <svg id="minimap-lines" class="minimap-lines" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg>
-        <div id="minimap-callouts" class="minimap-layer"></div>
-        <div id="minimap-pins" class="minimap-layer"></div>
+        <div id="minimap-stage" class="minimap-stage">
+          <img id="minimap-img" alt="">
+          <svg id="minimap-lines" class="minimap-lines" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div id="minimap-callouts" class="minimap-layer"></div>
+          <div id="minimap-pins" class="minimap-layer"></div>
+        </div>
       </div>
-      <label class="toggle"><input type="checkbox" id="show-callouts" checked><span>場所の名前を表示</span></label>
+      <div class="mode">
+        <label class="toggle"><input type="checkbox" id="show-callouts" checked><span>場所の名前を表示</span></label>
+        <span class="mode-sep" aria-hidden="true"></span>
+        <button type="button" id="reset-zoom" class="chip" hidden>拡大を戻す</button>
+      </div>
+      <p class="hint">ホイールで拡大・縮小、拡大中は右ドラッグで表示する範囲を動かせます。キー操作：Delete で選んでいる組を消す、Ctrl+C で選んでいる組を複製、Ctrl+S で定点を保存。</p>
 
       <div class="notes-form form">
         <label>このマップのコツ（定点とは別に、自由に書けます）

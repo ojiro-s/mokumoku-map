@@ -19,7 +19,12 @@
     changedNotes: new Set(), // コツを書き換えて未保存のマップ
     drafts: store.get(DRAFTS_KEY, []), // LLM の下書き。取り込み時に key を付ける
     draftKey: null, // 入力欄に読み込んでいる下書きの key
+    dragging: null, // ピンをドラッグ中の { pointerId, moved }
+    panning: null, // 拡大したマップを右ドラッグで動かし中の { pointerId, x, y, tx, ty }
+    // マップの拡大率と、表示枠に対する左上のずれ（枠の幅を1とした比率）
+    zoom: { scale: 1, tx: 0, ty: 0 },
   };
+  const MAX_ZOOM = 8;
 
   init();
 
@@ -67,10 +72,19 @@
       selectPoint(state.points.length - 1);
     });
 
-    $("minimap").addEventListener("click", onMapClick);
+    $("minimap").addEventListener("pointerdown", onMapPointerDown);
+    $("minimap").addEventListener("pointermove", onMapPointerMove);
+    $("minimap").addEventListener("pointerup", onMapPointerUp);
+    $("minimap").addEventListener("pointercancel", onMapPointerUp);
+    $("minimap").addEventListener("wheel", onMapWheel, { passive: false }); // ページのスクロールを止めるため passive にしない
+    $("minimap").addEventListener("contextmenu", (e) => e.preventDefault()); // 右ドラッグで動かすため
+    $("minimap").addEventListener("mousedown", (e) => e.button === 1 && e.preventDefault()); // 中ボタンの自動スクロールを止める
+    $("reset-zoom").addEventListener("click", resetZoom);
+    document.addEventListener("keydown", onKeyDown);
     $("map").addEventListener("change", () => {
       const wasEditing = state.editingId !== null || state.draftKey !== null;
       state.editingId = null;
+      resetZoom();
       resetPoints();
       renderMap();
       showMapNote();
@@ -280,17 +294,134 @@
     return state.maps.find((m) => m.slug === $("map").value);
   }
 
-  function onMapClick(e) {
+  // 入力中のピンを掴めばそのピンを、空いた場所を押せばそこに置いたピンを、離すまでドラッグで動かす
+  function onMapPointerDown(e) {
+    if (e.button === 1 || e.button === 2) {
+      startPan(e);
+      return;
+    }
+    if (e.button !== 0) return;
+    const grabbed = e.target.closest("[data-kind]");
+    if (grabbed) {
+      state.active = Number(grabbed.dataset.index);
+      setMode(grabbed.dataset.kind);
+    }
+    e.preventDefault(); // 画像のドラッグや文字の選択を起こさない
+    $("minimap").setPointerCapture(e.pointerId);
+    state.dragging = { pointerId: e.pointerId, moved: !grabbed };
+    if (!grabbed) moveActivePin(e);
+    else update(); // 掴んだ組を一覧でも選択中にする
+  }
+
+  function onMapPointerMove(e) {
+    if (state.panning?.pointerId === e.pointerId) {
+      movePan(e);
+      return;
+    }
+    if (state.dragging?.pointerId !== e.pointerId) return;
+    state.dragging.moved = true;
+    moveActivePin(e);
+  }
+
+  function onMapPointerUp(e) {
+    if (state.panning?.pointerId === e.pointerId) state.panning = null;
+    if (state.dragging?.pointerId !== e.pointerId) return;
+    const { moved } = state.dragging;
+    state.dragging = null;
+    if (moved) update();
+  }
+
+  // ホイールでカーソルの位置を中心に拡大・縮小する。最大・等倍で止まったときもページはスクロールさせない
+  function onMapWheel(e) {
+    const z = state.zoom;
+    e.preventDefault();
     const rect = $("minimap").getBoundingClientRect();
-    const p = {
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    const scale = Math.min(MAX_ZOOM, Math.max(1, z.scale * Math.exp(-e.deltaY * 0.0015)));
+    // カーソルの下にある地点が拡大の前後で動かないように、ずれを計算し直す
+    z.tx = px - ((px - z.tx) * scale) / z.scale;
+    z.ty = py - ((py - z.ty) * scale) / z.scale;
+    z.scale = scale;
+    applyZoom();
+  }
+
+  function startPan(e) {
+    if (state.zoom.scale <= 1) return;
+    e.preventDefault();
+    $("minimap").setPointerCapture(e.pointerId);
+    state.panning = { pointerId: e.pointerId, x: e.clientX, y: e.clientY, tx: state.zoom.tx, ty: state.zoom.ty };
+  }
+
+  function movePan(e) {
+    const rect = $("minimap").getBoundingClientRect();
+    const p = state.panning;
+    state.zoom.tx = p.tx + (e.clientX - p.x) / rect.width;
+    state.zoom.ty = p.ty + (e.clientY - p.y) / rect.height;
+    applyZoom();
+  }
+
+  function resetZoom() {
+    state.zoom = { scale: 1, tx: 0, ty: 0 };
+    applyZoom();
+  }
+
+  function applyZoom() {
+    const z = state.zoom;
+    // マップの外側が見えないように、ずれを拡大後の範囲に収める
+    z.tx = Math.min(0, Math.max(1 - z.scale, z.tx));
+    z.ty = Math.min(0, Math.max(1 - z.scale, z.ty));
+    const stage = $("minimap-stage");
+    stage.style.transform = `translate(${z.tx * 100}%, ${z.ty * 100}%) scale(${z.scale})`;
+    stage.style.setProperty("--zoom", z.scale);
+    $("minimap").classList.toggle("is-zoomed", z.scale > 1);
+    $("reset-zoom").hidden = z.scale <= 1;
+    $("reset-zoom").textContent = `拡大を戻す（×${z.scale.toFixed(1)}）`;
+  }
+
+  // 文字の入力欄にいるときは、Ctrl+S（保存）以外は入力の操作を優先する
+  function onKeyDown(e) {
+    if (e.isComposing || e.altKey) return;
+    const ctrl = e.ctrlKey || e.metaKey;
+    const key = e.key.toLowerCase();
+    if (ctrl && !e.shiftKey && key === "s") {
+      e.preventDefault(); // ブラウザのページ保存を出さない
+      const button = $("save-smoke");
+      if (!button.hidden && !button.disabled) saveSmoke();
+      else if (!button.hidden) flash(button, "未入力の項目があります", smokeButtonLabel);
+      return;
+    }
+    if (e.target.closest?.("input, textarea, select, [contenteditable]")) return;
+    if (!ctrl && !e.shiftKey && e.key === "Delete") {
+      e.preventDefault();
+      removePoint(state.active);
+    } else if (ctrl && !e.shiftKey && key === "c") {
+      if (String(window.getSelection())) return; // 文字を選んでいるときは通常のコピー
+      e.preventDefault();
+      duplicatePoint(state.active);
+    }
+  }
+
+  // 選んでいる組と同じ位置にもう1組作り、新しい組を選んだ状態にする
+  function duplicatePoint(index) {
+    const p = state.points[index];
+    state.points.splice(index + 1, 0, {
+      target: p.target && { ...p.target },
+      stand: p.stand && { ...p.stand },
+      ...(p.tentative ? { tentative: { ...p.tentative } } : {}),
+    });
+    selectPoint(index + 1);
+  }
+
+  function moveActivePin(e) {
+    const rect = $("minimap-stage").getBoundingClientRect(); // 拡大中は拡大後の大きさと位置になる
+    const point = state.points[state.active];
+    point[state.mode] = {
       x: round((e.clientX - rect.left) / rect.width),
       y: round((e.clientY - rect.top) / rect.height),
     };
-    const point = state.points[state.active];
-    point[state.mode] = p;
-    if (point.tentative) point.tentative[state.mode] = false; // クリックした位置は確定にする
+    if (point.tentative) point.tentative[state.mode] = false; // 手で動かした位置は確定にする
     renderMap();
-    update();
   }
 
   function setMode(mode) {
@@ -344,7 +475,9 @@
           el("span", { class: "point-name", text: `スモーク${i + 1}` }),
           el("span", {
             class: "coord",
-            text: `配置位置: ${coordText(p.target, p.tentative?.target)} / 立ち位置: ${coordText(p.stand, p.tentative?.stand)}`,
+            text: `配置位置: ${coordText(p.target, p.tentative?.target)} / 立ち位置: ${
+              p.stand ? (p.tentative?.stand ? "設定済み（仮）" : "設定済み") : "未設定"
+            }`,
           }),
           // 下書きの立ち位置が違っていたときに外せるようにする
           p.stand
@@ -403,10 +536,21 @@
             class: "pin" + (active ? " is-selected" : "") + (p.tentative?.target ? " tentative" : ""),
             style: smokeStyle(p.target, $("agent").value, map),
             text: state.points.length > 1 ? String(i + 1) : "★",
+            "data-index": i,
+            "data-kind": "target",
           })
         );
       }
-      if (p.stand) pins.push(el("span", { class: "stand" + (p.tentative?.stand ? " tentative" : ""), style: pos(p.stand) }));
+      if (p.stand) {
+        pins.push(
+          el("span", {
+            class: "stand" + (p.tentative?.stand ? " tentative" : ""),
+            style: pos(p.stand),
+            "data-index": i,
+            "data-kind": "stand",
+          })
+        );
+      }
       if (p.target && p.stand) {
         const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
         line.setAttribute("x1", p.stand.x);
@@ -455,8 +599,8 @@
     if (!entry.purpose) missing.push("目的");
     state.points.forEach((p, i) => {
       if (!p.target) missing.push(`スモーク${i + 1}の配置位置（ミニマップをクリック）`);
-      else if (p.tentative?.target) missing.push(`スモーク${i + 1}の配置位置の確定（仮の位置をクリックで直す）`);
-      if (p.stand && p.tentative?.stand) missing.push(`スモーク${i + 1}の立ち位置の確定（クリックで直すか消す）`);
+      else if (p.tentative?.target) missing.push(`スモーク${i + 1}の配置位置の確定（仮の位置をドラッグかクリックで直す）`);
+      if (p.stand && p.tentative?.stand) missing.push(`スモーク${i + 1}の立ち位置の確定（ドラッグかクリックで直すか消す）`);
     });
     if (!entry.title) missing.push("タイトル");
     $("output").value = missing.length

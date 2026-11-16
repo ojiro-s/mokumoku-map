@@ -245,11 +245,15 @@
       img.src = map.minimap;
       img.alt = `${map.nameJa}のミニマップ`;
     }
+    // 自陣のスポーンが下に来るよう画像を回し、ピンや地名は座標を回して置き直す（文字は横倒しにしない）
+    const deg = mapRotation(map, state.side);
+    img.style.transform = deg ? `rotate(${deg}deg)` : "";
+    const r = (p) => rotatePoint(p, deg);
 
     // 場所の名前
     $("minimap-callouts").replaceChildren(
       ...(state.showCallouts ? map.callouts : []).map((c) =>
-        el("span", { class: "callout", style: pos(c), text: c.name, title: c.nameEn })
+        el("span", { class: "callout", style: pos(r(c)), text: c.name, title: c.nameEn })
       )
     );
 
@@ -265,25 +269,52 @@
           el("button", {
             type: "button",
             class: "pin" + (selected ? " is-selected" : ""),
-            style: smokeStyle(p.target, s.agent, map, state.agent === "all" ? undefined : state.agent),
+            style: smokeStyle(r(p.target), s.agent, map, state.agent === "all" ? undefined : state.agent),
             "aria-label": `${i + 1}. ${s.title}${nth}`,
             text: String(i + 1),
             onclick: () => selectSmoke(s.id, true),
           })
         );
         if (selected && p.stand) {
-          pins.push(el("span", { class: "stand", style: pos(p.stand), "aria-hidden": "true" }));
+          pins.push(el("span", { class: "stand", style: pos(r(p.stand)), "aria-hidden": "true" }));
           const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-          line.setAttribute("x1", p.stand.x);
-          line.setAttribute("y1", p.stand.y);
-          line.setAttribute("x2", p.target.x);
-          line.setAttribute("y2", p.target.y);
+          const [a, b] = [r(p.stand), r(p.target)];
+          line.setAttribute("x1", a.x);
+          line.setAttribute("y1", a.y);
+          line.setAttribute("x2", b.x);
+          line.setAttribute("y2", b.y);
           lines.push(line);
         }
       });
     });
     $("minimap-pins").replaceChildren(...pins);
     $("minimap-lines").replaceChildren(...lines);
+  }
+
+  // 攻めなら攻め側、守りなら守り側のスポーンが画面の下に来る回転角（90度単位、時計回り）。
+  // 向きは敵のスポーンから自陣のスポーンへの向きで決める（フラクチャーのように守りのスポーンが中央にあるマップのため）。
+  // 「両方」のときと、スポーンの位置が無いマップは回さない
+  function mapRotation(map, side) {
+    if (side !== "attack" && side !== "defense") return 0;
+    const find = (name) => map.callouts.find((c) => c.nameEn === `${name} Side Spawn`);
+    const atk = find("Attacker");
+    const def = find("Defender");
+    if (!atk || !def) return 0;
+    const [own, enemy] = side === "attack" ? [atk, def] : [def, atk];
+    const angle = (Math.atan2(own.y - enemy.y, own.x - enemy.x) * 180) / Math.PI;
+    return (((Math.round((90 - angle) / 90) * 90) % 360) + 360) % 360;
+  }
+
+  // 0〜1 の座標を、画像の中心を軸に deg 度（時計回り）回す
+  function rotatePoint(p, deg) {
+    const x = p.x - 0.5;
+    const y = p.y - 0.5;
+    switch (deg) {
+      case 90: return { x: 0.5 - y, y: 0.5 + x };
+      case 180: return { x: 0.5 - x, y: 0.5 - y };
+      case 270: return { x: 0.5 + y, y: 0.5 - x };
+      default: return p;
+    }
   }
 
   function pos(p) {

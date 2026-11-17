@@ -1,57 +1,5 @@
 [
   {
-    "id": "abyss-attack-a-261101103013",
-    "map": "abyss",
-    "agent": "All",
-    "side": "attack",
-    "site": "A",
-    "purpose": "entry",
-    "title": "Aタワーを隠す",
-    "points": [
-      {
-        "target": {
-          "x": 0.503,
-          "y": 0.237
-        },
-        "stand": {
-          "x": 0.714,
-          "y": 0.227
-        }
-      }
-    ],
-    "comment": "射線はみ出ないように慎重に",
-    "images": [],
-    "video": null,
-    "source": "",
-    "patch": "13.08"
-  },
-  {
-    "id": "abyss-attack-a-261101104157",
-    "map": "abyss",
-    "agent": "All",
-    "side": "attack",
-    "site": "A",
-    "purpose": "entry",
-    "title": "Aブリッジに射線を絞る",
-    "points": [
-      {
-        "target": {
-          "x": 0.412,
-          "y": 0.185
-        },
-        "stand": {
-          "x": 0.629,
-          "y": 0.228
-        }
-      }
-    ],
-    "comment": "",
-    "images": [],
-    "video": null,
-    "source": "",
-    "patch": "13.08"
-  },
-  {
     "id": "bind-attack-a-261112040613",
     "map": "bind",
     "agent": "All",
@@ -586,6 +534,1859 @@
       "start": 1564
     },
     "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-attack-a-261117130147",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "換気通路から挟む時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.406,
+          "y": 0.244
+        },
+        "stand": null
+      }
+    ],
+    "comment": "A換気通路から挟み込む際はヘヴン側の通路を塞ぐ。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 97
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-attack-b-261117131135",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.327,
+          "y": 0.802
+        },
+        "stand": {
+          "x": 0.629,
+          "y": 0.818
+        }
+      },
+      {
+        "target": {
+          "x": 0.443,
+          "y": 0.732
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bタワーを最優先で焚き、2個目があればBリンクも塞ぐ。Bタワーは奥に焚くと射線が通り飛び出しやすくなるため、必ず手前側に膨らませて焚く。Bメインに到達した時点で早めに焚き始める。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 141
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "corrode-attack-a-261117131729",
+    "map": "corrode",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aエルボー進行時の基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.462,
+          "y": 0.258
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.256,
+          "y": 0.252
+        },
+        "stand": null
+      }
+    ],
+    "comment": "まずAメインからAヤード側の射線を区切るスモークを焚いて右側のエルボーを取る。さらに奥へ踏み込む際にもう1つスポーン側（Aクレーン）に焚き、サイト内を一周してクリアする。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 225
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "corrode-attack-a-261117131745",
+    "map": "corrode",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aリンク奥に焚く強気のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.438,
+          "y": 0.359
+        },
+        "stand": null
+      }
+    ],
+    "comment": "強力なアルティメットやアビリティ合わせがある場合に使い、左右両方からサイト攻略を行う。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 380
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "corrode-attack-a-261117132007",
+    "map": "corrode",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aリンクから挟む時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.465,
+          "y": 0.145
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ミッド経由で挟む際は左回りがメインになるため、木箱に焚いてエルボーからの射線を切る。アストラは木箱の上、他のコントローラーは木箱の横に配置する。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 448
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "corrode-attack-b-261117133634",
+    "map": "corrode",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.316,
+          "y": 0.741
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.399,
+          "y": 0.642
+        },
+        "stand": null
+      }
+    ],
+    "comment": "BタワーとBリンクの2箇所を塞ぐ。1個しかない場合はBタワーを優先する。Bタワーは奥に焚くと敵が出られるスペースができるので注意。エルボー側は攻めで取りたいため焚かない。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 526
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "corrode-attack-b-261117134515",
+    "map": "corrode",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "ミッドからBへ挟む時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.324,
+          "y": 0.501
+        },
+        "stand": {
+          "x": 0.717,
+          "y": 0.553
+        }
+      },
+      {
+        "target": {
+          "x": 0.316,
+          "y": 0.739
+        },
+        "stand": {
+          "x": 0.539,
+          "y": 0.509
+        }
+      }
+    ],
+    "comment": "中央ウィンドウにスモークを焚いて抜け、味方のBメイン進行に合わせてBタワーも塞ぐ。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 643
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "breeze-attack-a-261117135220",
+    "map": "breeze",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの丸モク基本配置",
+    "points": [
+      {
+        "target": {
+          "x": 0.834,
+          "y": 0.463
+        },
+        "stand": {
+          "x": 0.758,
+          "y": 0.664
+        }
+      },
+      {
+        "target": {
+          "x": 0.76,
+          "y": 0.509
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ピラミッドの間と左ピラミッド手前の2箇所に焚き、バックサイトまでエリアを取りに行く。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 815
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "breeze-attack-a-261117135912",
+    "map": "breeze",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "oneway",
+    "title": "Aサイトのピラミッドワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.76,
+          "y": 0.508
+        },
+        "stand": {
+          "x": 0.76,
+          "y": 0.648
+        }
+      },
+      {
+        "target": {
+          "x": 0.779,
+          "y": 0.354
+        },
+        "stand": null
+      }
+    ],
+    "comment": "左ピラミッド手前は通常通り焚き、もう1つを右ピラミッド奥にワンウェイで焚くことでネストの射線を切りつつエリアを広げられる。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 861
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "breeze-attack-a-261117140306",
+    "map": "breeze",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "ミッドからA挟みをする時の丸モク",
+    "points": [
+      {
+        "target": {
+          "x": 0.498,
+          "y": 0.456
+        },
+        "stand": {
+          "x": 0.526,
+          "y": 0.655
+        }
+      },
+      {
+        "target": {
+          "x": 0.722,
+          "y": 0.39
+        },
+        "stand": null
+      }
+    ],
+    "comment": "1個目でミッド通過時の射線を切り、2個目をサイト内のコンテナ横に焚いて進入する。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 966
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "breeze-attack-b-261117140656",
+    "map": "breeze",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの丸モク基本配置",
+    "points": [
+      {
+        "target": {
+          "x": 0.247,
+          "y": 0.289
+        },
+        "stand": {
+          "x": 0.247,
+          "y": 0.566
+        }
+      },
+      {
+        "target": {
+          "x": 0.226,
+          "y": 0.194
+        },
+        "stand": null
+      }
+    ],
+    "comment": "マップ改修で通路が狭くなったため、Bリンク手前とサイト奥の木箱横の2箇所を塞ぐだけで丸モクでも進入可能。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 1096
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "breeze-attack-b-261117141320",
+    "map": "breeze",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "B挟み時の丸モク配置",
+    "points": [
+      {
+        "target": {
+          "x": 0.437,
+          "y": 0.239
+        },
+        "stand": {
+          "x": 0.325,
+          "y": 0.399
+        }
+      },
+      {
+        "target": {
+          "x": 0.281,
+          "y": 0.149
+        },
+        "stand": {
+          "x": 0.361,
+          "y": 0.294
+        }
+      }
+    ],
+    "comment": "中央ネストに1個焚き、進行しながらディフェンス側アーチに2個目を焚く。オーメンは柱の真ん中あたりに置くと射線を防ぎつつ配置できる。",
+    "images": [],
+    "video": {
+      "youtubeId": "otiqpMKRUdc",
+      "start": 1242
+    },
+    "source": "SmashlogTV - VALORANT",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-attack-a-261117142026",
+    "map": "lotus",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aメインを取るためのスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.745,
+          "y": 0.437
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aサイト中や階段からの射線を通さず、少ないアビリティでAメイン（瓦礫）を取るために使う。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 55
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-attack-a-261117142239",
+    "map": "lotus",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトエントリーの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.74,
+          "y": 0.335
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.799,
+          "y": 0.282
+        },
+        "stand": null
+      }
+    ],
+    "comment": "A階段とAトップ（ヘヴン）の2箇所に焚く。Aツリーから行く場合はA階段のスモークを捨ててヘヴンのみ焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 94
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-attack-b-261117142538",
+    "map": "lotus",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.466,
+          "y": 0.384
+        },
+        "stand": {
+          "x": 0.505,
+          "y": 0.675
+        }
+      },
+      {
+        "target": {
+          "x": 0.526,
+          "y": 0.37
+        },
+        "stand": null
+      }
+    ],
+    "comment": "BリンクとBアッパーに焚く。アッパー側は相手がバイラウンドなら入り口とラインを揃え、エコラウンドなら少しもっこりさせて自分が入る使い方もできる。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 127
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-attack-c-261117142703",
+    "map": "lotus",
+    "agent": "All",
+    "side": "attack",
+    "site": "C",
+    "purpose": "entry",
+    "title": "Cサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.217,
+          "y": 0.465
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.132,
+          "y": 0.349
+        },
+        "stand": null
+      }
+    ],
+    "comment": "手前に隙間を作るとジャッジ等が怖いため、大角にラインを揃えて焚く。CT側（Cホール）は前に出すことで後ろからの射線も消せる。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 179
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-a-261117144517",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Aメインへの基本守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.674,
+          "y": 0.638
+        },
+        "stand": {
+          "x": 0.627,
+          "y": 0.271
+        }
+      },
+      {
+        "target": {
+          "x": 0.744,
+          "y": 0.436
+        },
+        "stand": {
+          "x": 0.665,
+          "y": 0.282
+        }
+      },
+      {
+        "target": {
+          "x": 0.832,
+          "y": 0.511
+        },
+        "stand": {
+          "x": 0.9,
+          "y": 0.392
+        }
+      }
+    ],
+    "comment": "プッシュする場合は敵スポーン側に焚いて射線を減らす。ツリーが止まらない場合はパラを入れる+シュラステで回転扉の上に乗る",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 221
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-a-261117144617",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Aサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.905,
+          "y": 0.353
+        },
+        "stand": null
+      }
+    ],
+    "comment": "サイト内側から見て左側のA小屋付近に焚いて時間を稼ぐ。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 270
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-b-261117144717",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bメインへの守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.433,
+          "y": 0.532
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bメインに焚き、ラッシュ時はパラノイアを返してピークしたり、シュラウドステップでポジションを変えて戦う。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 284
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-c-261117144827",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "C",
+    "purpose": "oneway",
+    "title": "Cマウンドのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.31,
+          "y": 0.705
+        },
+        "stand": null
+      }
+    ],
+    "comment": "味方がプッシュする時や、オペレーター以外のキャラがCを管理する時に置く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 310
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-a-261117145111",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Cメインへの基本守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.211,
+          "y": 0.54
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ワンウェイ使わない場合",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-c-261117145329",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "C",
+    "purpose": "oneway",
+    "title": "Cサイト内の耐えワンウェイ",
+    "points": [
+      {
+        "target": {
+          "x": 0.097,
+          "y": 0.531
+        },
+        "stand": null
+      }
+    ],
+    "comment": "相手がサイトに入ってくるタイミングで焚かないと逆にメインからのワンウェイになってしまうため注意。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 338
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "lotus-defense-c-261117145449",
+    "map": "lotus",
+    "agent": "All",
+    "side": "defense",
+    "site": "C",
+    "purpose": "other",
+    "title": "Cサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.137,
+          "y": 0.509
+        },
+        "stand": null
+      }
+    ],
+    "comment": "射線を絞る",
+    "images": [],
+    "video": null,
+    "source": "",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-attack-a-261117150739",
+    "map": "ascent",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.394,
+          "y": 0.257
+        },
+        "stand": {
+          "x": 0.574,
+          "y": 0.255
+        }
+      },
+      {
+        "target": {
+          "x": 0.245,
+          "y": 0.193
+        },
+        "stand": {
+          "x": 0.533,
+          "y": 0.261
+        }
+      }
+    ],
+    "comment": "AツリーとAラフターに焚く。ヘヴン側はもっこりさせすぎると敵が前に出たりリコンで抜かれたりするためラインを揃える。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 384
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-attack-a-261117150942",
+    "map": "ascent",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aラフターの手前合わせスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.246,
+          "y": 0.18
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ヘヴン下に合わせる形で少し手前に焚くことで、ヘヴンでしゃがんで撃つ敵の視界を完全に塞ぐ。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 423
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-attack-mid-261117154406",
+    "map": "ascent",
+    "agent": "All",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "entry",
+    "title": "ミッド進行時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.461,
+          "y": 0.398
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.407,
+          "y": 0.498
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aキャットウォークまたは中央ボトムのどちらか味方の要望に合わせて焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 461
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-attack-b-261117154631",
+    "map": "ascent",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.287,
+          "y": 0.573
+        },
+        "stand": {
+          "x": 0.604,
+          "y": 0.663
+        }
+      },
+      {
+        "target": {
+          "x": 0.179,
+          "y": 0.653
+        },
+        "stand": null
+      }
+    ],
+    "comment": "中央マーケットとCT側（ディフェンス側スポーン方面）に焚く。CT側はもっこりさせると左右から飛び出されるためラインを揃える。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 500
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-defense-a-261117154736",
+    "map": "ascent",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "oneway",
+    "title": "Aメインのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.509,
+          "y": 0.243
+        },
+        "stand": null
+      }
+    ],
+    "comment": "通常より少しだけ沈めて焚くことで、しゃがんだ時に敵から自分の足が見えなくなる。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 526
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-defense-a-261117154906",
+    "map": "ascent",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Aサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.294,
+          "y": 0.16
+        },
+        "stand": null
+      }
+    ],
+    "comment": "黒コンと箱の間に置き、自分がスモーク内に入れるように少し手前に膨らませて焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 554
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-defense-a-261117155107",
+    "map": "ascent",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Aツリー（ショート）の守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.456,
+          "y": 0.145
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.45,
+          "y": 0.332
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ショートから敵が来た際に焚き、アクションが来たらパラノイアを返してトレードを狙う。メインは焚いておく",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 586
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-defense-b-261117155258",
+    "map": "ascent",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bメインの守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.395,
+          "y": 0.655
+        },
+        "stand": {
+          "x": 0.184,
+          "y": 0.628
+        }
+      }
+    ],
+    "comment": "Bメインからの進行を止める基本スモーク。ミッドから敵が来た場合もBメインに焚いて片方を止め、マーケット側を味方と打ち合う。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 635
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "ascent-defense-b-261117155439",
+    "map": "ascent",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.312,
+          "y": 0.769
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.299,
+          "y": 0.826
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bサイトは全面設置可能なため、味方がいる位置に合わせてボートハウス付近やサイト中央に焚いて時間を稼ぐ。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 672
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-attack-a-261117155734",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.499,
+          "y": 0.232
+        },
+        "stand": {
+          "x": 0.648,
+          "y": 0.237
+        }
+      },
+      {
+        "target": {
+          "x": 0.427,
+          "y": 0.126
+        },
+        "stand": {
+          "x": 0.626,
+          "y": 0.167
+        }
+      },
+      {
+        "target": {
+          "x": 0.297,
+          "y": 0.102
+        },
+        "stand": {
+          "x": 0.631,
+          "y": 0.182
+        }
+      }
+    ],
+    "comment": "Aヘブンは確定。Aサイト高台に焚くorCTを隔離。高台はシュラステしてCTに当たる。ヘヴン側は隙間が空かないよう少しもっこりさせて完全に埋める。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 709
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-attack-mid-261117160257",
+    "map": "abyss",
+    "agent": "All",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "entry",
+    "title": "ミッド進行・B挟み用スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.382,
+          "y": 0.448
+        },
+        "stand": {
+          "x": 0.648,
+          "y": 0.404
+        }
+      },
+      {
+        "target": {
+          "x": 0.24,
+          "y": 0.63
+        },
+        "stand": {
+          "x": 0.45,
+          "y": 0.52
+        }
+      }
+    ],
+    "comment": "A側からミッドへ行く際は中央トップに焚く。そのままBへ挟む場合はCT側にも追加する。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 768
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-defense-a-261117160908",
+    "map": "abyss",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "oneway",
+    "title": "Aメインのワンウェイ",
+    "points": [
+      {
+        "target": {
+          "x": 0.604,
+          "y": 0.151
+        },
+        "stand": null
+      }
+    ],
+    "comment": "味方が強かったら、ワンウェイ焚かずに1ピック後Aメインふさいでも良い",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 850
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-defense-a-261117161240",
+    "map": "abyss",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "oneway",
+    "title": "Aサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.521,
+          "y": 0.13
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.423,
+          "y": 0.178
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.459,
+          "y": 0.038
+        },
+        "stand": null
+      }
+    ],
+    "comment": "それぞれ敵の進行を止めるために用いる",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 891
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-defense-mid-261117161501",
+    "map": "abyss",
+    "agent": "All",
+    "side": "defense",
+    "site": "Mid",
+    "purpose": "oneway",
+    "title": "ミッドのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.597,
+          "y": 0.457
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.489,
+          "y": 0.538
+        },
+        "stand": null
+      }
+    ],
+    "comment": "基本は守らない。敵が見えたりリコンが来た際の返しとして中央キャットウォーク側に置くorワンウェイを焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 923
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-defense-b-261117161550",
+    "map": "abyss",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bメインの守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.525,
+          "y": 0.859
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bメインに1個置く基本スモーク。味方にサイファーがいる場合はワイヤーの位置に合わせて調整する。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 941
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "abyss-defense-b-261117161732",
+    "map": "abyss",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.444,
+          "y": 0.862
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.402,
+          "y": 0.859
+        },
+        "stand": null
+      }
+    ],
+    "comment": "サイト内の箱にラインを合わせて焚き、時間を稼ぐ。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 967
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-attack-a-261117161847",
+    "map": "summit",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.695,
+          "y": 0.343
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aリンク1箇所に焚く。エントリー時に味方に扉を壊してもらうことで他の射線を切る。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 990
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-attack-mid-261117162123",
+    "map": "summit",
+    "agent": "All",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "oneway",
+    "title": "ミッド進行時のスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.489,
+          "y": 0.451
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.614,
+          "y": 0.463
+        },
+        "stand": null
+      }
+    ],
+    "comment": "A挟みに行く時は中央ボトム、ボトムに流れるorB側でピークを待つ時はリンク側にワンウェイを置く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1020
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-attack-b-261117162339",
+    "map": "summit",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.199,
+          "y": 0.393
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.195,
+          "y": 0.276
+        },
+        "stand": null
+      }
+    ],
+    "comment": "バックサイトを捨ててサイト手前を取る配置",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1052
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-attack-b-261117162627",
+    "map": "summit",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトを深くとるスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.306,
+          "y": 0.374
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.24,
+          "y": 0.224
+        },
+        "stand": null
+      }
+    ],
+    "comment": "リンクとCTに焚いてバックサイトまで取りに行く",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1064
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-defense-a-261117162741",
+    "map": "summit",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "oneway",
+    "title": "Aメインの守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.811,
+          "y": 0.541
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.725,
+          "y": 0.597
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aメインに焚く。箱が低いため少し奥目に置くことでワンウェイ気味に使える。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1091
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-defense-a-261117162903",
+    "map": "summit",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Aサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.866,
+          "y": 0.442
+        },
+        "stand": {
+          "x": 0.882,
+          "y": 0.482
+        }
+      },
+      {
+        "target": {
+          "x": 0.927,
+          "y": 0.421
+        },
+        "stand": null
+      }
+    ],
+    "comment": "ポケットに味方が入ってジャッジ等で耐えられるように焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1110
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-defense-b-261117163210",
+    "map": "summit",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bメインの守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.12,
+          "y": 0.466
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bメインに焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1138
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "summit-attack-a-261117163339",
+    "map": "summit",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "Bサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.13,
+          "y": 0.318
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.134,
+          "y": 0.376
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.073,
+          "y": 0.37
+        },
+        "stand": null
+      }
+    ],
+    "comment": "相手のクローヴがスモークを焚いてきた際に、少し手前側に焚き直してスモーク内に入れるようにする工夫も有効。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1160
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-attack-a-261117163501",
+    "map": "sunset",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "entry",
+    "title": "Aサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.703,
+          "y": 0.351
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.811,
+          "y": 0.214
+        },
+        "stand": null
+      }
+    ],
+    "comment": "AリンクとCT側に焚く。サイト奥までクリアリングできている場合はA路地にワンウェイを置くこともできる。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1177
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-attack-mid-261117163611",
+    "map": "sunset",
+    "agent": "All",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "entry",
+    "title": "ミッド抜け用スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.499,
+          "y": 0.349
+        },
+        "stand": null
+      }
+    ],
+    "comment": "中央トップに焚いてミッドを抜ける。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1201
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-attack-b-261117163652",
+    "map": "sunset",
+    "agent": "All",
+    "side": "attack",
+    "site": "B",
+    "purpose": "entry",
+    "title": "Bサイトの基本スモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.23,
+          "y": 0.518
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.173,
+          "y": 0.336
+        },
+        "stand": null
+      }
+    ],
+    "comment": "BマーケットとBタピオカ（CT側）に焚く。マーケット側は敵がハイドできないよう少し奥目に、CT側は箱上の敵から射線が通らないよう手前に少しもっこりさせて焚く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1215
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-defense-a-261117163816",
+    "map": "sunset",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "oneway",
+    "title": "Aメインのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.718,
+          "y": 0.469
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.922,
+          "y": 0.403
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aメインのワンウェイまたは通常の入り口スモークを置く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1249
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-defense-a-261117164048",
+    "map": "sunset",
+    "agent": "All",
+    "side": "defense",
+    "site": "A",
+    "purpose": "other",
+    "title": "Aサイト内の耐えモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.783,
+          "y": 0.401
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.856,
+          "y": 0.365
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.844,
+          "y": 0.327
+        },
+        "stand": null
+      }
+    ],
+    "comment": "サイト内の箱周りに焚くことでスモーク内でハイドしたりリテイクへ繋げたりできる。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1285
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-defense-mid-261117164306",
+    "map": "sunset",
+    "agent": "All",
+    "side": "defense",
+    "site": "Mid",
+    "purpose": "other",
+    "title": "ミッドの守りスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.493,
+          "y": 0.598
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.558,
+          "y": 0.449
+        },
+        "stand": null
+      }
+    ],
+    "comment": "中央ボトムまたはタイル側に焚いてミッドの進行を止める。手前においてタイル側をプッシュするのもあり。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1308
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-defense-b-261117164346",
+    "map": "sunset",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "oneway",
+    "title": "Bメインのワンウェイスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.14,
+          "y": 0.601
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.108,
+          "y": 0.59
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Bメインのワンウェイまたは入り口スモークを置く。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1338
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-defense-b-261117164541",
+    "map": "sunset",
+    "agent": "All",
+    "side": "defense",
+    "site": "B",
+    "purpose": "other",
+    "title": "Bサイト内の耐えモク・リテイクモク",
+    "points": [
+      {
+        "target": {
+          "x": 0.097,
+          "y": 0.467
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.202,
+          "y": 0.438
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.175,
+          "y": 0.497
+        },
+        "stand": null
+      }
+    ],
+    "comment": "サイト内に焚いてインスモでワンピックを狙ったり、リテイク時にマーケットからの射線を切って全員で流れ込むために使う。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1357
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "sunset-attack-a-261117164832",
+    "map": "sunset",
+    "agent": "All",
+    "side": "attack",
+    "site": "A",
+    "purpose": "other",
+    "title": "Bサイトのミッド対応モク",
+    "points": [
+      {
+        "target": {
+          "x": 0.388,
+          "y": 0.45
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.23,
+          "y": 0.516
+        },
+        "stand": null
+      }
+    ],
+    "comment": "２番にインスモしてワンピックとるのもあり",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1398
+    },
+    "source": "れおだおチャンネル",
+    "patch": "13.08"
+  },
+  {
+    "id": "split-attack-mid-261117165202",
+    "map": "split",
+    "agent": "All",
+    "side": "attack",
+    "site": "Mid",
+    "purpose": "entry",
+    "title": "ミッドからAに行くときのスモーク",
+    "points": [
+      {
+        "target": {
+          "x": 0.478,
+          "y": 0.604
+        },
+        "stand": null
+      },
+      {
+        "target": {
+          "x": 0.47,
+          "y": 0.545
+        },
+        "stand": null
+      }
+    ],
+    "comment": "Aへ行く時はメールボックスに焚く。どっちに行ったか分からないようにするのもあり。",
+    "images": [],
+    "video": {
+      "youtubeId": "WK9gl3DbPCc",
+      "start": 1451
+    },
+    "source": "れおだおチャンネル",
     "patch": "13.08"
   }
 ]
